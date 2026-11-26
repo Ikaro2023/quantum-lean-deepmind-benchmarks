@@ -1,0 +1,14 @@
+{
+  "args": [
+    "C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\leanchecker.exe",
+    "--verbose",
+    "QuantumComputationDiscoveries.Primitives.Arcsin"
+  ],
+  "cwd": "C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\track3_arcsin\\codex_opt\\lean",
+  "seconds": 833.72,
+  "exit_code": 0,
+  "log_sha256": "71230531c00914fa0718ad3b47e7389a0a6f8487cb9c2f90b9b49fcd8c5bf1f7",
+  "log": "leanchecker_final.txt",
+  "LEAN_NUM_THREADS": "1",
+  "LEAN_PATH": "C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\track3_arcsin\\codex_opt\\olean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\physlib\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean"
+}

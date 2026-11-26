@@ -1,0 +1,25 @@
+{
+  "spec_sha256": "ded7270e1e6d82d67228acd4388e52c1a19058425dafeba93a30dcd1d4392420",
+  "submitted_common_source": "C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\Track2Grover\\TighterFindAny.lean",
+  "submitted_common_source_sha256": "45c3e075a624d21f27ca7940513acd539e5da208001b22347ff98c326cc119e3",
+  "common_definition_block_frozen_bytes": 3910,
+  "common_definition_block_source_bytes": 3837,
+  "common_definition_block_frozen_sha256": "e076d07c80764d4889b1f1c963ad3b0891a8b67ba2760bb9466620b181e1c459",
+  "common_definition_block_source_sha256": "64134a9b624d318897240556879b4b33532521d0019bf2322a0871e633738cc8",
+  "common_definition_block_equal_after_normalizing_line_endings": true,
+  "common_definition_block_literal_equal": false,
+  "raw_public_types_equal": 18,
+  "raw_fixed_bodies_equal": 10,
+  "raw_differences": {
+    "value/AvgOracleCostBound": [
+      "--- \n",
+      "+++ \n",
+      "@@ -5 +5 @@\n",
+      "-    (Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `inst.«_@».QuantumComputationSpecs.Algorithms.Grover 2012074287) \"_hygCtx\") \"_hyg\") 3)",
+      "+    (Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `inst.«_@».Track2Grover.TighterFindAny 2012074287) \"_hygCtx\") \"_hyg\") 3)",
+      "@@ -14 +14 @@\n",
+      "-          (Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `inst.«_@».QuantumComputationSpecs.Algorithms.Grover 2012074287) \"_hygCtx\") \"_hyg\") 12)",
+      "+          (Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `inst.«_@».Track2Grover.TighterFindAny 2012074287) \"_hygCtx\") \"_hyg\") 12)"
+    ]
+  }
+}

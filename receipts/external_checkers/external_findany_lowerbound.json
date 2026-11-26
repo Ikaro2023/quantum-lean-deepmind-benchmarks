@@ -1,0 +1,48 @@
+{
+  "name": "findany_lowerbound",
+  "utc_start": "2026-11-26T11:21:37Z",
+  "modules": [
+    "Track2Grover.FindAnyLowerBound"
+  ],
+  "declarations": [
+    "Track2Grover.FindAnyLowerBound.finite",
+    "Track2Grover.FindAnyLowerBound.actual_expected_rounds",
+    "Track2Grover.FindAnyLowerBound.asymptotic_real",
+    "Track2Grover.FindAnyLowerBound.no_smaller_rational",
+    "Track2Grover.FindAnyLowerBound.exact_infimum"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "tools_sha256": {
+    "leanexport": "bda24bb3fafaf299ba472f944942d6293294b76559fafc9f166badd7c0f981b3",
+    "nanoda_bin": "de57d9dd7f647eb57398bc3dab4dcaa1d64f961f3f49964d5455fbddc73b35a8",
+    "con-ron": "4e351dd1d556da22efb44c17be30e3ff3900780730ce642ee007d1416d332d40"
+  },
+  "export": {
+    "exit": 0,
+    "seconds": 113.73,
+    "bytes": 336783577,
+    "sha256": "377bfd71790bdb728c4be0e9c004b7d19d8a61f26df8773ee0af4e665da712d5"
+  },
+  "nanoda": {
+    "version": "0.4.19",
+    "exit": 0,
+    "seconds": 26.14,
+    "checked_declarations": 49235,
+    "axioms_printed": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "con_ron": {
+    "mode": "--verified",
+    "exit": 0,
+    "seconds": 7.18,
+    "accepted_declarations": 47256
+  },
+  "ok": true
+}

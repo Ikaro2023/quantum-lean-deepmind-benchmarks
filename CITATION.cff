@@ -1,0 +1,67 @@
+cff-version: 1.2.0
+message: "Cite this formally verified Lean 4.35.0 artifact and manuscript using the metadata below."
+title: "Formally Verified Asymptotic Optimality of Parallel Find-Any Search and Machine-Checked Benchmark Improvements in Lean 4"
+type: software
+authors:
+  - family-names: "Kadlec"
+    given-names: "Robert"
+    affiliation: "Masaryk University, Brno, Czech Republic"
+    email: "kadlecr@mail.muni.cz"
+    orcid: "https://orcid.org/0009-0003-9245-8130"
+version: "1.0.0"
+doi: "10.5281/zenodo.24545553"
+url: "https://doi.org/10.5281/zenodo.24545553"
+date-released: "2026-11-26"
+license: "Apache-2.0"
+keywords:
+  - "quantum algorithms"
+  - "formal verification"
+  - "Lean 4"
+  - "Grover search"
+  - "weak measurement"
+  - "reversible quantum arithmetic"
+  - "arcsin"
+  - "quantum Hoare logic"
+  - "pure AI-generated research"
+references:
+  - type: article
+    title: "Discovering formally verified quantum programs with AI"
+    authors:
+      - { family-names: "Shirobokov", given-names: "Sergey" }
+      - { family-names: "Jaderberg", given-names: "Ben" }
+      - { family-names: "Hristova", given-names: "Katerina" }
+      - { family-names: "Tsoukalas", given-names: "George" }
+      - { family-names: "Bausch", given-names: "Johannes" }
+      - { family-names: "Wieser", given-names: "Eric" }
+      - { family-names: "Heras", given-names: "Francisco J. H." }
+      - { family-names: "Rubin", given-names: "Nicholas C." }
+      - { family-names: "Low", given-names: "Guang Hao" }
+      - { family-names: "Racanière", given-names: "Sébastien" }
+      - { family-names: "Tomašev", given-names: "Nenad" }
+      - { family-names: "Zhang", given-names: "Lei M." }
+      - { family-names: "Watson", given-names: "James D." }
+      - { family-names: "Khattar", given-names: "Tanuj" }
+      - { family-names: "Albarghouthi", given-names: "Aws" }
+      - { family-names: "Jain", given-names: "Stavan" }
+      - { family-names: "Khan", given-names: "Harun" }
+      - { family-names: "Sarra", given-names: "Leopoldo" }
+      - { family-names: "Senior", given-names: "Andrew W." }
+      - { family-names: "Broughton", given-names: "Michael" }
+      - { family-names: "Masoom", given-names: "Hussain" }
+      - { family-names: "Boixo", given-names: "Sergio" }
+      - { family-names: "Babbush", given-names: "Ryan" }
+      - { family-names: "Chaudhuri", given-names: "Swarat" }
+      - { family-names: "Kohli", given-names: "Pushmeet" }
+    year: 2026
+    identifiers:
+      - type: other
+        value: "arXiv:2611.09822"
+  - type: article
+    title: "Weakly measured loops for quantum amplitude amplification: oracle savings and adaptive search with unknown target probability"
+    authors:
+      - { family-names: "Fang", given-names: "Wang" }
+      - { family-names: "Heunen", given-names: "Chris" }
+    year: 2026
+    identifiers:
+      - type: other
+        value: "arXiv:2609.39621"

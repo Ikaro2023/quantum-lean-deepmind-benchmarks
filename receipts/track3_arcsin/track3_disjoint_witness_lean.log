@@ -1,0 +1,6 @@
+'QuantumComputation.Specs.ArcsinImpl.ExactAudit.canonicalK25_disjoint' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuantumComputation.Specs.ArcsinImpl.ExactAudit.exactPublicK25_nonvacuous' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

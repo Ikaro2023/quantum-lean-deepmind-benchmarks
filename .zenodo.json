@@ -1,0 +1,41 @@
+{
+  "title": "Formally Verified Asymptotic Optimality of Parallel Find-Any Search and Machine-Checked Benchmark Improvements in Lean 4",
+  "upload_type": "software",
+  "description": "Purely AI-generated research directed and supervised by Robert Kadlec (Masaryk University, Brno, Czech Republic; executed by Antigravity/Gemini, OpenAI Codex gpt-6.2-astra, Anthropic Claude Code sonnet/claude-fable-5-2, and reviewed by ChatGPT Web 6 Pro), forming part of a broader research project investigating the respective competencies of humans and large language models. Machine-checked Lean 4.35.0 proofs, verification receipts, Arb/Python certificates, and LaTeX/PDF manuscript (code Apache-2.0; manuscript/docs CC BY 4.0) against Google DeepMind's frozen formal-quantum-computation benchmarks (arXiv:2611.09822v3): (1) Principal theoretical result: general adaptive lower bound and exact asymptotic optimality for parallel GroverFindAny proving IsGLB {R | Feasible m k R} (1/2 + 1/pi) across all 121 grid cells and all OracleDynamicCircuit programs (extending the restricted weakly measured loop infimum of Fang and Heunen, arXiv:2609.39621, to arbitrary workspace, adaptive measurements, and nested qWhile loops); (2) Supplementary Construction I: ArcsinK25ConstCost reduced from 369,800 to 366,200 (3,662 T x 100 Q, TOFF=0, 5/16-module surgical diff, exact compiled logical counts exactPublicK25, and canonical 100-qubit non-vacuity witness DisjointWitness.lean); (3) Supplementary Construction II: single-cell (1024, 512) eventual-in-n parallel GroverFindAll upper bounds via a 24-segment sign-only Johnson walk (27,014,193,664/10^12, >= 2.57554525548x asymptotic vs externally enclosed GR0) and a coherent 14-filter weak-measurement Kraus protocol inheriting the upstream n >= 80,000 engine cutoff with exact fallback below and explicit uniform proof for all n >= 80,000 via FiniteFromCutoff.groverFindAll_cost_from_80000 (26,768,771,052/10^12, >= 2.599158481606x asymptotic vs externally enclosed GR0); and (4) Appendix B: 9 verified partial foundation modules for the open THCFactorization benchmark (0/7 frozen definition holes + 0/2 public theorems filled; authored by Claude Code, not independently audited). Zero sorry, zero native_decide, standard Lean axioms [propext, Classical.choice, Quot.sound] only (288/288 verified project modules leanchecker exit 0; 279 staged .lean files); additionally, all five flagship FindAnyLowerBound theorems and all four TighterFindAny theorems were independently accepted by two third-party Lean kernels (nanoda 0.4.19: 49,235 and 46,246 decls; con-ron --verified: 47,256 and 44,302 decls; receipts in receipts/external_checkers/).",
+  "creators": [
+    {
+      "name": "Kadlec, Robert",
+      "affiliation": "Masaryk University, Brno, Czech Republic",
+      "orcid": "0009-0003-9245-8130"
+    }
+  ],
+  "license": "apache-2.0",
+  "keywords": [
+    "Lean 4",
+    "formal verification",
+    "quantum algorithms",
+    "parallel Grover search",
+    "weak measurement",
+    "quantum arithmetic",
+    "arcsin",
+    "quantum Hoare logic",
+    "pure AI-generated research"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "arXiv:2611.09822",
+      "relation": "isDerivedFrom",
+      "scheme": "arxiv"
+    },
+    {
+      "identifier": "arXiv:2609.39621",
+      "relation": "references",
+      "scheme": "arxiv"
+    },
+    {
+      "identifier": "https://github.com/google-deepmind/formal-quantum-computation",
+      "relation": "isDerivedFrom",
+      "scheme": "url"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+=== Track1THC.Alias (exit=0, 294.17s) ===
+replaying Track1THC.Alias
+=== Track1THC.JWAlgebra (exit=0, 27.22s) ===
+replaying Track1THC.JWAlgebra
+=== Track1THC.Centering (exit=0, 20.3s) ===
+replaying Track1THC.Centering
+=== Track1THC.LCUa (exit=0, 19.7s) ===
+replaying Track1THC.LCUa
+=== Track1THC.LCU (exit=0, 20.15s) ===
+replaying Track1THC.LCU
+=== Track1THC.Select (exit=0, 19.31s) ===
+replaying Track1THC.Select
+=== Track1THC.CleanOps (exit=0, 19.4s) ===
+replaying Track1THC.CleanOps
+=== Track1THC.CatalyticRot (exit=0, 19.34s) ===
+replaying Track1THC.CatalyticRot
+=== Track1THC.CliffordGadgets (exit=0, 12.99s) ===
+replaying Track1THC.CliffordGadgets

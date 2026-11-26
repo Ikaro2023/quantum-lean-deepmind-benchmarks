@@ -1,0 +1,348 @@
+{
+  "lean_version": "Lean (version 4.35.0, x86_64-w64-windows-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "lean_sha256": "ec7a472d1c12a09b0c0c718f7427c2be527b3f5f07810fdbe076c2507c7a91ea",
+  "leanchecker_sha256": "9ef6baeb28d5e28897d5ed6dddd60ff81e511d97374013ece435dff38e9e0137",
+  "frozen_spec_sha256": "ccb5262d7d5994772b56424cd86e0f1497f72c500cf645b2996f0a25cca7d986",
+  "frozen_olean_sha256": "356849f318f6a97da81f09b4e09ec63ae6dcb7d94a476f5b89b0cf6e4b14ebb6",
+  "modules": {
+    "LowerKraus": {
+      "source": "lean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\LowerKraus.lean",
+      "object": "olean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\LowerKraus.olean",
+      "source_sha256": "c82556f016b93f3a5c2c1665aa3e1f6c3652a8b0a3c8e0627bab98e4a572a80a",
+      "olean_sha256": "0358c946e20c42c0f4cefe9189537c170f416e60eabe834cc51de9f77d6e1504",
+      "artifacts": {
+        "LowerKraus.ir": "c8ac0c2c4a7538a42c9680797375fdcd2197bb2e7cbbc921097389169693cd51",
+        "LowerKraus.ir.sig": "f6a799b37332fefce43a2b6d4d8c2ff8fd0ca801382d516a5f6a5e57995163f2",
+        "LowerKraus.olean": "0358c946e20c42c0f4cefe9189537c170f416e60eabe834cc51de9f77d6e1504",
+        "LowerKraus.olean.private": "7bdf137dd03958dae50c605bd06e7ede75eb1fcbcd6e5cae0f2d0c3752d706c7",
+        "LowerKraus.olean.server": "ea9c90e5f67240eb1b4c1e983fdfd6a1b26abea353f92f96877bff8417ea98a1"
+      },
+      "receipt": "20261125-174423-609929_LowerKraus_lean.json"
+    },
+    "StepSemantics": {
+      "source": "lean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\StepSemantics.lean",
+      "object": "olean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\StepSemantics.olean",
+      "source_sha256": "8116f348e933368041bb36dd1d1aba37ad5834cf8dc3d320bbf420b7a628ca4e",
+      "olean_sha256": "205bcbd3d25d16c691bbfa88f76fbb2378884f11ce716252a491c9b43964f534",
+      "artifacts": {
+        "StepSemantics.ir": "e1c7e8df02b9cf5fe8de29ec8c882d6374028c489ae6362e3ca80b1615ffb123",
+        "StepSemantics.ir.sig": "e5380ae35f883f5b47800ee3160ee0f6dbc9c0224137530292b025e90c9be1da",
+        "StepSemantics.olean": "205bcbd3d25d16c691bbfa88f76fbb2378884f11ce716252a491c9b43964f534",
+        "StepSemantics.olean.private": "7d481d624f84c585138f192ab155f0d922890e55948dcd18c61cdf4b0057edae",
+        "StepSemantics.olean.server": "4022529e00b85fbe4399c18f5b7a55fbece92eb0503fe119cd21e1e1b4314dde"
+      },
+      "receipt": "20261125-174502-964660_StepSemantics_lean.json"
+    },
+    "EqualTableAdd": {
+      "source": "lean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\EqualTableAdd.lean",
+      "object": "olean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\EqualTableAdd.olean",
+      "source_sha256": "dd4629d1165da6a03e7d2e59442a12b0043f55b116d37016eca5d6e2bb6c4559",
+      "olean_sha256": "8f30cbc14d9dd2be64c2a63d9df09c8a53ef4b3d58e9b59adb3209d44c39f1f4",
+      "artifacts": {
+        "EqualTableAdd.ir": "90a0289e93bb809f12904114bb2621e0a646afb33f2ccdedeac64e621d3968b5",
+        "EqualTableAdd.ir.sig": "67483339217d379a079ecb09b2cbb5128793ab1808e76156390fa7fab9400ff1",
+        "EqualTableAdd.olean": "8f30cbc14d9dd2be64c2a63d9df09c8a53ef4b3d58e9b59adb3209d44c39f1f4",
+        "EqualTableAdd.olean.private": "0822644243b3734a233ffe4a71adf5e5e9bd26f1158a2ebf3f85e12095afef66",
+        "EqualTableAdd.olean.server": "090e6a90fd6125a27204337bc4beab91f16e36c97155a03ecfeb15aff07ba639"
+      },
+      "receipt": "20261125-174515-158764_EqualTableAdd_lean.json"
+    },
+    "PolyTables": {
+      "source": "lean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\PolyTables.lean",
+      "object": "olean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\PolyTables.olean",
+      "source_sha256": "5c7f9877c2fe108a44e29fc9917a3e0b28a2ecc8b999cf1367f6e9e8fe15d722",
+      "olean_sha256": "16ad8572cb3844c62caa0ace5d1f6a758ca71de2b79e854664405a494b4cf743",
+      "artifacts": {
+        "PolyTables.ir": "860b7e746907d1181a969acdcb6d69904e3e76335d8a6d798a57b7ce3ceb39b8",
+        "PolyTables.ir.sig": "a97edda29d1f4631420bc38d16f9b126e7ec9fa630457b346746d4f6681d20e0",
+        "PolyTables.olean": "16ad8572cb3844c62caa0ace5d1f6a758ca71de2b79e854664405a494b4cf743",
+        "PolyTables.olean.private": "0135ebecf3d73d07cd897a8d67c2d26f85bab392f270122f16dbcecbc0dd4209",
+        "PolyTables.olean.server": "df5e649f1e93a85109b72363a795d68565dd0c7f00cceae413c7d9a64a53db79"
+      },
+      "receipt": "20261125-174535-665975_PolyTables_lean.json"
+    },
+    "PolyDefs": {
+      "source": "lean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\PolyDefs.lean",
+      "object": "olean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\PolyDefs.olean",
+      "source_sha256": "4eb6593c886dcb1c3f6816ccc962743f3cc3bffbc1fe66f90a8105b80c7af80c",
+      "olean_sha256": "d7d066fdc62972266b51f9088ac9d1f3d9ecfa19fbdeeb135a742c15c827aad5",
+      "artifacts": {
+        "PolyDefs.ir": "b92b9825947b79cce80b30272094cf117829b637f226a54159d97dcdc5e3347d",
+        "PolyDefs.ir.sig": "47246e72f7433cd91655c85a182debe19be08fb09258981e80b3659ee44c6c01",
+        "PolyDefs.olean": "d7d066fdc62972266b51f9088ac9d1f3d9ecfa19fbdeeb135a742c15c827aad5",
+        "PolyDefs.olean.private": "0ff24a66f64cadf07b7315a068c20fe012c8b6be7d9231cd54d806ce75d7af99",
+        "PolyDefs.olean.server": "7cc774c41389f0d4b385f80d643f97e4c8756776f568f113ba85cbde23c0033e"
+      },
+      "receipt": "20261125-174549-438342_PolyDefs_lean.json"
+    },
+    "PolyBoundA": {
+      "source": "lean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\PolyBoundA.lean",
+      "object": "olean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\PolyBoundA.olean",
+      "source_sha256": "614e36bc80ff6152b59c15cdf736dabb06ad59e40127e86bfa9f65703094b946",
+      "olean_sha256": "0d7e6db1ded25eae2127bb4248e4d5567e9fe4d3ffef55c351459f976164c124",
+      "artifacts": {
+        "PolyBoundA.ir": "1e6d7cc651aecd332af4ed5f10b4c3b6ec633c8a946beecb4b84a92fc1b1723f",
+        "PolyBoundA.ir.sig": "618ed8ab0e52faf090c705d1606f2356e185f1b03736f113e005a44e6a57503a",
+        "PolyBoundA.olean": "0d7e6db1ded25eae2127bb4248e4d5567e9fe4d3ffef55c351459f976164c124",
+        "PolyBoundA.olean.private": "354e62a94de8d8f7ba6980e2af07d72182fea74bd25d62c967f3f14146f2d25b",
+        "PolyBoundA.olean.server": "5a4d590c88095336b5b223ccde56730f6bbe3c25caf1d989f03496b4629bcdf5"
+      },
+      "receipt": "20261125-174901-924809_PolyBoundA_lean.json"
+    },
+    "StageEval": {
+      "source": "lean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\StageEval.lean",
+      "object": "olean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\StageEval.olean",
+      "source_sha256": "c34c7c9f4a35c66531759864acdb7bf17fe5b59a5ce15e781d4d8915ed084cb7",
+      "olean_sha256": "c720a692d74a4be298018f9d6398aac016415f52be9cdc2fa9a84209df764b9c",
+      "artifacts": {
+        "StageEval.ir": "49ce76a981a5311a86f29fc8889d7c0da9307d837631d79872c757b831e77e61",
+        "StageEval.ir.sig": "bda1479486ae64cdc8447a1fb74827af64f64aea909bd3f9ec1809c6bffaae89",
+        "StageEval.olean": "c720a692d74a4be298018f9d6398aac016415f52be9cdc2fa9a84209df764b9c",
+        "StageEval.olean.private": "36f070a98f4f2c07601e5028996fd5397b790ccd1c83561266c5d5325ab21264",
+        "StageEval.olean.server": "d9cee570ac4e9df42d0f86abff9e107778c85d484a229e216352591fed825f4e"
+      },
+      "receipt": "20261125-175005-523262_StageEval_lean.json"
+    },
+    "PolyBoundB": {
+      "source": "lean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\PolyBoundB.lean",
+      "object": "olean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\PolyBoundB.olean",
+      "source_sha256": "0aa2d5af53962677924994846dfdcd6fb2581875cd91ebd38405f0ab5632d94f",
+      "olean_sha256": "2ef780d6770404393dfe4c393684c19e7e6ace0dbc58066c012eb9ae1bce8da1",
+      "artifacts": {
+        "PolyBoundB.ir": "fff4a516ad645c1003bd62833e8323939c9b56e71ce10f13192b1a0e210a11ab",
+        "PolyBoundB.ir.sig": "5a3edd852afba035f52fee1a59bf7463816251f33377d91364dca58dfd2bcfb2",
+        "PolyBoundB.olean": "2ef780d6770404393dfe4c393684c19e7e6ace0dbc58066c012eb9ae1bce8da1",
+        "PolyBoundB.olean.private": "ac4a0039ff3c3d02d722edd7a53161c1b4670e6ecda81dc43a5bc913f6482d38",
+        "PolyBoundB.olean.server": "50de08486c06c6dd2536f1d7a14e3931892921a21e6a051695438b609875e4b8"
+      },
+      "receipt": "20261125-174949-520535_PolyBoundB_lean.json"
+    },
+    "StageTablesA": {
+      "source": "lean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\StageTablesA.lean",
+      "object": "olean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\StageTablesA.olean",
+      "source_sha256": "7944bc5126a949d42e46b588b2c1c338b11d7ab9c16a5c93944dfea3f96d83f6",
+      "olean_sha256": "efadfa82d728a194b9aafeac533d709ec7b1c5b81caad6be173b8d32da4353fb",
+      "artifacts": {
+        "StageTablesA.ir": "36b6052c9d752f0f8be539439c8b682f600d5f87efc89ea81db006e273304dd9",
+        "StageTablesA.ir.sig": "7fee09d35ec7f20e2e31fabcb6eecf628802ea783af0ede9d782257ff0c3681d",
+        "StageTablesA.olean": "efadfa82d728a194b9aafeac533d709ec7b1c5b81caad6be173b8d32da4353fb",
+        "StageTablesA.olean.private": "53836d7f09555febf93677ef577123588f78bc10ae0a02ba71da157fb9e7967e",
+        "StageTablesA.olean.server": "0fc61a1d93fb75a1c849f3989293042fbdaee9bf5d25a441d42b87820a4b5381"
+      },
+      "receipt": "20261125-180324-121489_StageTablesA_lean.json"
+    },
+    "StageTablesB": {
+      "source": "lean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\StageTablesB.lean",
+      "object": "olean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\StageTablesB.olean",
+      "source_sha256": "09629b69da0945a0fcaeacb84181e8a1f6f58e8cd23eae515c23405bbf243f7b",
+      "olean_sha256": "a01cdc63a264b1c48ea35d3068ec928842bc61342b3e5f6192564fc513c74162",
+      "artifacts": {
+        "StageTablesB.ir": "d8efb7506debf5199848f295f2be9c4ea77be50f9525df8519879826b47c090a",
+        "StageTablesB.ir.sig": "6762ff171c8c30cf683f444f2f48a8d2fc404ba380eb9c9323ad40c3b0f4d9ae",
+        "StageTablesB.olean": "a01cdc63a264b1c48ea35d3068ec928842bc61342b3e5f6192564fc513c74162",
+        "StageTablesB.olean.private": "95cdfc695529eed4beccad7aa4f9eb3a2973fb0e18b45e8b207d55b8ff22eabf",
+        "StageTablesB.olean.server": "688537163e8855707e5f6603ced09f0270f3c4ca45b518d1c049c799a266dfa3"
+      },
+      "receipt": "20261125-181126-348520_StageTablesB_lean.json"
+    },
+    "SliceTables": {
+      "source": "lean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\SliceTables.lean",
+      "object": "olean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\SliceTables.olean",
+      "source_sha256": "1e056e767fc75caf52415d5e1089a41c92c18b72f27cde73fa881ea216b683de",
+      "olean_sha256": "6dc6ac5ed3780ac02d6a3265807c4c9479a4ce688c04cbebc0078c8ff5650f7b",
+      "artifacts": {
+        "SliceTables.ir": "a2e565318eea9da2073496db8bc3227b7d8fdc5e9c8244a7b670ef29651fed13",
+        "SliceTables.ir.sig": "cfbeec3c595dc3adb2042c74932bbaea5d3fd16234c5008bb256926089bf1f1c",
+        "SliceTables.olean": "6dc6ac5ed3780ac02d6a3265807c4c9479a4ce688c04cbebc0078c8ff5650f7b",
+        "SliceTables.olean.private": "ea2fdb3512bf8cb43ced6a4082130ca1049b1113a5f0046cd631f9cdba6fe715",
+        "SliceTables.olean.server": "ddbfbf4cb0b1fa3e4911cd969dd3a258a2201238712d8c4cde4b2b7caf3e9272"
+      },
+      "receipt": "20261125-181158-289834_SliceTables_lean.json"
+    },
+    "StageCircuitA": {
+      "source": "lean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\StageCircuitA.lean",
+      "object": "olean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\StageCircuitA.olean",
+      "source_sha256": "3b0b54adabb4807c2c0a2b8a18277962034738961f00b8c6b0115273269b47ce",
+      "olean_sha256": "8600451961478d3e744a6f98d48ae947b6eaf02b5908c17301e0443aa0c9dbec",
+      "artifacts": {
+        "StageCircuitA.ir": "ccfdfd62ffc3e5d4108ec5cfa89868712579216d17ee3ed8250afc47a4c492f8",
+        "StageCircuitA.ir.sig": "bc171734ec935fb394269284b69f45280a80578acd14d5f63a2a09f535bfda90",
+        "StageCircuitA.olean": "8600451961478d3e744a6f98d48ae947b6eaf02b5908c17301e0443aa0c9dbec",
+        "StageCircuitA.olean.private": "33761c6019b8e2eb55cf0937934576a9b774aef414ad67d7fce82751463b4d9d",
+        "StageCircuitA.olean.server": "6331f0e076cf25d15cfa4772e4a27d8874d497171c3e67ad8ec63a9895d5d505"
+      },
+      "receipt": "20261125-181207-805084_StageCircuitA_lean.json"
+    },
+    "StageCircuitB": {
+      "source": "lean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\StageCircuitB.lean",
+      "object": "olean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\StageCircuitB.olean",
+      "source_sha256": "444768a6bfd2499317efc17aa75dc98ead2d82bcf3eaa7fbba42d559b13e1e00",
+      "olean_sha256": "46e485698e1c1399b44f2d41737244402398b6b17ffba0fea9e25e5bee494985",
+      "artifacts": {
+        "StageCircuitB.ir": "e54adf6290ee70bc06682504b4b49df0491c8e4787f2fc57a05eaa52fe942906",
+        "StageCircuitB.ir.sig": "c3963640600796da947372fbb44a843978565041c157daf33d93c1971939fc50",
+        "StageCircuitB.olean": "46e485698e1c1399b44f2d41737244402398b6b17ffba0fea9e25e5bee494985",
+        "StageCircuitB.olean.private": "927e4b1532a6613fa58a5643db4de6532d33dbceea31bd3fe4cb1f6d3ecfaf21",
+        "StageCircuitB.olean.server": "aeb9cfc5a1b9d8127f7128f190749c131053069a1a0bc8dbfa1da7481a363ba0"
+      },
+      "receipt": "20261125-181259-672335_StageCircuitB_lean.json"
+    },
+    "StageProofA": {
+      "source": "lean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\StageProofA.lean",
+      "object": "olean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\StageProofA.olean",
+      "source_sha256": "44839b38500099193e1b4b5785d58d7c9c4005a44e6b2c428e6e0c800884947e",
+      "olean_sha256": "63bca331e86668ef77c599d8bbcda4a8aa20f021f6267aeabd2496dc2267a677",
+      "artifacts": {
+        "StageProofA.ir": "e39634a9fe9dd29aac7a7f1c8c1bf94c802cad890e5f2ab503b48ac7b68643e7",
+        "StageProofA.ir.sig": "885b959a7ee3ade4abf6af444d1484912486d0baa0594ee51fb7cafa5661b3a9",
+        "StageProofA.olean": "63bca331e86668ef77c599d8bbcda4a8aa20f021f6267aeabd2496dc2267a677",
+        "StageProofA.olean.private": "89cf766b163c1507191ab1279970e73a2a9079ea172b6f6d83d6cfde9a56efbe",
+        "StageProofA.olean.server": "7938bebef1efcc4c40d787a9ac2c4e4a30221aec80ce35caecce2e37cd1cf6d3"
+      },
+      "receipt": "20261125-181358-508544_StageProofA_lean.json"
+    },
+    "StageProofB": {
+      "source": "lean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\StageProofB.lean",
+      "object": "olean\\QuantumComputationDiscoveries\\Primitives\\Arcsin\\Solution\\StageProofB.olean",
+      "source_sha256": "6c570eca74ba72a806520b79bf96a468d947bd431821c5b222a796a1070e4582",
+      "olean_sha256": "7d087b3941b9dd3a8277bb9b93184d649e8b831de90b09752378363d7a661383",
+      "artifacts": {
+        "StageProofB.ir": "c793b868c3e2439d7ff679b601aaa91598d603f41ddac487553a82b888e1c4cc",
+        "StageProofB.ir.sig": "3227575a468cb70d38727002bf59af66a25531bd8ffabb2c558388c707c9a545",
+        "StageProofB.olean": "7d087b3941b9dd3a8277bb9b93184d649e8b831de90b09752378363d7a661383",
+        "StageProofB.olean.private": "8f48eb3c85f7030c91be47159cf1f7eb09a3638f9d9c3f18dfccca43b20ddfd8",
+        "StageProofB.olean.server": "b7a4e5fe3b249b86d0d70d07ed3daa8fb243fb0301d430527917e2bd39b754ca"
+      },
+      "receipt": "20261125-181552-695882_StageProofB_lean.json"
+    },
+    "Arcsin": {
+      "source": "lean\\QuantumComputationDiscoveries\\Primitives\\Arcsin.lean",
+      "object": "olean\\QuantumComputationDiscoveries\\Primitives\\Arcsin.olean",
+      "source_sha256": "334cf61f543f30e84d6247225dde189a06397defdfebcc4d1477f4d21c77ef4e",
+      "olean_sha256": "776f4730f5bfe3f398ab67c542b2b8539383c0a82c339a59e654f6dfc05757f5",
+      "artifacts": {
+        "Arcsin.ir": "0c61686475b8d5d0804d4244e81dd1a16e5ba46791ce6718120b7ec3ce638ff1",
+        "Arcsin.ir.sig": "16d5c959e0922ee4c47d0dfb2f14c56dbb26c71b52f51f5eb8e2d82d871d6440",
+        "Arcsin.olean": "776f4730f5bfe3f398ab67c542b2b8539383c0a82c339a59e654f6dfc05757f5",
+        "Arcsin.olean.private": "5e300b1fe72d590e9f8752b9931d86e3098165630e74de54853d13a0abcfcf5c",
+        "Arcsin.olean.server": "32150dc9c46661ca04166876f683bd10d2d101157dc6b2df6c93549f691de3c6"
+      },
+      "receipt": "20261125-181616-512515_Arcsin_lean.json"
+    }
+  },
+  "frozen_core_sources": {
+    "Circuits.lean": "6b574875a103750887f68e240e7ef00c6e9c2e4c416eebabea5f9cb4da4c9128",
+    "Primitives.lean": "315e4f43bef4053fa846bd519358971d5570e52958b7fd84be5746b316965c6a",
+    "Circuits\\Basic.lean": "7eecea4836242ac5781d33944a1a56ca3b5164cb9b45302151e5167db8eed5b5",
+    "Circuits\\Combinators.lean": "c304cb1f224b3f1405dfae1c1bc1e9299b7704db55799bb85c865c4efff6593d",
+    "Circuits\\DynamicCircuit.lean": "9010d7785597adb217bbf8beb1e2fc483b319092dbfcd20e89850643bff0f723",
+    "Circuits\\Examples.lean": "3019c7a9c23b0bab87b193d5c03cb013755ca7ec826055545b7cc44bb8da34f2",
+    "Circuits\\Gates.lean": "be386e32959b7fc1743ab9cad2bdbc6f43645c4b761295155f87219280eb00e9",
+    "Circuits\\ResourceCounting.lean": "825dbe6495f7a2122d75b8502d0f1376c74f9b66aed9510db1ce973a32b7ca62",
+    "Circuits\\Toffoli.lean": "371c12c88b091321af1b755057f7aa75231d78d97f8cfef7bebf0a993ba67e54",
+    "Maths\\Basis.lean": "dbafa0dd538b6257521056ba531cce43aaeb21ec9bc57c86bfc987e0eeef1d71",
+    "Maths\\BitVec.lean": "2428573179013ec558ba7ab6a690091affe4fdee11d1c4d6a15fbcea37145c99",
+    "Maths\\LinearAlgebra.lean": "909bebe66595680f4411bbfa2e701bd182d517be4d0bd39fc213517fe0857237",
+    "Maths\\Matrix.lean": "2152da8b54946d963b1f66cd5a56e7bd36b0e5faa9496881597a8e64ca23fc72",
+    "Maths\\Observable.lean": "244378c19f215703cc044d73609f50304427894aa1a886cfb79fa42f1881dc67",
+    "Maths\\OmegaCompletePartialOrder.lean": "2954af5ce125431036ac41caa24e03fae8ad15d2aa47526235460f6a555c3d98",
+    "Maths\\PartialDensityOperator.lean": "73d1f8144cc74eee027084e37af26eccd63331f64a73b0758dfc33eeb4189408",
+    "Maths\\Trigonometry.lean": "2a535bad3b8ef6fc4b8ac3b4224b8cddd335319ab23e47fb6d502a2d7c504232",
+    "Maths\\Tsum.lean": "ef7a4a0585d55f2d29e9c6ea5eeef6f3ccca492f351e98d7667d9deafddba04d",
+    "Primitives\\Hadamard.lean": "231c63cc36da566818f4c44021910cf2deebaf99d32283a471e22569a77bb655",
+    "Primitives\\Measure.lean": "90582f67f40d2183d55f62902f2f0249bbb9cbe97cbc638276ad592b9a7894da",
+    "Primitives\\Phase.lean": "b27a71988585b8fcd2fac0689f3dc228a5a459f94199fa3ecbfecab77b8a718c",
+    "QuantumHoareLogic\\CleanAncilla.lean": "855a6b967c3566715025096d9ce9ab0e5f57c8f7b14aba20d86e3c10ee3e8520",
+    "QuantumHoareLogic\\CQAssertion.lean": "2c01bbc4dd7dcf108a1bf166c2ba0cd73cba6bdf6fb9e72e1aa7a205cbe192c0",
+    "QuantumHoareLogic\\CQState.lean": "2c008f87f1dd0f79a0efbbe465a35748cb93d355a70536062c533eb8943bb466",
+    "QuantumHoareLogic\\Expectation.lean": "192529b651fdaa924bfc085a13849ab56ffdefbde8a177a98d51f9abbf7a7992",
+    "QuantumHoareLogic\\QMonad.lean": "88a2bae605c5662e89a708f7f5553f431a84d098c85008fd1441a6ae8cb37d08",
+    "QuantumHoareLogic\\ResourceCounting.lean": "02653958ccdaa55ce43f0302183f0eecdbff31fc4c7a2338ab83442c4cf0ce13",
+    "QuantumHoareLogic\\Semantics.lean": "5fd3473e7daceeee4c46e1922a768b3707dc57bb102577e7ae7551b4f8303097",
+    "QuantumHoareLogic\\Store.lean": "31641ca19764f2845f4d232b85f83550994a40ed333b01a5fbefe79e4be8737f",
+    "QuantumHoareLogic\\Syntax.lean": "3ce559b5210a0a1213a0e6bf41246289c7dd8f82c925aac49a0906a1bac63a91",
+    "QuantumHoareLogic\\Test.lean": "d355fd54f04c771490da9d2d42842a2e9fe5c4c36139bbfc214a8506e5cabf48",
+    "QuantumHoareLogic\\WP.lean": "bfbeaa5f132de1ee2ddb000465ac3b33def144bfbc5c3e46ba8ba1b7eb2080b8",
+    "Registers\\Assertions.lean": "914a232134a0522af5e56e78215a4c428fdc63a1abba675742cf5fd4df805bc0",
+    "Registers\\Basic.lean": "d1df7de7b30966e96f53709b68a2e08ee1ac2cce0873888b6b13b42493f6f2b0",
+    "Registers\\Basis.lean": "5356554e74821d9e81df7a1db9626286fb8f1a9b7740ba912520fa6a4f76f456",
+    "Registers\\Embed.lean": "98500b3fde8575b1c4968ab3255c7e393b301346064ff66f1f5a69947397c7f7",
+    "Registers\\Measurement.lean": "104189b3f31789fb41710532433c3d58e5a2ad8a09e92013d01e5ca9ca21cb51",
+    "Registers\\Reset.lean": "3f4ee938500b04f28186e7ac59ca8d8fc00557ba936865b16a7363549bc8426e",
+    "QuantumHoareLogic\\ResourceCounting\\CostBounds.lean": "ffb8586fc0c381ac27c420305b55e9fdc25c3d7a50cebd3ad3c2b0d6dc7c6cdd",
+    "QuantumHoareLogic\\ResourceCounting\\Examples.lean": "f6e83431d2c3266d38a2dd27c765a566930967f42573072ece852cc4d65c0be4",
+    "QuantumHoareLogic\\ResourceCounting\\Loops.lean": "13ef7fbebe9f88a7f2493778021c2f4dff86e1a2812c45d18e5aa3a46eb9fac2",
+    "QuantumHoareLogic\\ResourceCounting\\Lossless.lean": "b966f0270f052e5c7fabb6798eafee5fabec3161ef338dab3065f1eebfadedae",
+    "QuantumHoareLogic\\ResourceCounting\\PowerLawCost.lean": "216c519a61def9dd1de92fe16398ce51808604f25f0b31035812e6734a4bcdfb",
+    "Circuits\\Examples\\Bell.lean": "2bccee8ef715134900626e8d8b4d4bc0386725c302afdd87fc73195e80a9327f",
+    "Circuits\\ResourceCounting\\Examples.lean": "65420c9b8ea39268b0744281df1e01a6cb71bbf70caf76a6f62b9920f1ff90d1",
+    "Algorithms\\Grover\\Amplitude.lean": "b8604ea6cf17bed36aeac4c544cd739c28fd474566db0d566a8f955f47e38ab0",
+    "Algorithms\\Grover\\Cost.lean": "e44078fdf94dea11eceaac4fbc99aca106765096cb2120d6ed4680ca36f6dece",
+    "Algorithms\\Grover\\EarlyStopping.lean": "2528e8796c51cee4213ad3718300a9d4a2672894a64cb0283c299dcb23ac4e01",
+    "Algorithms\\Grover\\EarlyStoppingAnalysis.lean": "fc0c49f28462c1ef04a1cad4c1f65feaff3fc28aaab4dcc87e42aa6e58f44556",
+    "Algorithms\\Grover\\Operators.lean": "493b5d0590e649a840e508091cbe53feaa9143eb58a0eff550381451355536bf",
+    "Algorithms\\Grover\\SimpleGrover.lean": "86b95ba0f5af03b0d8396c2075446df89d49bd9a17fc0e8c74ec4fa101dfef5f",
+    "Algorithms\\Grover\\Verification.lean": "f95c8dd3c4e5fa517c0f227c91b9705fed5d29926fd721ba76618c3bff2b538f",
+    "Algorithms\\Hadamard\\MeasureLoop.lean": "9c5b7790ad7c679e62bb8323b3450876a5107d5369aabd8b04080502b355f9b9",
+    "Algorithms\\QFT\\Operators.lean": "62646d5103b0464acdcaff33ece08adbcd041d93075e888cf96329fdd714d22d",
+    "Algorithms\\QFT\\QFT.lean": "b12f185a5bbe6790ab3cb7e8a80aa9d032999c6b7c0b25b696d4051624f1d117",
+    "Algorithms\\QFT\\States.lean": "65fea55ddd1099a18e2c34ac3a8cf222f5b0fb0aec6d001a9adb8db6be472431",
+    "Algorithms\\QFT\\Verification.lean": "42052a494cc42ef727d74fee8c3de548a2c41b056c363e835289ec29e44577ad"
+  },
+  "dependency_pins": {
+    "lake-manifest.json": "82f3e819c007591d026b1828dc57f105332f7442c5fb2e1b6a6b40fd3939387d",
+    "lean-toolchain": "27e73059e3a4d568450f74e39c2f79676c4f8d41373fff15170690f124e3bacd"
+  },
+  "compared": "PASS 25 challenge declarations",
+  "axioms": [
+    [
+      "QuantumComputation.Specs.arcsin_correctness",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "QuantumComputation.Specs.arcsin_k25_const_cost",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "QuantumComputation.Specs.arcsinAncillas",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "QuantumComputation.Specs.arcsinProgram",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "QuantumComputation.Specs.arcsinK25ConstCost",
+      ""
+    ],
+    [
+      "Track3Audit.strictly_improved",
+      ""
+    ],
+    [
+      "Track3Audit.k25_toff_free",
+      "propext, Classical.choice, Quot.sound"
+    ]
+  ],
+  "replacements_sha256": "ab1f9e5fa0961bc7e7143bd1876396ecafa94e5a36cec2e5c46a9aa4d73619e9",
+  "snippets_sha256": "25de892f79c66e8ffdb41c76eaccb34ffcc7ca22046541457470805e2496a43c",
+  "cost": 366200,
+  "checked_modules": [
+    "QuantumComputationDiscoveries.Primitives.Arcsin",
+    "QuantumComputationDiscoveries.Primitives.Arcsin.Solution.EqualTableAdd",
+    "QuantumComputationDiscoveries.Primitives.Arcsin.Solution.LowerKraus",
+    "QuantumComputationDiscoveries.Primitives.Arcsin.Solution.PolyBoundA",
+    "QuantumComputationDiscoveries.Primitives.Arcsin.Solution.PolyBoundB",
+    "QuantumComputationDiscoveries.Primitives.Arcsin.Solution.PolyDefs",
+    "QuantumComputationDiscoveries.Primitives.Arcsin.Solution.PolyTables",
+    "QuantumComputationDiscoveries.Primitives.Arcsin.Solution.SliceTables",
+    "QuantumComputationDiscoveries.Primitives.Arcsin.Solution.StageCircuitA",
+    "QuantumComputationDiscoveries.Primitives.Arcsin.Solution.StageCircuitB",
+    "QuantumComputationDiscoveries.Primitives.Arcsin.Solution.StageEval",
+    "QuantumComputationDiscoveries.Primitives.Arcsin.Solution.StageProofA",
+    "QuantumComputationDiscoveries.Primitives.Arcsin.Solution.StageProofB",
+    "QuantumComputationDiscoveries.Primitives.Arcsin.Solution.StageTablesA",
+    "QuantumComputationDiscoveries.Primitives.Arcsin.Solution.StageTablesB",
+    "QuantumComputationDiscoveries.Primitives.Arcsin.Solution.StepSemantics"
+  ]
+}

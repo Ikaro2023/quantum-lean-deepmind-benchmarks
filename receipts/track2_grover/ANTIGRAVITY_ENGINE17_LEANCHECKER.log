@@ -1,0 +1,18 @@
+
+[0] (37.27s) Track2Grover.Engine.SpecDefs :: replaying Track2Grover.Engine.SpecDefs
+[0] (30.73s) Track2Grover.Engine.StageLoop :: replaying Track2Grover.Engine.StageLoop
+[0] (30.6s) Track2Grover.Engine.WeakDickeBase :: replaying Track2Grover.Engine.WeakDickeBase
+[0] (27.8s) Track2Grover.Engine.BaselineRouter :: replaying Track2Grover.Engine.BaselineRouter
+[0] (103.15s) Track2Grover.Engine.DeflateFunctor :: replaying Track2Grover.Engine.DeflateFunctor
+[0] (156.11s) Track2Grover.Engine.WeakDickeCore :: replaying Track2Grover.Engine.WeakDickeCore
+[0] (37.06s) Track2Grover.Engine.MultiTapStage2AGL1QHL :: replaying Track2Grover.Engine.MultiTapStage2AGL1QHL
+[0] (36.6s) Track2Grover.Engine.FindAllJohnsonP01 :: replaying Track2Grover.Engine.FindAllJohnsonP01
+[0] (237.87s) Track2Grover.Engine.GaussianHammingZoomK2Base :: replaying Track2Grover.Engine.GaussianHammingZoomK2Base
+[0] (60.12s) Track2Grover.Engine.FindAllJohnsonAltStep :: replaying Track2Grover.Engine.FindAllJohnsonAltStep
+[0] (30.2s) Track2Grover.Engine.FindAllJohnsonMuxRefocusLift :: replaying Track2Grover.Engine.FindAllJohnsonMuxRefocusLift
+[0] (32.92s) Track2Grover.Engine.JohnsonBlockMuxSparseFastT16 :: replaying Track2Grover.Engine.JohnsonBlockMuxSparseFastT16
+[0] (23.43s) Track2Grover.Engine.FindAllJohnsonRampLift :: replaying Track2Grover.Engine.FindAllJohnsonRampLift
+[0] (20.32s) Track2Grover.Engine.FindAllJohnsonRampKickMuxKernelB :: replaying Track2Grover.Engine.FindAllJohnsonRampKickMuxKernelB
+[0] (24.65s) Track2Grover.Engine.FindAllJohnsonRampKickMuxEval :: replaying Track2Grover.Engine.FindAllJohnsonRampKickMuxEval
+[0] (22.8s) Track2Grover.Engine.FindAllJohnsonRampKickMuxBridge :: replaying Track2Grover.Engine.FindAllJohnsonRampKickMuxBridge
+[0] (27.87s) Track2Grover.Engine.Rk128kEngine :: replaying Track2Grover.Engine.Rk128kEngine

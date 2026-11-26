@@ -1,0 +1,92 @@
+{
+  "type/groverFindAllCells": {
+    "equal": true,
+    "expected_sha256": "386efb2a849adc9386ac0ce9413318dbc0b74e2fc43b8c0c9c147ec7854b0799",
+    "actual_sha256": "386efb2a849adc9386ac0ce9413318dbc0b74e2fc43b8c0c9c147ec7854b0799"
+  },
+  "type/groverFindAllCells_nonempty": {
+    "equal": true,
+    "expected_sha256": "2b708d80fd002fe40e64628f52be639a1463459ce334e0e632d897545bbffbac",
+    "actual_sha256": "2b708d80fd002fe40e64628f52be639a1463459ce334e0e632d897545bbffbac"
+  },
+  "type/groverFindAllCells_mem_grid": {
+    "equal": true,
+    "expected_sha256": "eb684e396679092742e2c9ced0fa29113d67e8b10ffa15e98e044916b882e894",
+    "actual_sha256": "eb684e396679092742e2c9ced0fa29113d67e8b10ffa15e98e044916b882e894"
+  },
+  "type/groverFindAllQubits": {
+    "equal": true,
+    "expected_sha256": "9d193c21033c79e8f6f8089dd2bb8fe3211e618290816a1f68318a88f128a34f",
+    "actual_sha256": "9d193c21033c79e8f6f8089dd2bb8fe3211e618290816a1f68318a88f128a34f"
+  },
+  "type/groverFindAllCircuit": {
+    "equal": true,
+    "expected_sha256": "c7a053f7f03df47f8ba7c98d3ed0baf8f2644451908e4602af86fcbf3768ac16",
+    "actual_sha256": "c7a053f7f03df47f8ba7c98d3ed0baf8f2644451908e4602af86fcbf3768ac16"
+  },
+  "type/groverFindAllProgram": {
+    "equal": true,
+    "expected_sha256": "227fc771a574ac4bb2b9934978888208b8308a7df0b9e24aa1e3eea0a50e1cc9",
+    "actual_sha256": "227fc771a574ac4bb2b9934978888208b8308a7df0b9e24aa1e3eea0a50e1cc9"
+  },
+  "type/groverFindAll_correctness": {
+    "equal": true,
+    "expected_sha256": "f027054c90f3020321ff0faf3aee03969ac110d2139d4d0ff43359286755b85d",
+    "actual_sha256": "f027054c90f3020321ff0faf3aee03969ac110d2139d4d0ff43359286755b85d"
+  },
+  "type/groverFindAllRelCost": {
+    "equal": true,
+    "expected_sha256": "acceb1c46a1af9023ba6335f11281b35c48fee0664b5576e5517eb111ed4cc19",
+    "actual_sha256": "acceb1c46a1af9023ba6335f11281b35c48fee0664b5576e5517eb111ed4cc19"
+  },
+  "type/groverFindAll_rel_cost": {
+    "equal": true,
+    "expected_sha256": "39217247359f32ef8d62589a982521e44ae27a9eb5f507d000d545077fa535c0",
+    "actual_sha256": "39217247359f32ef8d62589a982521e44ae27a9eb5f507d000d545077fa535c0"
+  },
+  "value/groverSetMarkingOracle": {
+    "equal": true,
+    "expected_sha256": "e3ca8442f081963b5f6220a8d583fe585d8bae709468e64e547e4a63d5af941a",
+    "actual_sha256": "e3ca8442f081963b5f6220a8d583fe585d8bae709468e64e547e4a63d5af941a"
+  },
+  "value/groverParallelMarkingOracle": {
+    "equal": true,
+    "expected_sha256": "6f44df06af114c85b2c1ebaedb10234e7f12009f3c68c256e2eeaf2a20153b4d",
+    "actual_sha256": "6f44df06af114c85b2c1ebaedb10234e7f12009f3c68c256e2eeaf2a20153b4d"
+  },
+  "value/groverTargetSets": {
+    "equal": true,
+    "expected_sha256": "9244fee9ece9591f267d32cfac6969d003d97fddbfbde404a842719052b1c4d0",
+    "actual_sha256": "9244fee9ece9591f267d32cfac6969d003d97fddbfbde404a842719052b1c4d0"
+  },
+  "value/AvgOracleCostBound": {
+    "equal": true,
+    "expected_sha256": "837106c9f64b410819ea111a3b5ffbad72fb8d663f8eac791cf2a550bb99d024",
+    "actual_sha256": "837106c9f64b410819ea111a3b5ffbad72fb8d663f8eac791cf2a550bb99d024"
+  },
+  "value/vanillaFindAllCost": {
+    "equal": true,
+    "expected_sha256": "5a359abd3e8417dca8746d0082689974ce3bf398617bbef028e6590b1fde2665",
+    "actual_sha256": "5a359abd3e8417dca8746d0082689974ce3bf398617bbef028e6590b1fde2665"
+  },
+  "value/groverGrid": {
+    "equal": true,
+    "expected_sha256": "ed18bc09f86658b8b69f76a0ab77ec3b21fbafd4ad381a81a4a2b149e3aa57cb",
+    "actual_sha256": "ed18bc09f86658b8b69f76a0ab77ec3b21fbafd4ad381a81a4a2b149e3aa57cb"
+  },
+  "value/groverFindAllProgram": {
+    "equal": true,
+    "expected_sha256": "feee49d042190afd31480cd34e363d89158b5a8738cf47fac5476f931ec24487",
+    "actual_sha256": "feee49d042190afd31480cd34e363d89158b5a8738cf47fac5476f931ec24487"
+  },
+  "value/decodeTargets": {
+    "equal": true,
+    "expected_sha256": "779d986b3293183768baf1a64b8f068bd14e4bbe77623941bbe580e1941622ce",
+    "actual_sha256": "779d986b3293183768baf1a64b8f068bd14e4bbe77623941bbe580e1941622ce"
+  },
+  "value/groverHarmonicSqrtSum": {
+    "equal": true,
+    "expected_sha256": "d596c7aacfa91de7983cc9cee563259616f63df47303c7bdd26db1dbb36c0222",
+    "actual_sha256": "d596c7aacfa91de7983cc9cee563259616f63df47303c7bdd26db1dbb36c0222"
+  }
+}

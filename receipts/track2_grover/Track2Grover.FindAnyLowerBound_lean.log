@@ -1,0 +1,37 @@
+cwd=C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo
+LEAN_PATH=C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\physlib\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo
+cmd=C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\.elan\toolchains\leanprover--lean4---v4.35.0\bin\lean.exe -o Track2Grover\FindAnyLowerBound.olean Track2Grover\FindAnyLowerBound.lean
+@finite : ∀ {n m k w : ℕ} (C : OracleDynamicCircuit (Unitary (2 ^ w)) Grover.Var w ((n + 1) * m)),
+  0 < m →
+    0 < k →
+      k ≤ 2 ^ n →
+        (∀ S ∈ groverTargetSets n k,
+            ⦃ ⊤ ⦄ QProg.qSet.qSeq (OracleDynamicCircuit.compile QProg.qAssign (groverParallelMarkingOracle m S) C) ⦃
+              fun σ => ⌜∃ x ∈ S, σ Grover.Var.res = ↑↑x⌝ ⦄) →
+          ∀ {q : ℝ},
+            AvgOracleCostBound k (fun S => CostModel.ofEmbeddedOracle (groverParallelMarkingOracle m S))
+                (fun S =>
+                  QProg.qSet.qSeq (OracleDynamicCircuit.compile QProg.qAssign (groverParallelMarkingOracle m S) C))
+                q →
+              (π / 4 + 1 / 2) * (1 - ↑k / 2 ^ n) / (2 * arcsin √(↑m * ↑k / 2 ^ n)) ≤ q
+@actual_expected_rounds : ∀ {n m k w : ℕ} (C : OracleDynamicCircuit (Unitary (2 ^ w)) Grover.Var w ((n + 1) * m)),
+  0 < m →
+    0 < k →
+      k ≤ 2 ^ n →
+        Lower.Correct C k →
+          ∀ (σ : Store Grover.Var),
+            ENNReal.ofReal ((π / 4 + 1 / 2) * (1 - ↑k / 2 ^ n) / (2 * arcsin √(↑m * ↑k / 2 ^ n))) ≤
+              (∑ S ∈ groverTargetSets n k,
+                  expectedCost (CostModel.ofEmbeddedOracle (groverParallelMarkingOracle m S))
+                    (QProg.qSet.qSeq (OracleDynamicCircuit.compile QProg.qAssign (groverParallelMarkingOracle m S) C))
+                    (Path.seed w σ)) /
+                ↑(groverTargetSets n k).card
+@asymptotic_real : ∀ {m k : ℕ}, 0 < m → 0 < k → ∀ {R : ℝ}, Feasible m k R → 1 / 2 + 1 / π ≤ R
+@no_smaller_rational : ∀ {m k : ℕ}, 0 < m → 0 < k → ∀ (R : ℚ≥0), ↑R < 1 / 2 + 1 / π → ¬Feasible m k ↑R
+@exact_infimum : ∀ {m k : ℕ}, m ∈ groverGrid → k ∈ groverGrid → IsGLB {R | Feasible m k R} (1 / 2 + 1 / π)
+'Track2Grover.FindAnyLowerBound.finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Track2Grover.FindAnyLowerBound.actual_expected_rounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Track2Grover.FindAnyLowerBound.asymptotic_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Track2Grover.FindAnyLowerBound.no_smaller_rational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Track2Grover.FindAnyLowerBound.exact_infimum' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0

@@ -1,0 +1,167 @@
+[
+  {
+    "module": "SpecDefs",
+    "upstream_sha256": "b54898570cb20c64e5643657d33270c84648920ca25a9e316cfa29fc838cfb40",
+    "generated_sha256": "b54898570cb20c64e5643657d33270c84648920ca25a9e316cfa29fc838cfb40",
+    "moved_integer_definitions": 0,
+    "imports": []
+  },
+  {
+    "module": "StageLoop",
+    "upstream_sha256": "9faaa4388856f6b7c5d6e68fb8671d707d8238c65ddb30adf5d24cf78121db38",
+    "generated_sha256": "df473601b041f3494ebe845861284dcd02546a27702bceac796ece95a28d9449",
+    "moved_integer_definitions": 0,
+    "imports": [
+      "SpecDefs"
+    ]
+  },
+  {
+    "module": "WeakDickeBase",
+    "upstream_sha256": "a6f88f781a06efc10247612bcd4bdf7b3e8238ffb1a25c04053819d1d3415580",
+    "generated_sha256": "f827eb26d38fc8b5829b8ab23c2cd5ab4893087b52b4ccadda738bf065aabe56",
+    "moved_integer_definitions": 0,
+    "imports": [
+      "SpecDefs"
+    ]
+  },
+  {
+    "module": "BaselineRouter",
+    "upstream_sha256": "483191b987ff552a88c5a1933bd5110c7d4402ecf74b681c305647d33116049a",
+    "generated_sha256": "de5a4f9699280c275aa8167df1c32a6995c2c800f508145fdcac88c4ed4ca789",
+    "moved_integer_definitions": 0,
+    "imports": [
+      "StageLoop"
+    ]
+  },
+  {
+    "module": "DeflateFunctor",
+    "upstream_sha256": "646b17b00daf45d16ae8d9f9c1528bfad42c2f8ac569b79cc14f92514bbdb67a",
+    "generated_sha256": "e205ba50d1234526debeaa5c46a61ac52a00352d4504bd0e08cff85c286882f4",
+    "moved_integer_definitions": 0,
+    "imports": [
+      "StageLoop"
+    ]
+  },
+  {
+    "module": "WeakDickeCore",
+    "upstream_sha256": "709c1ff404088f4cd2f7224ec25dfd7181db2b9259ed5bd7988c403cf64bef38",
+    "generated_sha256": "0856a86d142c0451353e3a487a617fc7e1ba9e6693d2a36f097d3bc4568a8621",
+    "moved_integer_definitions": 1,
+    "imports": [
+      "WeakDickeBase"
+    ]
+  },
+  {
+    "module": "MultiTapStage2AGL1QHL",
+    "upstream_sha256": "e8d04de7c4328b753aa1dc414028219ba587b8cd99af929c0449bcb0364c072e",
+    "generated_sha256": "50a0c0d6bcb69fa4f3811fa9802420e62dfe400f21596d4fcfc25acaa7e3f141",
+    "moved_integer_definitions": 0,
+    "imports": [
+      "SpecDefs",
+      "DeflateFunctor"
+    ]
+  },
+  {
+    "module": "FindAllJohnsonP01",
+    "upstream_sha256": "a4feb469a247742891188212233ac6f98546f3011447cbb4c739ba4ef14bc294",
+    "generated_sha256": "50a9c33eb6179f6469df5dd663aa01844b0bd38ab849bb793d3f3fa89a031157",
+    "moved_integer_definitions": 0,
+    "imports": [
+      "BaselineRouter",
+      "WeakDickeBase",
+      "WeakDickeCore"
+    ]
+  },
+  {
+    "module": "GaussianHammingZoomK2Base",
+    "upstream_sha256": "b6502ea02fe8f350d80172d63a08d98a549c06dce9db34273be60ed1453984cf",
+    "generated_sha256": "8de555be4880b75d4738aa20092f67f9937400e34b05f9b505fae7350fa132f8",
+    "moved_integer_definitions": 0,
+    "imports": [
+      "BaselineRouter",
+      "WeakDickeCore"
+    ]
+  },
+  {
+    "module": "FindAllJohnsonAltStep",
+    "upstream_sha256": "3ab4ce9f5b844cf914bdcbf5ba1111f3bfd978d1fb6554b17b6155b07165ab63",
+    "generated_sha256": "1ec3a8500b235a1fbf80c1f8963ed6de15f2479b7f8b36e5fa4901c5d8884a9f",
+    "moved_integer_definitions": 21,
+    "imports": [
+      "FindAllJohnsonP01"
+    ]
+  },
+  {
+    "module": "FindAllJohnsonMuxRefocusLift",
+    "upstream_sha256": "0ab035494f3c8ad442a47a5c16f15da0e753d1b12815e342224052f372346559",
+    "generated_sha256": "8f7ef53f1234f7b1353de554bfbb4fd544c2ced90327bdef79982fb8f13858a4",
+    "moved_integer_definitions": 0,
+    "imports": [
+      "FindAllJohnsonP01"
+    ]
+  },
+  {
+    "module": "JohnsonBlockMuxSparseFastT16",
+    "upstream_sha256": "1b8c0c0ff15d21a90c9ed0a2dc8085cc82f574a4ca4cb74f526641cd5319381a",
+    "generated_sha256": "3949aa32abfa4c7ff6e981abdd8064b1e2d258b1877336d6c1f3aef63c57d4c0",
+    "moved_integer_definitions": 17,
+    "imports": [
+      "FindAllJohnsonAltStep"
+    ]
+  },
+  {
+    "module": "FindAllJohnsonRampLift",
+    "upstream_sha256": "1263c52c9ac2e6a552deb306b1031ccfa99f9c2b262a9ddfdc8fcc538f78286a",
+    "generated_sha256": "7f0e021ce6270943ccbcab45d9ae126d91f9bbf521bbcf33f987a8bd2e598a80",
+    "moved_integer_definitions": 0,
+    "imports": [
+      "FindAllJohnsonAltStep"
+    ]
+  },
+  {
+    "module": "FindAllJohnsonRampKickMuxKernelB",
+    "upstream_sha256": "03d1f1b93d0d90edb08f9cc85bd8bbf87ebfe6832a976dc05dd1899beabef679",
+    "generated_sha256": "c32f64c8f0323d79f8f74780a8749f5300539bac5ea74e5dba8d1e142c95b407",
+    "moved_integer_definitions": 2,
+    "imports": [
+      "JohnsonBlockMuxSparseFastT16"
+    ]
+  },
+  {
+    "module": "FindAllJohnsonRampKickMuxEval",
+    "upstream_sha256": "169798596a521ccc80cbbd00e50476874c28c446f3bd69a741b0afd6edfeea7a",
+    "generated_sha256": "fe4ac96c94914871335d303fe760d3fbfa8c875bfb11b3353c95708618bd52b9",
+    "moved_integer_definitions": 3,
+    "imports": [
+      "JohnsonBlockMuxSparseFastT16",
+      "FindAllJohnsonRampKickMuxKernelB",
+      "FindAllJohnsonMuxRefocusLift",
+      "FindAllJohnsonRampLift"
+    ]
+  },
+  {
+    "module": "FindAllJohnsonRampKickMuxBridge",
+    "upstream_sha256": "cfae2b9535ec7cc068e7d29cb09e8c58f83deabe22116ca45fcca1d92ff23842",
+    "generated_sha256": "fd40a4e670a7fb12eb72fc2a4c9f8a60ced1fe16e31077828025c69692ddd858",
+    "moved_integer_definitions": 0,
+    "imports": [
+      "FindAllJohnsonAltStep",
+      "FindAllJohnsonMuxRefocusLift",
+      "FindAllJohnsonP01",
+      "FindAllJohnsonRampKickMuxEval",
+      "FindAllJohnsonRampLift",
+      "GaussianHammingZoomK2Base",
+      "MultiTapStage2AGL1QHL",
+      "WeakDickeCore"
+    ]
+  },
+  {
+    "module": "Rk128kEngine",
+    "upstream_sha256": "02b10fb25a31ab98c8a5ce9b5c8282e63f591dddc7263091c4b0a49da33f2caf",
+    "generated_sha256": "0a1a6bd70cd7317a931a72327fee6d0562c8486cfbd5d978e84e308fe80c48cc",
+    "moved_integer_definitions": 26,
+    "imports": [
+      "FindAllJohnsonRampKickMuxBridge"
+    ]
+  }
+]

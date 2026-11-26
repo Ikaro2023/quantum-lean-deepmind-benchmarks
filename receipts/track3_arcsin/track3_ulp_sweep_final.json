@@ -1,0 +1,41 @@
+{
+  "scope": "frozen integer deltaPos25, positive magnitudes; negative follows z25Delta and odd arcsin",
+  "leaves": 1064,
+  "positive_interior_including_zero": 8388608,
+  "endpoint": 13176795,
+  "magnitude_count": 8388609,
+  "signed_domain_count": 16777217,
+  "chunk_size": 32768,
+  "numpy": "2.5.5",
+  "python_flint": "0.9.0",
+  "arb_pass_bits": 128,
+  "arb_top_two_bits": 256,
+  "uncertain_or_above_threshold": 16,
+  "threshold_ulp": "1.04304543162",
+  "proved_strictly_below_threshold": 8388593,
+  "top_two_strictly_ordered_against_all": true,
+  "worst": {
+    "u": 3932278,
+    "positive_delta": 4092728,
+    "leaf_index_zero_based": 258,
+    "abs_error_ulp_arb": "[1.04850067798464630358197437175602586483531144561132181147422381599 +/- 3.14e-66]"
+  },
+  "runner_up": {
+    "u": 1900516,
+    "positive_delta": 1917161,
+    "leaf_index_zero_based": 193,
+    "abs_error_ulp_arb": "[1.04795532013316716619199284208641588202421338092078174001412465231 +/- 6.04e-67]"
+  },
+  "worst_minus_runner_up_ulp": "[0.000545357851479137389981529669609982811098064690540071460099163683734 +/- 2.16e-70]",
+  "benchmark_limit_minus_max_ulp": "[7.5322015353696418025628243974135164688554388678188525776184006869e-5 +/- 1.84e-70]",
+  "positive_delta_le_uint32_sha256": "0d552324169ba88a6337ccbddf0ae20dd7ef56854c4cdccadaa2f9c6d2880436",
+  "original_op102_sim_exact_matches": 449,
+  "original_op102_sim_input_output_rows_sha256": "3ec9919bd41e363d27c67ee7a66034b321b1572a83ebcc2ce54e03f66b891d80",
+  "source_sha256": {
+    "PolyTables.lean": "5c7f9877c2fe108a44e29fc9917a3e0b28a2ecc8b999cf1367f6e9e8fe15d722",
+    "PolyDefs.lean": "4eb6593c886dcb1c3f6816ccc962743f3cc3bffbc1fe66f90a8105b80c7af80c",
+    "StageProofB.lean": "6c570eca74ba72a806520b79bf96a468d947bd431821c5b222a796a1070e4582"
+  },
+  "script_sha256": "79e5f58f448f49a23602227dcdfa8b8fe5d99a0d78cb16582a0b56bcf7241f7a",
+  "seconds": 7.24
+}

@@ -1,0 +1,82 @@
+{
+  "type/groverFindAnyCells": {
+    "equal": true,
+    "expected_sha256": "386efb2a849adc9386ac0ce9413318dbc0b74e2fc43b8c0c9c147ec7854b0799",
+    "actual_sha256": "386efb2a849adc9386ac0ce9413318dbc0b74e2fc43b8c0c9c147ec7854b0799"
+  },
+  "type/groverFindAnyCells_nonempty": {
+    "equal": true,
+    "expected_sha256": "fa36c3a81fd0fa28dc98c911a61360b241eebf14cd0caf131f735e0b2372b047",
+    "actual_sha256": "fa36c3a81fd0fa28dc98c911a61360b241eebf14cd0caf131f735e0b2372b047"
+  },
+  "type/groverFindAnyCells_mem_grid": {
+    "equal": true,
+    "expected_sha256": "eebf78811cb7149b8ca6bbd54837caaa24984328932e89e3704799d0e68dd0f5",
+    "actual_sha256": "eebf78811cb7149b8ca6bbd54837caaa24984328932e89e3704799d0e68dd0f5"
+  },
+  "type/groverFindAnyQubits": {
+    "equal": true,
+    "expected_sha256": "9d193c21033c79e8f6f8089dd2bb8fe3211e618290816a1f68318a88f128a34f",
+    "actual_sha256": "9d193c21033c79e8f6f8089dd2bb8fe3211e618290816a1f68318a88f128a34f"
+  },
+  "type/groverFindAnyCircuit": {
+    "equal": true,
+    "expected_sha256": "c26f3e9f94536f88106863440b59f75103ae3487b6ad16349668d129fa29ff29",
+    "actual_sha256": "c26f3e9f94536f88106863440b59f75103ae3487b6ad16349668d129fa29ff29"
+  },
+  "type/groverFindAnyProgram": {
+    "equal": true,
+    "expected_sha256": "3efb27c4a6f9f90f45ced04e4b70254a31fab9a402b8a3daad2772731f1afd46",
+    "actual_sha256": "3efb27c4a6f9f90f45ced04e4b70254a31fab9a402b8a3daad2772731f1afd46"
+  },
+  "type/groverFindAny_correctness": {
+    "equal": true,
+    "expected_sha256": "9c6d47d3cfd8464d2ccfb6d7f42d66f5c2572de939c693c4077a40c0fa07f53e",
+    "actual_sha256": "9c6d47d3cfd8464d2ccfb6d7f42d66f5c2572de939c693c4077a40c0fa07f53e"
+  },
+  "type/groverFindAnyRelCost": {
+    "equal": true,
+    "expected_sha256": "acceb1c46a1af9023ba6335f11281b35c48fee0664b5576e5517eb111ed4cc19",
+    "actual_sha256": "acceb1c46a1af9023ba6335f11281b35c48fee0664b5576e5517eb111ed4cc19"
+  },
+  "type/groverFindAny_rel_cost": {
+    "equal": true,
+    "expected_sha256": "195d7fc85d508b43a86416d9f3b6077dd2e30c2824eec455933328a4e1ffe2bb",
+    "actual_sha256": "195d7fc85d508b43a86416d9f3b6077dd2e30c2824eec455933328a4e1ffe2bb"
+  },
+  "value/groverSetMarkingOracle": {
+    "equal": true,
+    "expected_sha256": "e3ca8442f081963b5f6220a8d583fe585d8bae709468e64e547e4a63d5af941a",
+    "actual_sha256": "e3ca8442f081963b5f6220a8d583fe585d8bae709468e64e547e4a63d5af941a"
+  },
+  "value/groverParallelMarkingOracle": {
+    "equal": true,
+    "expected_sha256": "6f44df06af114c85b2c1ebaedb10234e7f12009f3c68c256e2eeaf2a20153b4d",
+    "actual_sha256": "6f44df06af114c85b2c1ebaedb10234e7f12009f3c68c256e2eeaf2a20153b4d"
+  },
+  "value/groverTargetSets": {
+    "equal": true,
+    "expected_sha256": "9244fee9ece9591f267d32cfac6969d003d97fddbfbde404a842719052b1c4d0",
+    "actual_sha256": "9244fee9ece9591f267d32cfac6969d003d97fddbfbde404a842719052b1c4d0"
+  },
+  "value/AvgOracleCostBound": {
+    "equal": true,
+    "expected_sha256": "837106c9f64b410819ea111a3b5ffbad72fb8d663f8eac791cf2a550bb99d024",
+    "actual_sha256": "837106c9f64b410819ea111a3b5ffbad72fb8d663f8eac791cf2a550bb99d024"
+  },
+  "value/vanillaFindAnyCost": {
+    "equal": true,
+    "expected_sha256": "e11115b3fe0f4081cb77a515f540158a88dafc667ff538497bd1ba60646fbdad",
+    "actual_sha256": "e11115b3fe0f4081cb77a515f540158a88dafc667ff538497bd1ba60646fbdad"
+  },
+  "value/groverGrid": {
+    "equal": true,
+    "expected_sha256": "ed18bc09f86658b8b69f76a0ab77ec3b21fbafd4ad381a81a4a2b149e3aa57cb",
+    "actual_sha256": "ed18bc09f86658b8b69f76a0ab77ec3b21fbafd4ad381a81a4a2b149e3aa57cb"
+  },
+  "value/groverFindAnyProgram": {
+    "equal": true,
+    "expected_sha256": "5bab4833c71e00d24fe8d7146f8aa240d1bddbd3fd008121071ff3f34d53999d",
+    "actual_sha256": "5bab4833c71e00d24fe8d7146f8aa240d1bddbd3fd008121071ff3f34d53999d"
+  }
+}

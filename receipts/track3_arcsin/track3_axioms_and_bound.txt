@@ -1,0 +1,8 @@
+'QuantumComputation.Specs.arcsin_correctness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuantumComputation.Specs.arcsin_k25_const_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuantumComputation.Specs.arcsinAncillas' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuantumComputation.Specs.arcsinProgram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuantumComputation.Specs.arcsinK25ConstCost' does not depend on any axioms
+'Track3Audit.strictly_improved' does not depend on any axioms
+'Track3Audit.k25_toff_free' depends on axioms: [propext, Classical.choice, Quot.sound]
+366200

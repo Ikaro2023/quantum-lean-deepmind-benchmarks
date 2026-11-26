@@ -1,0 +1,11 @@
+{
+  "command": [
+    "C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\leanchecker.exe",
+    "--verbose",
+    "ExactPublic"
+  ],
+  "exit_code": 0,
+  "seconds": 14.9,
+  "source_sha256": "6969c280dcf3d805d438008e4786995a6fe82eea25b56358fc0d7c9aef7a815e",
+  "olean_sha256": "e3740ef95362b9db9d4383bdba693b5d778025db6bcb744c94f6309401fea3de"
+}

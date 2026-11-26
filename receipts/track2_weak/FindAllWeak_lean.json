@@ -1,0 +1,16 @@
+{
+  "command": [
+    "C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\lean.exe",
+    "-j1",
+    "-o",
+    "Track2Weak\\FindAllWeak.olean",
+    "Track2Weak\\FindAllWeak.lean"
+  ],
+  "cwd": "C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\track2_grover_weak_lean\\lean",
+  "lean_path": "C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\track2_grover_weak_lean\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\physlib\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo",
+  "utc_start": "20261125T184047.290006Z",
+  "seconds": 10.247,
+  "exit": 0,
+  "output": "20261125T184047.290006Z_Track2Weak.FindAllWeak_lean.log",
+  "output_sha256": "5121b01ba7967fd1a5654a2dc6af54478b6861cc86cf5750c953c7ae140586a4"
+}

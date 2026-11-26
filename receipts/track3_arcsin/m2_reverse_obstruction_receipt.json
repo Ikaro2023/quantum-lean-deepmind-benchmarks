@@ -1,0 +1,87 @@
+{
+  "baseline_stage": "s5_2CoreOps",
+  "retained_baseline_AND_indices": [
+    0,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "rewritten_AND_indices": [
+    1,
+    11,
+    19,
+    20
+  ],
+  "allowed_total_intermediate_space": "span of nine linear input bits, nine frozen square output bits, and all 21 baseline paid product functions; constants implicit",
+  "proper_subspaces_examined": 66,
+  "only_subspace_admitting_reverse_quadratic_closure": [
+    0,
+    3,
+    5,
+    6,
+    9,
+    10,
+    12,
+    15
+  ],
+  "live_linear_rank": 35,
+  "witnesses": [
+    {
+      "target": 1,
+      "number_of_pfaffians": 5796,
+      "assignments_verified": 18146,
+      "boolean_degree_at_most": 2
+    },
+    {
+      "target": 2,
+      "number_of_pfaffians": 5838,
+      "assignments_verified": 18146,
+      "boolean_degree_at_most": 2
+    },
+    {
+      "target": 3,
+      "number_of_pfaffians": 5718,
+      "assignments_verified": 18146,
+      "boolean_degree_at_most": 2
+    },
+    {
+      "target": 4,
+      "number_of_pfaffians": 4652,
+      "assignments_verified": 18146,
+      "boolean_degree_at_most": 2
+    },
+    {
+      "target": 5,
+      "number_of_pfaffians": 4617,
+      "assignments_verified": 18146,
+      "boolean_degree_at_most": 2
+    },
+    {
+      "target": 6,
+      "number_of_pfaffians": 4752,
+      "assignments_verified": 18146,
+      "boolean_degree_at_most": 2
+    },
+    {
+      "target": 7,
+      "number_of_pfaffians": 4554,
+      "assignments_verified": 18146,
+      "boolean_degree_at_most": 2
+    }
+  ],
+  "proof_source_sha256": "194078da6ceb06b1560c6498f99fd820297f9e683e6f6ffb0276d6c675ae97ec",
+  "conclusion": "Lower bound 21 ANDs in this family"
+}

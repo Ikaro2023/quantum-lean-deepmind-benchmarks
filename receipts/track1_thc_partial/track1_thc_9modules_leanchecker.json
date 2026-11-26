@@ -1,0 +1,74 @@
+{
+  "utc_start": "20261125T220029Z",
+  "elapsed_seconds": 452.66,
+  "leanchecker_sha256": "9ef6baeb28d5e28897d5ed6dddd60ff81e511d97374013ece435dff38e9e0137",
+  "module_count": 9,
+  "all_exit_zero": true,
+  "log_file": "track1_thc_9modules_leanchecker.log",
+  "log_sha256": "9e973e1791bf3389c27137966b431c69135071c4615ac4ab2a0ee68abca0bc3b",
+  "modules": [
+    {
+      "module": "Track1THC.Alias",
+      "source_sha256": "861af3542c34b7f6cc9eae732831447db4a5f8c1720e24c95000f8758870109b",
+      "exit_code": 0,
+      "elapsed_seconds": 294.17,
+      "replayed": true
+    },
+    {
+      "module": "Track1THC.JWAlgebra",
+      "source_sha256": "b48b0d2dbfbfab88f0f1ac7695024f8da8227d0bc297ab9eadd1b3660b454f9a",
+      "exit_code": 0,
+      "elapsed_seconds": 27.22,
+      "replayed": true
+    },
+    {
+      "module": "Track1THC.Centering",
+      "source_sha256": "98fc8ec7576107c0e0133d7a007359a722732f5416050c2fd9ec963c460bf97c",
+      "exit_code": 0,
+      "elapsed_seconds": 20.3,
+      "replayed": true
+    },
+    {
+      "module": "Track1THC.LCUa",
+      "source_sha256": "e8b07f6e3ec3feba3466825937510e34e323050f8efa2c52c51d5109ada45275",
+      "exit_code": 0,
+      "elapsed_seconds": 19.7,
+      "replayed": true
+    },
+    {
+      "module": "Track1THC.LCU",
+      "source_sha256": "223143cdbcbb8620a8ea72d78b5ef24aa54199f53de77b9c234020dbcf0f0b8a",
+      "exit_code": 0,
+      "elapsed_seconds": 20.15,
+      "replayed": true
+    },
+    {
+      "module": "Track1THC.Select",
+      "source_sha256": "4607f23db7aef256cea51bb3b93d02c5dd6bcc7d35406755280231da2969471b",
+      "exit_code": 0,
+      "elapsed_seconds": 19.31,
+      "replayed": true
+    },
+    {
+      "module": "Track1THC.CleanOps",
+      "source_sha256": "1e8c88748b7845502626ab89abc90f22ad89c3fe0f522dea647eff2d42c771a6",
+      "exit_code": 0,
+      "elapsed_seconds": 19.4,
+      "replayed": true
+    },
+    {
+      "module": "Track1THC.CatalyticRot",
+      "source_sha256": "df85b930ecedc8a9508eebb2b746dad2a11ca47132a478aa0a85c186f238405a",
+      "exit_code": 0,
+      "elapsed_seconds": 19.34,
+      "replayed": true
+    },
+    {
+      "module": "Track1THC.CliffordGadgets",
+      "source_sha256": "c849cb9d5714d4f618cc48d0c86fe012dc22d805db15b8e245077f0c15be2329",
+      "exit_code": 0,
+      "elapsed_seconds": 12.99,
+      "replayed": true
+    }
+  ]
+}

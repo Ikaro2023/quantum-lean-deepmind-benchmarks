@@ -1,0 +1,58 @@
+[
+  {
+    "feasible": false,
+    "reason": "pfaffian_linearization_contradiction",
+    "equations_processed": 47008,
+    "basis_size": 16545,
+    "seconds": 65.4281,
+    "target": 1
+  },
+  {
+    "feasible": false,
+    "reason": "pfaffian_linearization_contradiction",
+    "equations_processed": 24347,
+    "basis_size": 15583,
+    "seconds": 21.037,
+    "target": 2
+  },
+  {
+    "feasible": false,
+    "reason": "pfaffian_linearization_contradiction",
+    "equations_processed": 32107,
+    "basis_size": 16245,
+    "seconds": 35.7858,
+    "target": 3
+  },
+  {
+    "feasible": false,
+    "reason": "pfaffian_linearization_contradiction",
+    "equations_processed": 17522,
+    "basis_size": 14625,
+    "seconds": 9.6626,
+    "target": 4
+  },
+  {
+    "feasible": false,
+    "reason": "pfaffian_linearization_contradiction",
+    "equations_processed": 16001,
+    "basis_size": 14335,
+    "seconds": 6.3165,
+    "target": 5
+  },
+  {
+    "feasible": false,
+    "reason": "pfaffian_linearization_contradiction",
+    "equations_processed": 15972,
+    "basis_size": 14321,
+    "seconds": 5.9014,
+    "target": 6
+  },
+  {
+    "feasible": false,
+    "reason": "pfaffian_linearization_contradiction",
+    "equations_processed": 15979,
+    "basis_size": 14327,
+    "seconds": 6.3305,
+    "target": 7
+  }
+]

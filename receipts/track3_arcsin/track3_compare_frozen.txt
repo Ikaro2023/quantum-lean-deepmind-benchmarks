@@ -1,0 +1,26 @@
+TYPE QuantumComputation.Specs.arcsinK25ConstCost
+TYPE QuantumComputation.Specs.arcsinProgram
+FROZEN QuantumComputation.Specs.Arcsin.Var
+FROZEN QuantumComputation.Specs.Arcsin.Var.v
+TYPE QuantumComputation.Specs.arcsinAncillas
+FROZEN QuantumComputation.Specs.ArcsinPrec
+FROZEN QuantumComputation.Specs.ArcsinPrec.mk
+FROZEN QuantumComputation.Specs.ArcsinPrec.k
+TYPE QuantumComputation.Specs.arcsin_k25_const_cost
+FROZEN QuantumComputation.Specs.ArcsinPrec.k25
+FROZEN QuantumComputation.Specs.SatisfiesArcsinSpacetimeBound
+FROZEN QuantumComputation.Specs.arcsinSpacetime
+FROZEN QuantumComputation.Specs.arcsinTCount
+TYPE QuantumComputation.Specs.arcsin_correctness
+FROZEN QuantumComputation.Specs.arcsinTableUnitary
+FROZEN QuantumComputation.Specs.Arcsin.instDecidableEqVar
+FROZEN QuantumComputation.Specs.Arcsin.instDecidableEqVar._proof_2
+FROZEN QuantumComputation.Specs.Arcsin.Var.ctorIdx
+FROZEN QuantumComputation.Specs.Arcsin.instDecidableEqVar._proof_1
+FROZEN QuantumComputation.Specs.SatisfiesArcsinAbsError
+FROZEN QuantumComputation.Specs.twosCompFixed
+FROZEN QuantumComputation.Specs.twosCompFixed._proof_1
+FROZEN QuantumComputation.Specs.twosCompInt
+FROZEN QuantumComputation.Specs.arcsinValidInputs
+FROZEN QuantumComputation.Specs.ArcsinPrec.eps
+PASS 25 challenge declarations

@@ -1,0 +1,14 @@
+# Track 3 Python Scripts — Audit-Trail Provenance Note
+
+The `.py` files in this directory are archived **as-run audit-trail scripts** from the local synthesis, simulation, and certification runs:
+- `closed_forms.py`, `partitions.py`, `lib.py`, `rank_updates.py`, `phase_schedule.py` — GF(2) polar-matrix gadget synthesis (`s3aOps`, `-24 T`), one-hot 28-class coarse-partition construction (`group_stats`), and 200-gate Z/CZ phase rescheduling.
+- `op102_sim.py` — Independent bit-parallel 100-wire physical simulator (`449`-case and `4,705`-case traces).
+- `ulp_sweep.py` — Exhaustive 128-bit/256-bit `python-flint`/Arb enclosure over all `8,388,609` magnitudes (`16,777,217` signed inputs).
+- `degree.py`, `verify_pfaffians.py`, `followup.py`, `pfaffian_witness.json` — Exhaustive 23-bit Boolean Möbius degree-18 witnesses (`s2a`, `s6c`) and 4-index Pfaffian reverse-square obstruction checker with archived witness (`SHA-256 194078da...`).
+- `screen.py`, `burst_milp.py` — Bounded MILP carry-recurrence infeasibility screens (`39` scratch slots vs `200`-slot `133`-AND positive control) and fixed-trace span checks.
+
+## Important Reproducibility Note
+These scripts are archived **verbatim** (preserving their SHA-256 hashes recorded in `receipts/track3_arcsin/`, e.g. `ulp_sweep.py` SHA-256 `79e5f58f448f49a23602227dcdfa8b8fe5d99a0d78cb16582a0b56bcf7241f7a`, `pfaffian_witness.json` SHA-256 `194078da6ceb06b1560c6498f99fd820297f9e683e6f6ffb0276d6c675ae97ec`) and therefore retain imports from some local development helper modules (`slice_ops`, `rotation`, etc.) and workspace-relative paths to a local `discoveries_ref` checkout. They are **not** packaged as stand-alone runnable scripts from this directory alone; for clean, stand-alone Lean `4.35.0` verification of every theorem in this release, apply `patches/arcsin_366200.patch` to a fresh checkout of `google-deepmind/formal-quantum-computation` (`discoveries`, commit `a88de8ff65d78af564b2373088ca369dc95f6547`) and run `lake build` + `leanchecker` as shown in `README.md`.
+
+## Note on `ulp_sweep.py` Runtime (`7.24 s`)
+In `receipts/track3_arcsin/track3_ulp_sweep_final.json`, the exhaustive `8,388,609`-magnitude Arb pass completed in `7.24 s` (`~0.86 µs/magnitude`) using `python-flint 0.9.0` (C-compiled FLINT/Arb `arb_asin` at 128-bit precision, with the top two candidates re-evaluated at 256-bit precision). Both extremizers (`u = 3,932,278` -> `1.04850067798464630358 ULP`, margin `7.5322015353696e-5 ULP`; runner-up `u = 1,900,516` -> `1.04795532013316716619 ULP`) were independently recomputed to 70 decimal digits via pure-Python Newton `arcsin` during adversarial referee audit with exact agreement. The Lean `4.35.0` theorem `z25_satisfies_abs_error` independently proves the universal `<= 1.25e-7` error bound over all `16,777,217` valid inputs without relying on Python or Arb.

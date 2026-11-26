@@ -1,0 +1,846 @@
+% Engine-neutral pure-ASCII LaTeX source (compiled with Tectonic 0.17.0; designed for pdfLaTeX, XeLaTeX, LuaLaTeX, Overleaf, and Hexagon).
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\else
+  \usepackage[no-math]{fontspec}
+\fi
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,placeins}
+\newcommand{\RA}{\raggedright\arraybackslash}
+\emergencystretch=1.5em
+\usepackage[hyphens]{url}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{Formally Verified Asymptotic Optimality\\
+of Parallel Find-Any Search and Machine-Checked\\
+Benchmark Improvements in Lean~4}
+
+\author{Robert Kadlec\thanks{Masaryk University, Brno, Czech Republic. Email: \texttt{kadlecr@mail.muni.cz}. ORCID: \href{https://orcid.org/0009-0003-9245-8130}{0009-0003-9245-8130}. Purely AI-generated research directed and supervised by the author, by whom full scholarly responsibility for the work is assumed (all new derivations, formalizations, scripts, audits, and prose were executed by AI systems; see Section~\ref{sec:ai-provenance}). This paper is part of a broader research project in which the respective competencies of humans and large language models are investigated.}}
+
+\date{November 26, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A general finite-\(n\) query lower bound and an exact asymptotic optimality theorem are proved in Lean~4.35.0 for parallel \texttt{GroverFindAny} under the frozen specifications of DeepMind's \texttt{formal-quantum-\allowbreak computation} benchmark suite (\texttt{arXiv:2611.09822v3}). While the restricted single-checkpoint infimum \(\rho_* = 1/2 + 1/\pi\) was previously established by Fang and Heunen (2026), it is proved here that
+\[
+  \inf\{R \in \mathbb{R} : \operatorname{Feasible}(m,k,R)\} = \frac{1}{2} + \frac{1}{\pi}
+\]
+across all \texttt{OracleDynamic\allowbreak Circuit} programs---permitting arbitrary finite workspace, adaptive intermediate measurements, and nested \texttt{qWhile} loops under uniform \(k\)-subset averaging, probability-one success, and expected parallel rounds---on all \(121\) dyadic grid cells.
+
+Two supplementary verified constructions are presented: a \(5/16\)-module rewrite by which \texttt{ArcsinK25\allowbreak ConstCost} is reduced from \(369{,}800\) to \(366{,}200\) (\(3{,}662\,T \times 100\,Q\), \(\mathrm{TOFF}=0\), \(-0.9735\%\), with exact compiled counts and a \(100\)-qubit non-vacuity witness), and single-cell \((1024,512)\) \texttt{GroverFindAll} bounds lowered by \(0.038\%\) (sign-only walk) and \(0.946\%\) (to \(26{,}768{,}771{,}052/10^{12}\) via \(14\) Kraus filters with restarts, proved uniformly for all \(n \ge 80{,}000\) above the inherited cutoff, exact fallback below); partial \texttt{THC\allowbreak Factorization} foundations are documented in Appendix~\ref{app:thc}. All new derivations, formalizations, audits, and prose were produced purely by AI systems under human supervision; formal claims are machine-checked in Lean~4.35.0 against frozen libraries using standard axioms only, with the flagship \texttt{FindAny} theorems also accepted by two third-party kernels (\texttt{nanoda}, \texttt{con-ron}).
+\end{abstract}
+
+\section{Introduction, epistemic classification, and overview}
+\label{sec:intro}
+
+In fault-tolerant quantum algorithm design, competing trade-offs must be balanced among query complexity, non-Clifford gate counts (\(T\) or Toffoli gates), and logical qubit counts \cite{grover1996,bbht1998,zalka1999,grover2004,jones2013,haner2018,gidney2018,lee2021}. Because fault-tolerant circuits at their intended target scales lie far beyond exact classical state-vector simulation, \texttt{formal-quantum-\allowbreak computation} was introduced by Shirobokov et al.\ \cite{shirobokov2026}: a Lean~4 library grounded in quantum Hoare logic with classical variables \cite{feng2021,demoura2021,mathlib2020,physlib2024}, together with machine-checkable benchmark specifications (\texttt{Quantum\allowbreak Computation\allowbreak Specs}) and an AI-discovered reference branch (\texttt{discoveries}). The following tasks are covered by those benchmarks: parallel unstructured search (\texttt{GroverFindAny} and \texttt{GroverFindAll}, where speedups up to \(2.57\times\) over the historical \textrm{GR0} baseline are achieved at cell \((1024,512)\)), reversible fixed-point quantum arithmetic (\texttt{ArcsinK25\allowbreak ConstCost}, where prior baselines are reduced by \(290\times\) to spacetime cost \(369{,}800\)), and large-scale quantum simulation challenges including the unsolved \texttt{THC\allowbreak Factorization} specification.
+
+When correctness semantics and resource accounting are frozen inside a proof assistant, sharp impossibility barriers and verified circuit improvements can be formalized independently with machine-checked validity relative to the frozen specification and trusted Lean kernel, without access to the original authors' internal search infrastructure. The present study was executed on a single \(32\,\mathrm{GB}\) workstation in Lean~4.35.0 under a human-directed purely AI-generated workflow detailed in Section~\ref{sec:ai-provenance}.
+
+\subsection{Epistemic classification}
+\label{sec:epistemic}
+
+To separate machine-checked theorems from external computations and incomplete infrastructure, every claim in this paper is assigned to one of three explicit tiers:
+\begin{itemize}
+\item \textbf{Tier (A) --- Machine-checked Lean~4.35.0 theorems against frozen specifications.} Every Tier~(A) theorem is proved in Lean~4.35.0 against byte-identical copies of \texttt{Quantum\allowbreak Computation} (\(57\) source files) and \texttt{Quantum\allowbreak Computation\allowbreak Specs} (\(15\) files: \(7\) \texttt{.lean} sources, \(7\) challenge JSONs, and \texttt{ChallengeJsons/README.md}) from commit \texttt{489edc70\allowbreak 39aa4cdd\allowbreak ed53724b\allowbreak 39ea90e3\allowbreak 3d2c88b4}, with zero \texttt{sorry}, zero \texttt{native\_decide}, and only subsets of Lean's standard axioms \(\{\texttt{propext},\allowbreak\,\texttt{Classical.choice},\allowbreak\,\texttt{Quot.sound}\}\). The same Lean~4.35.0 kernel implementation is invoked by both \texttt{lean} and \texttt{leanchecker}; additionally, the flagship \texttt{FindAnyLowerBound} and \texttt{TighterFindAny} theorems were exported via \texttt{leanexport} and independently accepted by two third-party checkers (\texttt{nanoda} 0.4.19 and \texttt{con-ron --verified}; Section~\ref{sec:ai-provenance}), whereas the remaining benchmark suites rest on the Lean~4.35.0 kernel alone.
+\item \textbf{Tier (B) --- Partial formal foundations.} Machine-checked Lean~4.35.0 modules (\texttt{Track1THC}, \(9\) modules, \(1{,}956\) lines; Appendix~\ref{app:thc}) are provided in which algebraic and circuit-composition building blocks are verified against the frozen library without filling the public challenge holes.
+\item \textbf{Tier (C) --- External certified numerics, bounded screens, and paper lower bounds.} Arbitrary-precision interval enclosures in \texttt{python-flint}/Arb \cite{johansson2017} (the external \textrm{GR0} reference constant used to express asymptotic \texttt{GroverFindAll} speedup ratios and the exhaustive \(16{,}777{,}217\)-input \texttt{arcsin} ULP audit), independent rational Taylor enclosures (\texttt{enclose.py}), finite Boolean M\"obius, Pfaffian, and MILP computations, and paper proofs linking finite witnesses to restricted gate-model lower bounds (Appendix~\ref{app:degree}) are classified here.
+\end{itemize}
+
+\subsection{Hierarchy of results}
+
+The scientific weight of the contributions is deliberately stratified. The primary theoretical result is the general adaptive lower bound and exact asymptotic optimality of parallel \texttt{GroverFindAny} (Section~\ref{sec:findany}). The \texttt{ArcsinK25\allowbreak ConstCost} reduction (Section~\ref{sec:arcsin}, Theorem~\ref{thm:arcsin}) and the single-cell asymptotic \texttt{GroverFindAll} upper bounds (Section~\ref{sec:findall}) are presented as supplementary benchmark-specific constructions. The rational precision refinement \texttt{Tighter\allowbreak FindAny} is recorded only as a brief technical remark (Section~\ref{sec:findany-tight}), and the partial \texttt{THC\allowbreak Factorization} modules are placed in Appendix~\ref{app:thc}. The main results relative to the pinned \texttt{discoveries} commit \texttt{a88de8ff\allowbreak 65d78af5\allowbreak 64b23730\allowbreak 88ca369d\allowbreak c95f6547} are summarized in Table~\ref{tab:summary}.
+
+\begin{table}[htbp]
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}>{\RA}p{3.3cm}>{\RA}p{3.1cm}>{\RA}p{3.9cm}>{\RA}p{3.1cm}c@{}}
+\toprule
+Benchmark / Problem & Prior baseline \cite{fang2026,shirobokov2026} & Present work & Contribution & Tier \\
+\midrule
+\texttt{GroverFindAny} (general adaptive model; \(121\) grid cells) &
+Constant \(1/2+1/\pi\) and restricted-family infimum \cite{fang2026}; parallel upper bound \cite{shirobokov2026} &
+\(\inf\{R : \operatorname{Feasible}(m,k,R)\} = \mathbf{1/2 + 1/\pi}\) over all \texttt{OracleDynamic\allowbreak Circuit} + finite-\(n\) bound &
+General adaptive optimality &
+(A) \\
+\addlinespace
+\texttt{ArcsinK25\allowbreak ConstCost} (Q2.23, \(100\,Q\)) &
+\(369{,}800\) (\(3{,}698\,T \times 100\,Q\), \(\mathrm{TOFF}=0\)) &
+\(\mathbf{366{,}200}\) (\(3{,}662\,T \times 100\,Q\), \(\mathrm{TOFF}=0\)) + exact compiled count \& witness &
+\(-3{,}600\) spacetime (\(-36\,T\), \(-0.9735\%\)); \(5/16\) modules edited &
+(A) \\
+\addlinespace
+\texttt{GroverFindAll} \((1024,512)\) sign-only &
+\(27{,}024{,}465{,}988\allowbreak/10^{12}\) (\(\ge 2.574566\times\) vs ext.\ \textrm{GR0}) &
+\(27{,}014{,}193{,}664\allowbreak/10^{12}\) (\(\ge 2.57554525548\times\) vs ext.\ \textrm{GR0}) &
+\(-0.038011\%\) upper bound (eventual; \(n \ge 80{,}000\) engine) &
+(A)/(C)\textsuperscript{\dag} \\
+\addlinespace
+\texttt{GroverFindAll} \((1024,512)\) weak filters &
+Pinned discovery (\(\ge 2.574566\times\) vs ext.\ \textrm{GR0}) &
+\(\mathbf{26{,}768{,}771{,}052}\allowbreak/10^{12}\) (\(\ge 2.599158481606\times\) vs ext.\ \textrm{GR0}) &
+\(-0.946\%\) vs pinned (\(-0.908\%\) vs sign-only); \(14\) Kraus filters (all \(n \ge 80{,}000\)) &
+(A)/(C)\textsuperscript{\dag} \\
+\addlinespace
+\texttt{THC\allowbreak Factorization} (Appendix~\ref{app:thc}) &
+Unsolved (absent from \texttt{discoveries}) &
+\(9\) helper modules (\(1{,}956\) lines), \(0/7\) def.\ holes + \(0/2\) thms &
+Partial infrastructure only &
+(B) \\
+\bottomrule
+\end{tabular}
+\caption{Stratified summary of results relative to \texttt{google-deepmind/\allowbreak formal-quantum-\allowbreak computation} (\texttt{main} \texttt{489edc70}, \texttt{discoveries} \texttt{a88de8ff}). \textsuperscript{\dag}In Lean~4.35.0, the single-cell \((1024,512)\) exact rational upper bound relative to \texttt{vanilla\allowbreak FindAllCost} is certified (Tier~A); derived asymptotic speedup multipliers are obtained by dividing an externally enclosed \(256\)-bit Arb lower bound for \textrm{GR0} by the Lean upper bound (Tier~C).}
+\label{tab:summary}
+\end{table}
+
+\paragraph{Hardware scope note.} As documented in \texttt{QuantumComputationDiscoveries/README.md} on the \texttt{discoveries} branch of \cite{shirobokov2026}, \(230\text{--}233\,\mathrm{GB}\) of peak RAM (plus swap) are required to run the upstream Lean comparator on the three large-scale quantum simulation benchmarks (\texttt{P450Ground\allowbreak Energy}, \texttt{Photochemistry}, \texttt{StoppingPower}), by which the \(32\,\mathrm{GB}\) host workstation is exceeded; those benchmarks were not modified or re-verified.
+
+\section{Related work and exact positioning}
+\label{sec:related}
+
+To evaluate novelty precisely, the contributions must be positioned against four lines of prior work: adaptive expected-cost quantum search, parallel multi-item search, weak-measurement search protocols, and multiplicative-complexity circuit synthesis over \(\mathbb{F}_2\).
+
+\paragraph{Expected-cost optimality, BBHT, Zalka's angle method, and Fang--Heunen \cite{bbht1998,zalka1999,fang2026}.}
+Distinct settings are treated in classical optimality analyses of unstructured search. Grover's algorithm for multiple marked items, unknown-size restart schedules, and general search lower bounds were analyzed by Boyer, Brassard, H{\o}yer, and Tapp \cite{bbht1998}, whereby the standard \(\frac{\pi}{4}\sqrt{N/k}\) fixed-budget scale was established. Exact fixed-budget optimality for a single marked item was proved by Zalka \cite{zalka1999}, by whom the shared-memory synchronous parallel query model adopted in \texttt{Quantum\allowbreak Computation\allowbreak Specs} and the geometric angle-displacement technique were also introduced in the single-target setting. That geometric technique is extended to multi-target uniform \(k\)-subset parallel oracles by the compression bound in Section~\ref{sec:findany-potential}. Moreover, a strictly different variational problem is posed by the frozen \texttt{GroverFindAny} benchmark: minimizing the \emph{expected} number of parallel oracle rounds, averaged uniformly over \(k\)-element marked sets, among variable-stopping-time protocols that are required to terminate with certainty (probability one) on every marked set.
+
+Crucially, the leading constant \(\rho_* = 1/2 + 1/\pi\) is \emph{not} new. An exact weak-measurement-conditioned loop for known target probability \(p\) using \((\pi/8 + 1/4 + o(1))/\sqrt{p}\) iterations---from which, upon specialization to \(p = k/N\) and division by the standard \(\frac{\pi}{4}\sqrt{N/k}\) scale, precisely \(\rho_* = 1/2 + 1/\pi\) is obtained---was derived by Fang and Heunen \cite{fang2026}, together with a matching infimum within their continuous-angle analysis of a restricted single-checkpoint weakly measured loop family \cite{fang2026}. That result is cited directly by Shirobokov et al.\ \cite{shirobokov2026}, where \(1/2 + 1/\pi\) is recorded in Appendix~E.2 Eq.~(9) and achievability is extended to parallel grid cells in Appendix~E.3.
+
+The contribution of Section~\ref{sec:findany} is therefore neither the discovery of the constant \(1/2 + 1/\pi\) nor the upper-bound circuit, both of which belong to \cite{fang2026,shirobokov2026}. Rather, an extended multi-target parallel angle-displacement bound is combined with a convex stopping potential that is non-decreasing under adaptive measurements, and it is formalized in Lean~4.35.0 that no asymptotic coefficient below \(1/2 + 1/\pi\) is achievable by any protocol in the full \texttt{OracleDynamic\allowbreak Circuit} class---wherein arbitrary finite workspace, arbitrary oracle-independent unitaries, arbitrary legal slot embeddings, adaptive intermediate measurements, and arbitrarily nested \texttt{qWhile} loops are permitted.
+
+\paragraph{Quantum Las Vegas complexity (Belovs--Yolcu \cite{belovs2023}).}
+A general adversary framework for Las Vegas quantum query complexity is formulated by Belovs and Yolcu (\cite{belovs2023}, Section~4.1), in which coherent query cost \(L(A, O, \xi)\) is measured by the squared norm of the active state component entering each query. In Section~4.1 of \cite{belovs2023}, a one-way conversion is also noted from any algorithm \(B\) using intermediate measurements to a deferred-measurement algorithm \(A\) satisfying \(T(B, O, \xi) \ge L(A, O, \xi)\), by which coherent Las Vegas adversary lower bounds are shown to lower-bound operational expected query cost. However, that coherent lower bound is not tight for the operational realized-round cost in \texttt{Quantum\allowbreak Computation} (where each realized parallel oracle call across classical branches and nested loops is charged, as is any fixed unitary whose matrix coincides with an embedded oracle). Specifically, as a Tier~(C) analytical comparison for single-target search with \(N \ge 2\) and a single bit oracle, the corresponding coherent Las Vegas adversary optimization is solved by \(L_{\mathrm{adv}}^* = \sqrt{N-1}/2\): the bit-oracle feasibility condition \(4ab = 1\) is satisfied by primal weights \(a^2 = \sqrt{N-1}/4\) on the target index and \(b^2 = 1/(4\sqrt{N-1})\) elsewhere, while the dual witness \(\Gamma = (J - I)/(2\sqrt{N-1})\) (where \(J\) denotes the \(N \times N\) all-ones matrix and \((\Delta_j)_{xy} = \mathbf{1}_{[x=j]\ne[y=j]}\) denotes the binary difference mask for index~\(j\)) has star-graph norm \(\|\Gamma \circ \Delta_j\| = 1/2\) (so \(\|2(\Gamma \circ \Delta_j)\| = 1\) for the full bit-oracle difference block) and top eigenvalue \(\sqrt{N-1}/2\). Thus an asymptotic leading constant of \(1/2\) (relative coefficient \(2/\pi \approx 0.6366\)) is produced by the coherent adversary, rather than the sharp operational constant \(\pi/8 + 1/4 \approx 0.6427\) (relative coefficient \(1/2 + 1/\pi \approx 0.8183\)). In Section~\ref{sec:findany}, the sharp operational lower bound is proved directly in the quantum Hoare semantics of \cite{feng2021,shirobokov2026}.
+
+\paragraph{Parallel multi-item search and weak measurements \cite{zalka1999,grover2004,mizel2009,andres2022}.}
+Parallel unstructured search has been developed from Zalka \cite{zalka1999} for parallel single-target queries and Grover and Radhakrishnan \cite{grover2004} for finding \(k\) marked items using \(m\) parallel processors. Likewise, weak measurements and controlled damping in quantum search have established precursors, including Mizel's critically damped quantum search \cite{mizel2009} and the weakly measured while-loop semantics of Andr\'es-Mart\'inez and Heunen \cite{andres2022}. The Kraus pair \((K_{0,t}, K_{1,t})\) employed in Section~\ref{sec:findall} is a standard partial projective test on the full-occupancy subspace; the incremental contribution of Section~\ref{sec:findall} lies in combining full-occupancy Kraus checks with the \(24\)-segment Johnson walk, optimizing the schedule under survival-weighted branch accounting, and formally verifying the resulting finite-circuit restart bound in Lean~4.35.0.
+
+\paragraph{Boolean multiplicative complexity and formal specification fidelity \cite{schnorr1989,mirwald1992,calik2020,comparator2026}.}
+Algebraic-degree lower bounds on multiplicative complexity (\(\mathrm{MC}(f) \ge \deg(f) - 1\)) and polar-matrix canonicalization of quadratic Boolean forms over \(\mathbb{F}_2\) were introduced by Schnorr \cite{schnorr1989} and Mirwald and Schnorr \cite{mirwald1992}, and were further developed in low-complexity classification studies such as \c{C}al\i k, S\"onmez Turan, and Peralta \cite{calik2020}. In Section~\ref{sec:arcsin}, these algebraic techniques are integrated with the live-wire spans, \(50\)-ancilla budget, uncomputation constraints, residual phase cancellation, and full Lean~4.35.0 proof obligations of the frozen \(25\)-bit arcsine circuit. Finally, as emphasized in the Lean FRO \texttt{comparator} documentation \cite{comparator2026} (particularly regarding definition holes), solving the intended problem is not guaranteed by the absence of \texttt{sorry} or custom axioms alone; specification fidelity is established only when exact agreement of both public theorem signatures and the underlying model definitions against the frozen specification is verified.
+
+\section{Exact asymptotic optimality of parallel GroverFindAny}
+\label{sec:findany}
+
+The greatest lower bound of feasible eventual relative coefficients in the frozen parallel \texttt{Grover\allowbreak FindAny} model is established to be
+\[
+  \rho_* = \frac{1}{2} + \frac{1}{\pi}
+\]
+on every cell \((m,k)\) of the \(121\)-cell dyadic grid. The lower bound itself is proved parametrically for all positive integers \(m, k > 0\); the \(121\)-cell grid is the domain on which every strictly larger real coefficient is realized by the matching archived upper construction of \cite{shirobokov2026}.
+
+\subsection{The frozen model, formal statements, and scope boundaries}
+\label{sec:findany-model}
+
+The abbreviations \(N = 2^n\), \(\mathcal{S} = \texttt{groverTargetSets}\ n\ k\), and \(L = |\mathcal{S}|\) are adopted throughout this section, and \texttt{grover\allowbreak Parallel\allowbreak Marking\allowbreak Oracle}~\(m\,S\) is denoted by \(O_S\). A single source circuit \(C\), fixed before \(S\) is drawn uniformly from \(\mathcal{S}\), is given by the type
+\[
+  \texttt{OracleDynamic\allowbreak Circuit}\;(\texttt{Unitary}\,(2^w))\;\texttt{Grover.Var}\;w\;((n+1)m).
+\]
+Within this type, arbitrary finite workspace \(w\) (possibly depending on \(n\)) may be allocated, arbitrary oracle-independent unitaries may be applied, legal embeddings of the \(m\)-slot parallel oracle (each slot holding an \(n\)-bit address and one marking bit) may be invoked, intermediate measurements with classical branching may be performed, and arbitrarily nested \texttt{qWhile} loops may be executed. The compiled program, cost model, and vanilla scaling are denoted by
+\[
+  \begin{aligned}
+  P_S &= \texttt{qset}\mathbin{;;} C.\texttt{compile}\;\texttt{QProg.qAssign}\;O_S, \\
+  \mathcal{C}_S &= \texttt{CostModel.ofEmbeddedOracle}\;O_S, \\
+  V_{\mathrm{any}}(n,m,k) &= \texttt{vanillaFindAnyCost}\ n\ m\ k = \frac{\pi}{4}\sqrt{\frac{N}{mk}}.
+  \end{aligned}
+\]
+Under the frozen cost model \(\mathcal{C}_S\), one oracle round is charged for each oracle invocation and also for any fixed unitary step whose matrix coincides with an embedded oracle. Total correctness with probability one for every marked set is denoted by \(H(C,k)\) (\texttt{Lower.Correct}):
+\[
+  \forall S \in \mathcal{S},\quad \{\top\}\;P_S\;\{\sigma \mapsto \exists x \in S,\ \sigma(\texttt{Grover.Var.res}) = x.\texttt{val}\}.
+\]
+The certificate predicate \(\texttt{AvgOracleCostBound}\ k\ (S \mapsto \mathcal{C}_S)\ (S \mapsto P_S)\ q\) is abbreviated as \(A(C,k,q)\), under which per-set nonnegative real certificates \(q_S\) are required to satisfy the frozen \texttt{CostBound} for all \(S \in \mathcal{S}\) with uniform average at most \(q\). Values in \(\mathbb{R}_{\ge 0}^{\infty}\) (\texttt{ENNReal}) are taken by the underlying operational cost \(\operatorname{expectedCost}\).
+
+\begin{theorem}[Finite certificate and actual expectation]
+\label{thm:findany-finite}
+Suppose \(n,m,k,w \in \mathbb{N}\) are given with \(0 < m\), \(0 < k\), and \(k \le N\), and \(C\) is a circuit of the type above. With
+\[
+  B(n,m,k) = \frac{(\pi/4 + 1/2)(1 - k/N)}{2\arcsin\sqrt{mk/N}},
+\]
+where Lean's total real inverse sine (equal to \(\pi/2\) on arguments \(\ge 1\)) is denoted by \(\arcsin\):
+\begin{enumerate}
+\item \textup{(\texttt{finite})} Under \(H(C,k)\), the inequality \(B(n,m,k) \le q\) is satisfied by every \(q \in \mathbb{R}\) for which \(A(C,k,q)\) holds.
+\item \textup{(\texttt{actual\_\allowbreak expected\_\allowbreak rounds})} Under \(H(C,k)\), for every store \(\sigma : \texttt{Store Grover.Var}\),
+\[
+  \texttt{ENNReal.ofReal}\bigl(B(n,m,k)\bigr) \;\le\;
+  \frac{\displaystyle\sum_{S \in \mathcal{S}} \operatorname{expectedCost}(\mathcal{C}_S, P_S, \operatorname{seed}(w,\sigma))}{L},
+\]
+where \(\sigma\) is paired with the pure quantum state \(|0^w\rangle\) by \(\operatorname{seed}(w,\sigma)\) (\texttt{Track2Grover.\allowbreak Path.\allowbreak seed}). Infinite expected cost is included in the extended-real comparison, and no external certificate \(q\) is required.
+\end{enumerate}
+\end{theorem}
+
+For fixed positive \(m, k \in \mathbb{N}\) and \(R \in \mathbb{R}\), the predicate \(\operatorname{Feasible}(m,k,R)\) is defined to hold whenever there exist \(w : \mathbb{N} \to \mathbb{N}\) and a family \(C_n : \texttt{Lower.Circuit}\ n\ m\ (w(n))\) such that
+\[
+  \begin{aligned}
+  &\forall n,\quad 1 \le n \implies k \le 2^n \implies H(C_n, k), \\
+  &\exists n_0,\quad \forall n \ge n_0,\quad k \le 2^n \implies A\bigl(C_n, k, R\,V_{\mathrm{any}}(n,m,k)\bigr).
+  \end{aligned}
+\]
+
+\begin{theorem}[Asymptotic boundary and exact infimum]
+\label{thm:findany-asymp}
+In namespace \texttt{Track2Grover.\allowbreak FindAny\allowbreak LowerBound}:
+\begin{enumerate}
+\item \textup{(\texttt{asymptotic\_real})} For all \(m,k > 0\) and \(R \in \mathbb{R}\), if \(\operatorname{Feasible}(m,k,R)\) holds then \(\rho_* \le R\).
+\item \textup{(\texttt{no\_\allowbreak smaller\_\allowbreak rational})} For all \(m,k > 0\) and \(R \in \mathbb{Q}_{\ge 0}\) with \((R : \mathbb{R}) < \rho_*\), the predicate \(\operatorname{Feasible}(m,k,R)\) is false.
+\item \textup{(\texttt{exact\_infimum})} For every \((m,k) \in \texttt{groverGrid} \times \texttt{groverGrid}\) (where \(\texttt{groverGrid} = \{2^j : 0 \le j \le 10\}\)), the predicate \(\operatorname{IsGLB}\) is satisfied at \(\rho_*\) for \(\{R \in \mathbb{R} : \operatorname{Feasible}(m,k,R)\}\); equivalently,
+\[
+  \inf\{R \in \mathbb{R} : \operatorname{Feasible}(m,k,R)\} = \frac{1}{2} + \frac{1}{\pi}.
+\]
+\end{enumerate}
+\end{theorem}
+
+\paragraph{Explicit scope boundaries.}
+Theorems~\ref{thm:findany-finite} and~\ref{thm:findany-asymp} are restricted specifically to (i) expected \emph{parallel oracle rounds}, (ii) uniform averaging over \(k\)-element marked sets of known size \(k\), (iii) termination and marked output with probability one, (iv) circuits in the frozen \texttt{OracleDynamic\allowbreak Circuit} model with arbitrary finite workspace \(w(n)\), and (v) fixed positive \((m,k)\) as \(n \to \infty\). Attainment at equality by a single real witness is not asserted by the infimum; because \(\rho_*\) is irrational, equality with \(\rho_*\) is impossible for any submitted nonnegative rational. Different success probabilities (e.g.\ bounded-error search) or non-uniform input distributions are excluded from these theorems.
+
+\subsection{Coherent progress potential and convexity under branching}
+\label{sec:findany-potential}
+
+The executions for all \(S \in \mathcal{S}\) are coupled into a direct-sum Hilbert space \(\bigoplus_{S \in \mathcal{S}} \mathcal{H}_w\), and the subspace of vectors constant across the hidden label \(S\) is denoted by \(K\), with orthogonal projection \(\Pi_K\). For any nonzero branch vector \(x\), its squared norm is denoted by \(s = \|x\|^2\) and its angle \(\alpha(x) \in [0, \pi/2]\) to \(K\) is defined by \(\|\Pi_K x\|^2 = s\cos^2\alpha(x)\) (with zero contribution assigned to zero branches). With \(c = \pi/4 + 1/2\), the progress potential is defined by
+\[
+  \Phi(s, \alpha) =
+  \begin{cases}
+    s(c - \alpha), & 0 \le \alpha \le \pi/4, \\
+    s\cos^2\alpha, & \pi/4 < \alpha \le \pi/2.
+  \end{cases}
+\]
+In terms of the projected-mass fraction \(u = \cos^2\alpha \in [0, 1]\), the per-unit-mass profile is given by
+\[
+  f(u) =
+  \begin{cases}
+    u, & 0 \le u \le \tfrac{1}{2}, \\
+    c - \arccos\sqrt{u}, & \tfrac{1}{2} \le u \le 1.
+  \end{cases}
+\]
+At the junction \(u = 1/2\) (\(\alpha = \pi/4\)), equal value (\(f(1/2) = 1/2\)) and equal first derivative (\(f'(u) = 1/(2\sqrt{u(1-u)}) = 1\) at \(u=1/2\)) are shared by both pieces. On \((1/2, 1)\),
+\[
+  f''(u) = \frac{2u - 1}{4[u(1-u)]^{3/2}} > 0;
+\]
+hence \(f\) is continuous and convex on \([0, 1]\), and continuously differentiable on \((0, 1)\) (indeed on \([0, 1)\)), with matching one-sided derivatives equal to \(1\) at \(u = 1/2\) (whereas \(f'(u) \to +\infty\) as \(u \to 1^-\), and the endpoint \(\alpha = 0\) is handled directly below). In the angle variable \(\alpha\), the derivative is bounded by \(|(\cos^2\alpha)'| = |\sin(2\alpha)| \le 1\), by which a uniform unit Lipschitz bound in \(\alpha\) across the junction is established.
+
+\paragraph{One-round oracle displacement.}
+Each physical marking oracle \(O_S\) is an involution in every density regime (\texttt{Physical.act\_involution} in \texttt{CoupledOracle.lean}), so the coupled oracle \(U = \bigoplus_{S \in \mathcal{S}} O_S^{\mathrm{emb}}\) is a self-adjoint unitary involution (\(U = U^\dagger\), \(U^2 = I\)). A label-constant vector \(y \in K\) is written in terms of its shared single-instance component \(y_0 \in \mathcal{H}_w\) as \(y = (y_0)_{S \in \mathcal{S}}\), so that \(\|y\|^2 = L\,\|y_0\|^2\). Each of the \(m\) query addresses is contained in a uniform \(k\)-subset \(S\) with probability \(k/N\); when the probability of an odd number of active hits is bounded by that of at least one hit (for which no independence across the \(m\) slots is required), the unconditional compression inequality is obtained:
+\[
+  \begin{aligned}
+  \sum_{S \in \mathcal{S}} \langle y_0,\, O_S^{\mathrm{emb}} y_0 \rangle
+  &\;\ge\; (1 - 2mk/N)\,L\,\|y_0\|^2, \\
+  \operatorname{Re}\langle y, U y \rangle = \langle y, U y \rangle
+  &\;\ge\; (1 - 2mk/N)\,\|y\|^2
+  \end{aligned}
+\]
+for every legal slot embedding \(O_S^{\mathrm{emb}}\), even on entangled inputs (where realness of the inner product follows from self-adjointness of \(U\), and the inequality is trivial when \(1 - 2mk/N < -1\)).
+
+Whenever \(mk \le N\), the angle bound \(v = 2\arcsin\sqrt{mk/N} \in [0, \pi]\) is defined, so that \(\cos v = 1 - 2mk/N\). For any unit vector \(y \in K\), \(\operatorname{Re}\langle y, U y\rangle \ge \cos v\), so the angle between \(y\) and \(U y\) is at most \(v\). For an arbitrary unit branch vector \(x\) (possibly already correlated with \(S\)), whenever \(\Pi_K x \ne 0\) the normalized projection \(y = \Pi_K x / \|\Pi_K x\| \in K\) is chosen. By unitarity of \(U\), the spherical angle between \(U x\) and \(U y\) is equal to \(\alpha(x)\), while the angle between \(U y\) and \(y \in K\) is at most \(v\); by the spherical triangle inequality and the characterization of \(\alpha(U x)\) as the minimal angle from \(U x\) to \(K\) (\texttt{QueryAngle.one\_query}),
+\[
+  \alpha(U x) \;\le\; \angle(U x, y) \;\le\; \angle(U x, U y) + \angle(U y, y) \;\le\; \alpha(x) + v.
+\]
+(If \(\Pi_K x = 0\), then \(\alpha(x) = \pi/2\), so \(\alpha(U x) \le \pi/2 \le \alpha(x) + v\) is satisfied directly.) When the same inequality is applied to \(U x\) and \(U^2 = I\) is invoked, \(\alpha(x) = \alpha(U^2 x) \le \alpha(U x) + v\) is obtained, hence \(|\alpha(U x) - \alpha(x)| \le v\). By the unit Lipschitz bound in \(\alpha\), the potential \(\Phi(s, \alpha)\) is reduced by at most \(s v\) in a single parallel oracle round.
+
+\paragraph{Adaptive measurement splitting.}
+Oracle-independent measurements may branch asynchronously across classical stores, yet within any single branch history the classical control state is shared across all components indexed by \(S \in \mathcal{S}\). The measurement instrument is therefore represented on the coupled space by block-diagonal Kraus operators \(I_{\mathcal{S}} \otimes M_i\) with \(\sum_i M_i^\dagger M_i = I\), each commuting with the label-averaging projection \(\Pi_K\). Consequently, when a branch \((s, \alpha)\) is split into children \((s_i, \alpha_i)\) with \(x_i = (I_{\mathcal{S}} \otimes M_i)x\) and \(u_i = \cos^2\alpha_i\), both total mass (\(\sum_i s_i = s\)) and projected mass are preserved:
+\[
+  \sum_i s_i u_i
+  = \sum_i \bigl\|\Pi_K (I_{\mathcal{S}} \otimes M_i) x\bigr\|^2
+  = \sum_i \bigl\|(I_{\mathcal{S}} \otimes M_i) \Pi_K x\bigr\|^2
+  = \|\Pi_K x\|^2
+  = s u.
+\]
+An affine supporting minorant at \(u\) is obtained from the convexity of \(f\) (the tangent line for \(0 < \alpha \le \pi/4\), the identity \(u \mapsto u\) for \(\alpha > \pi/4\), and direct equality when \(\alpha = 0\) forces \(u_i = 1\) on every positive-mass child), whereby \texttt{split\_potential} (\texttt{CoupledHistory.lean}) is proved:
+\[
+  \Phi(s, \alpha) \;\le\; \sum_i \Phi(s_i, \alpha_i).
+\]
+Thus the potential budget charged to oracle rounds cannot be reduced by adaptive measurement branching.
+
+\paragraph{Finite execution-tree inequality.}
+On any branch halted with classical output address \(z\), nonzero amplitude is supported only on hidden sets \(S \ni z\) (a fraction \(k/N\) of \(\mathcal{S}\)), so its projected mass fraction is bounded by \(u \le k/N\) via Cauchy--Schwarz. By convexity of \(f\) on \([0, 1]\) with \(f(0) = 0\) and \(f(1) = c\),
+\[
+  f(u) \;\le\; (1 - u)f(0) + u f(1) \;=\; c u,
+\]
+whereby the terminal potential of every halted branch is bounded above by \(c(k/N)s\) (and in fact by \((k/N)s\) whenever \(k/N \le 1/2\); see Remark~\ref{rem:finite-sharp}). For a finite execution tree \(\mathcal{T}\) started from an unnormalized label-constant vector \(x \in K\) of squared norm \(\|x\|^2 = L\), the expected oracle rounds executed on target set \(S\) are denoted by \(q_{\mathcal{T}}(S)\), the summed expected query count across \(\mathcal{S}\) by \(Q_{\mathcal{T}} = \sum_{S \in \mathcal{S}} q_{\mathcal{T}}(S)\), and the unnormalized unfinished timeout mass by \(h_{\mathcal{T}} = L - \mathrm{finished}(\mathcal{T}, x)\). When the branch inequalities are summed under zero wrong-output mass (\(c L \le v Q_{\mathcal{T}} + c(k/N)(L - h_{\mathcal{T}}) + c h_{\mathcal{T}}\)), the scaled tree bound (and its equivalent per-instance average form after division by \(L > 0\)) is obtained:
+\begin{equation}
+  c\,(1 - k/N)\,(L - h_{\mathcal{T}}) \;\le\; v\,Q_{\mathcal{T}}
+  \qquad\Longleftrightarrow\qquad
+  c\,(1 - k/N)\,\Bigl(1 - \frac{h_{\mathcal{T}}}{L}\Bigr) \;\le\; v\,\frac{Q_{\mathcal{T}}}{L}.
+  \label{eq:tree-bound}
+\end{equation}
+
+\subsection{Reduction from nested loops to finite trees and actual expected cost}
+\label{sec:findany-loops}
+
+The extension of \eqref{eq:tree-bound} from finite trees to arbitrary \texttt{OracleDynamic\allowbreak Circuit} programs with nested \texttt{qWhile} loops and extended-real \texttt{expectedCost} is carried out across five formal stages in flat modules under \texttt{Track2Grover/} (\texttt{Finite\allowbreak Reduction.lean}, \texttt{Lower\allowbreak Path.lean}, \texttt{Lower\allowbreak Score\allowbreak Bridge.lean}, \texttt{Lower\allowbreak Accounts.lean}, \texttt{Lower\allowbreak Seed.lean}, \texttt{Coupled\allowbreak Limit.lean}, and \texttt{Lower\allowbreak Actual.lean}):
+
+\begin{enumerate}
+\item \emph{Uniform finite unrolling of nested loops (\texttt{Fuel.cap}).} Every loop in a program \(P\) (regardless of nesting depth) is truncated simultaneously by a single natural-number fuel parameter \(i \in \mathbb{N}\) via the recursive map \(\texttt{qWhile}\ g\ P \mapsto \texttt{unroll}\ g\ (\texttt{cap}\ i\ P)\ i\), where \(\texttt{unroll}\ g\ P'\ 0 = \texttt{abort}\) and \(\texttt{unroll}\ g\ P'\ (d+1) = \texttt{qIf}\ g\ (\texttt{qSeq}\ P'\ (\texttt{unroll}\ g\ P'\ d))\ \texttt{skip}\). Because structural truncation commutes with oracle compilation (\texttt{compile\_cut} in \texttt{LowerPath.lean}), \(\texttt{cap}\ i\ (C.\texttt{compile}\ \texttt{qAssign}\ O_S)\) is represented exactly by a finite execution tree \(\mathcal{T}_i\) with explicit timeout leaves.
+\item \emph{Monotonicity and cost domination (\texttt{Fuel.cap\_cost}).} The operational orders \texttt{Below}~\(P_1\,P_2\) (satisfied when \(\mathrm{obs}(P_1,\delta,\theta) \le \mathrm{obs}(P_2,\delta,\theta)\) for all \(\delta, \theta\)) and \texttt{StateBelow}~\(\delta\,\eta\) (satisfied when \(\mathrm{mass}(\delta,\theta) \le \mathrm{mass}(\eta,\theta)\) for all \(\theta\)) are introduced on programs and states. By structural induction over sequential composition, conditionals, and loop unrollings, \(\texttt{Below}\ (\texttt{cap}\ i\ P)\ P\) is proved together with
+\[
+  \operatorname{expectedCost}(\mathcal{C}, \texttt{cap}\ i\ P, \delta) \;\le\; \operatorname{expectedCost}(\mathcal{C}, P, \delta)
+\]
+for every cost model \(\mathcal{C}\) and state \(\delta\). Combined with \texttt{score\_\allowbreak calls\_\allowbreak le\_\allowbreak cost} (\texttt{Lower\allowbreak Score\allowbreak Bridge.lean}), the per-instance expected query count \(q_i(S)\) of the truncated tree \(\mathcal{T}_i\) is bounded by
+\[
+  \begin{aligned}
+  q_i(S) &\;\le\; \operatorname{expectedCost}\bigl(\mathcal{C}_S, P_S, \operatorname{seed}(w,\sigma)\bigr)
+  \quad\text{for all } i, S, \\
+  Q_i := \sum_{S \in \mathcal{S}} q_i(S)
+  &\;\le\; \sum_{S \in \mathcal{S}} \operatorname{expectedCost}\bigl(\mathcal{C}_S, P_S, \operatorname{seed}(w,\sigma)\bigr).
+  \end{aligned}
+\]
+\item \emph{Cofinal convergence and vanishing unfinished mass (\texttt{Fuel.cofinal}).} By structural induction on \(P\), \(\lim_{i \to \infty} \mathrm{obs}(\texttt{cap}\ i\ P, \delta, \theta) = \mathrm{obs}(P, \delta, \theta)\) is established for every initial state \(\delta\) and bounded effect \(\theta\) in the public cofinality theorem \texttt{Fuel.cofinal} (\texttt{Approaches (fun t => cap t P) P}, with fields \texttt{mono}, \texttt{upper}, and \texttt{limit}). Under Hoare total correctness \(H(C,k)\), unit trace and zero mass on incorrect stores are proved for the full output state on every \(S \in \mathcal{S}\) (\texttt{correct\_\allowbreak output\_\allowbreak mass} in \texttt{LowerAccounts.lean}). Wrong-output mass on every truncation \(\mathcal{T}_i\) is therefore forced by monotonicity to vanish identically (\(\texttt{bad}(\mathcal{T}_i, S) = 0\)), while with \(\theta = \top\) the limit \(\lim_{i \to \infty} \mathrm{finished}(\mathcal{T}_i, x) = L\) is obtained, so the unnormalized unfinished mass \(h_i = L - \mathrm{finished}(\mathcal{T}_i, x)\) converges to \(0\) (and \(h_i / L \to 0\)).
+\item \emph{Input-independence of the initial state (\texttt{seed\_reset}).} Because every compiled benchmark program begins with \(\texttt{qset}\mathbin{;;} C.\texttt{compile}\ \texttt{qAssign}\ O_S\), the quantum register is reset to \(|0^w\rangle\) independently of \(S\). For any fixed initial classical store \(\sigma\), \(\delta = \operatorname{seed}(w,\sigma)\) is invariant under \texttt{qset} (\texttt{seed\_reset} in \texttt{LowerSeed.lean}), so the unnormalized coupled initial vector \(x = \mathrm{copy}(\mathcal{S}, |0^w\rangle)\) is placed identically inside the label-constant subspace \(K\) with squared norm \(\|x\|^2 = L = |\mathcal{S}|\).
+\item \emph{Passing to the limit and handling infinite expected cost (\texttt{Actual.mean\_lower\_bound}).} For any finite real bound \(q\) with \(A(C,k,q)\), the summed query count is bounded by \(Q_i \le L q\) for all \(i\); when \(Q_i / L \le q\) is substituted into the normalized right-hand form of \eqref{eq:tree-bound}, \(c(1 - k/N)(1 - h_i/L) \le v q\) is obtained, and in the limit \(h_i \to 0\) the finite bound \(B(n,m,k) = c(1 - k/N)/v \le q\) (\texttt{finite}) is proved. For the direct extended-real expectation in \texttt{actual\_expected\_rounds}, if \(\sum_{S \in \mathcal{S}} \operatorname{expectedCost}(\mathcal{C}_S, P_S, \operatorname{seed}(w,\sigma)) = \infty\), then division by \(L > 0\) yields \(\infty\) and the inequality is discharged trivially by \texttt{le\_top}. Otherwise every summand is finite, so finite pointwise seed costs \(z_S := (\operatorname{expectedCost}(\mathcal{C}_S, P_S, \operatorname{seed}(w,\sigma))).\texttt{toNNReal}\) are extracted for that fixed initial state \(\operatorname{seed}(w,\sigma)\) (distinct from an all-states \texttt{AvgOracleCostBound} certificate), with uniform average \(L^{-1}\sum_{S \in \mathcal{S}} z_S\) equal to the real part of the mean. The proof across all regimes simultaneously is completed by applying \texttt{CoupledLimit.of\_seed\_semantics} directly to these seed costs with clipped density \(b = \min(mk/N, 1)\) (where \(\arcsin\sqrt{b} = \arcsin\sqrt{mk/N}\) under Lean's total \(\arcsin\), and the trivial compression bound \(1 - 2\cdot 1 = -1\) when \(mk > N\) is provided by Cauchy--Schwarz).
+\end{enumerate}
+
+\subsection{Dense regime, matching upper bound, and technical remarks}
+\label{sec:findany-tight}
+
+Although all density regimes are already covered uniformly in \texttt{Actual.mean\_lower\_bound} via the clipped density \(b = \min(mk/N, 1)\), a case split on \(N \le 2mk\) is performed in the certificate entry \texttt{Universal.finite} using an independent, more elementary first-query argument (\texttt{DenseFindAny}, \texttt{FirstQuery}): when every oracle call is replaced by \texttt{abort}, a common oracle-independent output is produced whose average success probability over \(\mathcal{S}\) is at most \(k/N\), whereby at least \(1 - k/N\) first queries are forced, dominating \(B(n,m,k)\) throughout \(N \le 2mk\) (including \(k = N\), where the numerator is zero).
+
+Upon division of \(B(n,m,k)\) by \(V_{\mathrm{any}}(n,m,k)\),
+\[
+  \frac{B(n,m,k)}{V_{\mathrm{any}}(n,m,k)}
+  = \left(\frac{1}{2} + \frac{1}{\pi}\right)\left(1 - \frac{k}{N}\right)
+    \frac{\sqrt{mk/N}}{\arcsin\sqrt{mk/N}}
+  \;\xrightarrow{\,n \to \infty\,}\; \frac{1}{2} + \frac{1}{\pi}
+\]
+is obtained for any fixed positive \(m, k\), by which \texttt{asymptotic\_\allowbreak real} and \texttt{no\_\allowbreak smaller\_\allowbreak rational} are proved. On every cell \((m,k) \in \texttt{groverGrid} \times \texttt{groverGrid}\), every real \(R > \rho_*\) is realized in \texttt{Track2Grover.\allowbreak Upper.\allowbreak arbitrarily\_\allowbreak close} (\texttt{SharpUpper.lean}) by adapting the existing \texttt{FindAny} circuit of \cite{shirobokov2026} with arbitrary positive slack, whereby \texttt{exact\_infimum} is established.
+
+\begin{remark}[Finite-\(n\) sharpenings; Tier~C]
+\label{rem:finite-sharp}
+Two direct Tier~(C) strengthenings of the finite-\(n\) bound on expected parallel oracle rounds \(T_{\mathrm{rnd}}\) are obtained from the same framework without altering the asymptotic limit \(\rho_*\). First, because \(f\) is non-decreasing on \([0,1]\), \(f(u) \le f(k/N)\) is satisfied on every halted branch; for \(mk \le N\), summing branch inequalities gives \((c - f(k/N))(L - h_{\mathcal{T}}) \le v Q_{\mathcal{T}}\), and hence \(\mathbb{E}_{S,\mathrm{exec}}[T_{\mathrm{rnd}}] \ge (c - f(k/N))/(2\arcsin\sqrt{mk/N})\). In particular, whenever \(k/N \le 1/2\) and \(mk \le N\) (with \(\eta = k/N \le 1/2\)), \(f(\eta) = \eta\) gives
+\[
+  \mathbb{E}_{S,\mathrm{exec}}[T_{\mathrm{rnd}}] \;\ge\; \frac{\pi/4 + 1/2 - k/N}{2\arcsin\sqrt{mk/N}}
+  \qquad (k/N \le 1/2,\; mk \le N),
+\]
+exceeding the numerator \(c(1-\eta)\) of Theorem~\ref{thm:findany-finite} by \((c - 1)\eta > 0\). Second, for \(0 < k < N\), producing any output with positive probability prior to the first oracle call is ruled out by probability-one correctness across all \(S \in \mathcal{S}\) (since every fixed address \(z\) is excluded by some \(S \in \mathcal{S}\)), so \(\mathbb{E}_{S,\mathrm{exec}}[T_{\mathrm{rnd}}] \ge 1\) is also satisfied unconditionally. These finite-\(n\) sharpenings are Tier~(C) paper corollaries and have not been substituted into the archived Lean~4.35.0 theorem.
+\end{remark}
+
+\begin{remark}[Technical note on \texttt{Tighter\allowbreak FindAny}]
+With the physical circuit of \cite{shirobokov2026} left unchanged, the submitted rational constant is tightened in the companion module \texttt{Tighter\allowbreak FindAny} from \(514159265358979323847/628318530717958647692\) to
+\[
+  \frac{257079632679489661923}{314159265358979323846}
+  = \frac{1}{2} + \frac{1}{3.14159265358979323846},
+\]
+a decrease of \(1/628318530717958647692 \approx 1.5915 \times 10^{-21}\) lying \(2.67831 \times 10^{-22}\) above \(\rho_*\). This is purely a formal certificate adjustment at the precision ceiling of Mathlib's \texttt{Real.pi\_gt\_d20}, not an algorithmic advance.
+\end{remark}
+
+\section{Supplementary Construction I: Reversible fixed-point arcsine at spacetime cost \texorpdfstring{\(366{,}200\)}{366,200}}
+\label{sec:arcsin}
+
+In the reference circuit for \texttt{ArcsinK25\allowbreak ConstCost} in \cite{shirobokov2026}, \(3{,}698\) \(T\) gates are used on \(100\) logical qubits (\(50\) data wires and \(50\) clean ancillas, \(\mathrm{TOFF} = 0\)). Through two targeted rewrites of its reversible Boolean operation tables, the count is reduced to \(3{,}662\) \(T\) gates while the computed lookup table, phase coherence, clean-ancilla return, and \(100\)-qubit width are preserved, whereby the frozen spacetime metric \(TQ\) is lowered by \(3{,}600\) units (\(-36\,T\), \(-0.9735\%\)) to \(366{,}200\).
+
+\subsection{Specification, exact compiled gate counts, and non-vacuity}
+
+In the frozen specification (\texttt{QuantumComputationSpecs.Primitives.Arcsin}), both the register bit-width \(p.k \in \mathbb{N}\) and the maximum absolute error tolerance \(p.\varepsilon \in \mathbb{R}\) are bundled in the record \texttt{p : ArcsinPrec}. Under the frozen precision hypotheses \(3 \le p.k\) and \(2^{-(p.k-1)} \le p.\varepsilon\), each \((p.k)\)-bit word is encoded in signed two's-complement \(\mathrm{Q}2.(p.k-2)\) format via \(\operatorname{dec}(u) = \operatorname{signed}(u)\,2^{-(p.k-2)}\), with \(2^{p.k-1}+1\) valid inputs satisfying \(|\operatorname{dec}(u)| \le 1\). By the general parameterized theorem \texttt{arcsin\_correctness}, it is certified that for every \texttt{p : ArcsinPrec} satisfying \(3 \le p.k\) and \(2^{-(p.k-1)} \le p.\varepsilon\), there exists an output table \(z : \operatorname{Fin}(2^{p.k}) \to \operatorname{Fin}(2^{p.k})\) obeying \(|\operatorname{dec}(z(u)) - \arcsin(\operatorname{dec}(u))| \le p.\varepsilon\) on all \(2^{p.k-1}+1\) valid inputs such that the coherent lookup-addition unitary
+\[
+  |u\rangle|b\rangle|0^{\texttt{arcsinAncillas}(p)}\rangle
+  \;\longmapsto\;
+  |u\rangle|(b + z(u)) \bmod 2^{p.k}\rangle|0^{\texttt{arcsinAncillas}(p)}\rangle
+\]
+is realized by \texttt{arcsinProgram p} with clean ancilla return on every disjoint pair of data and ancilla registers (\texttt{Realizes\allowbreak Clean\allowbreak Subroutine}). Because the program is parameterized by the full record \(p\), outside the benchmark regime (\(p.k = 25 \land 1.25 \times 10^{-7} \le p.\varepsilon\)) an exact half-ULP rounded fallback table is selected, whereas at the benchmark instance \(p = \texttt{Arcsin\allowbreak Prec.k25}\) (\(p.k = 25\), \(p.\varepsilon = 1.25 \times 10^{-7}\), \(\mathrm{Q}2.23\) format, \(16{,}777{,}217\) valid inputs, \texttt{arcsin\allowbreak Ancillas}~\(\texttt{.k25} = 50\)) the optimized \(100\)-qubit circuit \texttt{k25DynCircuit} with table \texttt{z25} is selected.
+
+\begin{theorem}[Benchmark correctness, spacetime bound, exact logical counts, and non-vacuity at \texttt{ArcsinPrec.k25}]
+\label{thm:arcsin}
+At the benchmark specialization \(p = \texttt{ArcsinPrec.k25}\) (\(p.k = 25\), \(p.\varepsilon = 1.25 \times 10^{-7}\), \(\mathrm{Q}2.23\), \(50\) data qubits and \(50\) clean ancillas):
+\begin{enumerate}
+\item \textup{(\texttt{arcsin\_correctness .k25})} In the proof term of the existential theorem \texttt{arcsin\_\allowbreak correctness} instantiated at \(p = \texttt{Arcsin\allowbreak Prec.k25}\), the output table is witnessed by the concrete table \(z = \texttt{z25}\), for which \(|\operatorname{dec}(z(u)) - \arcsin(\operatorname{dec}(u))| \le 1.25 \times 10^{-7}\) on all \(16{,}777{,}217\) valid inputs is independently proved by \texttt{z25\_\allowbreak satisfies\_\allowbreak abs\_\allowbreak error}, and the coherent lookup-addition unitary \(|u\rangle|b\rangle|0^{50}\rangle \mapsto |u\rangle|(b + z(u)) \bmod 2^{25}\rangle|0^{50}\rangle\) is proved to be realized by \texttt{arcsinProgram .k25} with clean ancilla return on every disjoint register placement (\texttt{Realizes\allowbreak Clean\allowbreak Subroutine}).
+\item \textup{(\texttt{arcsin\_k25\_const\_cost})} Across every register placement (including overlapping placements), zero primitive \texttt{TOFF} gates and a spacetime cost of at most \(366{,}200\) are certified for \texttt{arcsinProgram .k25}.
+\item \textup{(\texttt{ExactAudit.\allowbreak exact\allowbreak PublicK25})} On every disjoint wire placement satisfying \texttt{Disjoint\allowbreak Wires}, the compiled logical gate counts and spacetime cost of \texttt{arcsinProgram .k25} are proved to be exact:
+\[
+  T = 3{,}662, \qquad \mathrm{TOFF} = 0, \qquad TQ = 3{,}662(50 + 50) = 366{,}200.
+\]
+\item \textup{(\texttt{ExactAudit.\allowbreak exactPublicK25\_nonvacuous})} The predicate \texttt{DisjointWires} and the exact compiled counts above are attained by the canonical contiguous placement of data wires \(0\text{--}49\) and ancilla wires \(50\text{--}99\) on \(100\) qubits (\texttt{QRegister.block}, \texttt{DisjointWitness.lean}).
+\end{enumerate}
+\end{theorem}
+
+Compiled logical \(T\) gates are priced by these counts in the frozen Clifford+\(T\)+measurement model (not fault-tolerant physical costs after quantum error correction). Because zero weight is assigned to Clifford gates in the frozen metric, the total number of \texttt{Op102} instructions is increased from \(19{,}705\) to \(19{,}961\); consequently, the \(-0.9735\%\) \(T\)-count reduction cannot be equated directly to an identical end-to-end hardware speedup without full surface-code Clifford and routing analysis.
+
+\subsection{Polar-matrix factorization in \texttt{s3aOps} and product-basis change in \texttt{s4\_2Ops}}
+
+Standard \(\mathbb{F}_2\) quadratic-form canonicalization and multiplicative-complexity techniques \cite{schnorr1989,mirwald1992,calik2020} are adapted to the live-wire spans, ancilla constraints, and phase-coherence obligations of the arcsine pipeline:
+
+\paragraph{Coefficient loader \texttt{s3aOps} (\(496 \to 472\,T\), \(-24\,T\)).}
+Before \texttt{s3aOps}, the \(440\) reachable dyadic magnitude cubes are partitioned into \(28\) mutually exclusive coarse classes keyed by the five address wires \(45, 46, 47, 48, 58\) (\(27\) classes of \(16\) states and \(1\) class of \(8\) states, constructed by \texttt{group\_stats} in the archived script \texttt{partitions.py}), by which a one-hot class-indicator vector \(B = (B_1, \dots, B_{28}) \in \mathbb{F}_2^{28}\) is defined with the disjointness relations
+\[
+  B_i B_j = 0 \quad (i \ne j), \qquad B_j^2 = B_j, \qquad \sum_{j=1}^{28} B_j = 1
+\]
+satisfied on every reachable state. At twelve Hadamard-gadget writes (target wires \(51\), \(55\), \(66\), \(53\), \(50\), \(52\), \(54\), \(56\), \(62\), \(63\), \(64\), and \(65\) in circuit order), each target bit is fitted over \(\mathbb{F}_2\) as \(\phi = \ell + q(\xi) + \xi^\top \beta(B)\) on twelve live-wire parities \(\xi \in \mathbb{F}_2^{12}\), where \(\ell\) is affine in the live wires and the \(28\) class indicators, each component of \(\beta(B)\) lies in the surviving linear subspace of class-indicator sums spanned by the live wires, and the alternating polar matrix \(A\) defined by \(q(x+y)+q(x)+q(y) = x^\top A y\) (with \(q(0)=0\)) is of full rank~\(12\). With \(g(B) = A^{-1}\beta(B)\), the shift identity
+\[
+  q\bigl(\xi + g(B)\bigr) = q(\xi) + \xi^\top \beta(B) + q\bigl(g(B)\bigr)
+\]
+is satisfied identically over \(\mathbb{F}_2\). Crucially, because \(B\) is one-hot on reachable states (\(B_i B_j = 0\) for \(i \ne j\), \(B_j^2 = B_j\)), every quadratic function of linear combinations of the class indicators---in particular \(q(g(B))\)---is reduced on reachable states to a linear combination of \(B_1, \dots, B_{28}\); furthermore, in \texttt{closed\_forms.py}, each emitted gadget is checked directly to verify that the resulting residual lies in the live affine wire span and matches the original target bit across all reachable states. By symplectic diagonalization, \(q(\xi + g(B))\) is decomposed into six parity products up to an affine correction; because \(1\,T\) is charged for each positive or negative parity step in an \texttt{hGadget}, \(24\,T\) are saved when each of the twelve Hadamard gadgets is reduced from \(8+8\) steps (\(16\,T\)) to \(7+7\) steps (\(14\,T\)). Because coherent phase cancellation across superpositions is not guaranteed by Boolean agreement alone, the residual sign across all eight slice trees is computed and eliminated via a consolidated zero-\(T\)-weight schedule of \(22\) \(Z\) and \(178\) \(CZ\) gates (\(200\) corrections).
+
+\paragraph{Forward \(9\)-bit square \texttt{s4\_2Ops} (\(172 \to 160\,T\), \(-12\,T\)).}
+In the frozen truncated \(9\)-bit square lookup, full-adder carries are given over \(\mathbb{F}_2\) by \(\operatorname{maj}(a,c_1,c_2) = c_2 + (a+c_2)(c_1+c_2)\). Through evolutionary column-compression search, a \(42\)-product graph was identified whose subsequent gates depend, modulo linear input terms, only on a \(22\)-dimensional subspace of its first \(24\) product generators. When those generators are replaced by a rank-one product basis over the nine input bits and column compression is rescheduled within the \(25\) local scratch wires, a \(347\)-operation table is obtained using \(40\) paid \texttt{and4t} gates (down from \(43\)) and \(31\) quadratic erasures, while the \(21\)-AND reverse square \texttt{s5\_2CoreOps} (\(84\,T\)) is left unchanged and exact agreement on all \(100\) wires is verified across all \(1{,}024\) input/flag combinations.
+
+\subsection{Patch scope, stage accounting, and local tightness}
+
+Only \(5\) of the \(16\) arcsine modules are modified relative to the pinned \texttt{discoveries} branch (Table~\ref{tab:arcsin-patch}); the remaining \(11\) modules, the core library, and the frozen specification are byte-identical. All \(32\) stage boundaries are listed in Table~\ref{tab:arcsin-stages}; in the \(449\)-case and \(4{,}705\)-case packed traces, a peak of \(50\) live ancillas along the execution trace is reached at eight distinct stages (\texttt{s3a}, \texttt{s3bAdd}, \texttt{s3bPost}, \texttt{s4\_2}, \texttt{s4\_3}, \texttt{s5\_1}, \texttt{s5\_2Core}, \texttt{s5\_3}), showing why coordinated multi-stage rescheduling is required to reduce width below \(100\) qubits.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{@{}l>{\RA}p{0.62\linewidth}@{}}
+\toprule
+Modified arcsine module & Change relative to pinned \texttt{discoveries} (\texttt{a88de8ff}) \\
+\midrule
+\texttt{Arcsin}        & Public numeral \(369{,}800 \to 366{,}200\) and final multiplication bound. \\
+\texttt{StageTablesA}  & Forward square table \texttt{s4\_2Ops} (\(43 \to 40\) paid ANDs). \\
+\texttt{StageTablesB}  & Six sequences implementing the \texttt{s3aOps} gadget and phase rewrite. \\
+\texttt{StageCircuitB} & Updated local and aggregate AND/\(T\) count certificates. \\
+\texttt{StageProofB}   & Aggregate AND count \(776 \to 773\) and compiled \(T\)-bound \(3{,}698 \to 3{,}662\). \\
+\bottomrule
+\end{tabular}
+\caption{The five modified arcsine modules; the remaining \(11\) of \(16\) arcsine modules are byte-identical to upstream.}
+\label{tab:arcsin-patch}
+\end{table}
+
+\begin{table}[tbp]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrc@{\qquad}lrrc@{}}
+\toprule
+Stage & Ref.\ \(T\) & New \(T\) & Ancillas &
+Stage & Ref.\ \(T\) & New \(T\) & Ancillas \\
+\midrule
+\texttt{s1B} & 0 & 0 & \(0/0/0\) & \texttt{s4\_3} & 392 & 392 & \(34/50/42\) \\
+\texttt{s1Y} & 92 & 92 & \(0/23/0\) & \texttt{s4\_4} & 200 & 200 & \(42/49/42\) \\
+\texttt{s1Add} & 96 & 96 & \(0/24/0\) & \texttt{s5\_1} & 360 & 360 & \(42/50/34\) \\
+\texttt{hop\_0} & 0 & 0 & \(0/1/1\) & \texttt{s5\_2Core} & 84 & 84 & \(34/50/25\) \\
+\texttt{s2a} & 68 & 68 & \(1/18/13\) & \texttt{hop\_4} & 0 & 0 & \(25/26/25\) \\
+\texttt{s2b} & 188 & 188 & \(13/14/13\) & \texttt{s5\_2Post} & 64 & 64 & \(25/42/12\) \\
+\texttt{s2c} & 0 & 0 & \(13/13/3\) & \texttt{hop\_5} & 0 & 0 & \(12/12/12\) \\
+\texttt{s3a} & 496 & 472 & \(3/50/28\) & \texttt{s5\_3} & 664 & 664 & \(12/50/18\) \\
+\texttt{s3bAdd} & 104 & 104 & \(28/50/28\) & \texttt{hop\_6} & 0 & 0 & \(18/18/18\) \\
+\texttt{s3bPost} & 294 & 294 & \(28/50/27\) & \texttt{s5\_4} & 76 & 76 & \(18/40/14\) \\
+\texttt{hop\_1} & 0 & 0 & \(27/28/27\) & \texttt{s6a} & 0 & 0 & \(14/21/13\) \\
+\texttt{s4\_1} & 48 & 48 & \(27/34/28\) & \texttt{s6b} & 188 & 188 & \(13/14/13\) \\
+\texttt{hop\_2} & 0 & 0 & \(28/28/28\) & \texttt{s6c} & 20 & 20 & \(13/18/1\) \\
+\texttt{s4\_1Post} & 0 & 0 & \(28/28/25\) & \texttt{hop\_7} & 0 & 0 & \(1/1/0\) \\
+\texttt{hop\_3} & 0 & 0 & \(25/26/25\) & \texttt{s7Y} & 92 & 92 & \(0/23/0\) \\
+\texttt{s4\_2} & 172 & 160 & \(25/50/34\) & \texttt{s1B} & 0 & 0 & \(0/0/0\) \\
+\bottomrule
+\end{tabular}
+\caption{Stage-by-stage \(T\)-gate counts and start/peak/end packed ancilla counts in the \(449\)-case trace (with the suffix \texttt{Ops} omitted; \texttt{s1B} is executed twice). Column sums are \(3{,}698\) (reference) and \(3{,}662\) (present work).}
+\label{tab:arcsin-stages}
+\end{table}
+
+\paragraph{External accuracy enclosure and restricted lower bounds (Tier~C).}
+Independently of the universal Lean accuracy theorem \texttt{z25\_satisfies\_abs\_error}, an exhaustive \(128\)-bit Arb pass was run over all \(8{,}388{,}609\) magnitudes (extended by exact oddness to all \(16{,}777{,}217\) signed inputs), in which \(16\) candidates above \(1.04304543162\) ULP were screened and the top two were refined at \(256\)-bit precision. Bound to the final candidate \texttt{StageProofB.lean}, worst-case magnitude \(u = 3{,}932{,}278\) (output integer \(4{,}092{,}728\)) is identified with error \(1.0485006779846463\) ULP against the \(1.048576\) ULP limit (margin \(7.5322 \times 10^{-5}\) ULP).
+
+Surrounding stages are further characterized by two restricted Tier~(C) local tightness analyses and one bounded MILP optimization screen (detailed in Appendix~\ref{app:degree}, and explicitly distinguished from global circuit lower bounds): (i) algebraic degree~\(18\) on wires \(50, 55\) of \texttt{s2a} and \(72, 81\) of \texttt{s6c} is established by an exhaustive \(23\)-bit Boolean M\"obius transform, from which, in the fixed-interface bit-trace model of Appendix~\ref{app:degree}, a forward lower bound of \(4(18-1) = 68\,T\) is deduced for \texttt{s2a} and, via the reverse-direction affine-rank bound \(\deg \le 1 + 12 + \nu\) over the \(12\) added garbage coordinates, a lower bound of \(20\,T\) is deduced for \texttt{s6c} (both attained tightly by the existing tables); (ii) when \(17\) reference products are held fixed in the reverse square \texttt{s5\_2CoreOps} (spanning a \(35\)-dimensional fixed subspace together with the \(9\) input and \(9\) output bits) and intermediates are restricted to the \(39\)-dimensional total reference input/output/product span, \(66\) proper subspaces of the \(4\)-dimensional quotient are screened down to a single eligible hyperplane \(H_0\) on which an algebraic contradiction across all \(7\) nonzero directions is certified by \(4\)-index Pfaffian parity witnesses (\(4{,}554\text{--}5{,}838\) Pfaffians checked across \(18{,}146\) weight-\(\le 2\) assignments per direction), proving \(21\) ANDs necessary within that restricted span; and (iii) in bounded MILP screens of the late-adder carry recurrence (\texttt{scipy.optimize.milp} with the HiGHS backend, relative gap \(0\), \(10\,\mathrm{s}\) limit) with \(39\) scratch slots across \(18\) placements of the \(8\) helper products in \(3\text{--}6\) zero-return bursts, solver infeasibility below \(166\) ANDs is reported (SciPy return code~\(2\), HiGHS model status~\(8\); solver-reported infeasibility without an independently verified proof certificate, paired with a \(200\)-slot positive control in which a checked \(133\)-AND witness is found). Unrestricted circuit minimality and universal qubit lower bounds remain open.
+
+\section{Supplementary Construction II: Parallel GroverFindAll at \texorpdfstring{\((1024,512)\)}{(1024,512)}}
+\label{sec:findall}
+
+In \texttt{GroverFindAll}, the entire \(k\)-element marked set \(S\) must be encoded in the output with probability one for every admissible \(n \ge 1\), \(k \le 2^n\), and \(S \in \mathcal{S}\). Exactly one cell, \((m,k) = (1024,512)\), is claimed by both constructions below, for which an eventual-in-\(n\) uniform-average cost upper bound
+\[
+  \exists n_0,\ \forall n \ge n_0,\quad k \le 2^n \implies
+  \operatorname{AvgOracleCostBound}\bigl(k, \mathcal{C}, P, r\,V_{\mathrm{all}}(n,m,k)\bigr)
+\]
+is proved, where \(V_{\mathrm{all}}(n,m,k) = \frac{\pi}{4}\bigl(\sum_{\ell=1}^k \ell^{-1/2}\bigr)\sqrt{2^n/m}\). Machine-checked asymptotic upper bounds are compared through the certified rationals \(r\) given below; because distinct proofs may carry different slack, the ratio of two upper bounds does not automatically equal the exact ratio of true expected costs.
+
+\subsection{Sign-only Johnson walk and coherent full-occupancy Kraus filters}
+
+Both constructions are built on a width-one collective Johnson walk over subsets \(E \subset [N]\) of cardinality \(|E| = \ell_s m = 1024\) (where ``width-one'' denotes block multiplicity \(\ell_s = 1\), i.e.\ a single \(m\)-slot register block per walk step, matching \texttt{Rkm128kSeg.lS = 1}), grouped into the \(513\) symmetric orbits indexed by occupancy \(j = |E \cap S| \in \{0, \dots, 512\}\). On this \(513\)-dimensional orbital subspace, one discrete reflection-diffusion step \(D_{\mathrm{alt}} Z_S\) (where \(Z_S\) is the marked-set phase reflection and \(D_{\mathrm{alt}}\) is the symmetric Johnson diffusion) is represented by the orthogonal orbital matrix \(U_N\) (\texttt{dAltStepOrbMat (2\^{}n) 1024 512}). Matching the exact upstream sign convention of \texttt{tridiagSkewMat} and \texttt{dAltGenMat} in \texttt{FindAllJohnsonAltStep.lean}, the limiting continuous-time skew-symmetric tridiagonal generator \(G_{\mathrm{walk}}\) as \(N \to \infty\) is defined by superdiagonal entries \((G_{\mathrm{walk}})_{j,j+1} = -b_j\) and subdiagonal entries \((G_{\mathrm{walk}})_{j+1,j} = +b_j\), where
+\[
+  b_j = \sqrt{4(j+1)(m-j)(k-j)} \qquad (0 \le j < k = 512,\; m = 1024).
+\]
+(In the independent limiting script \texttt{enclose.py}, the opposite sign convention \(-G_{\mathrm{walk}} = J_{\mathrm{par}} G_{\mathrm{walk}} J_{\mathrm{par}}\) is used, conjugated by \(J_{\mathrm{par}} = \operatorname{diag}((-1)^j)\); because every diagonal sign mask \(D_t\) and Kraus operator \(K_{0,t}\) is invariant under conjugation by \(J_{\mathrm{par}}\) and \(e_0\) is fixed by \(J_{\mathrm{par}}\), all surviving branch norms, click probabilities, and expected costs are identical under either convention.) For segment~\(t \in \{1, \dots, 24\}\) with dimensionless normalized duration \(s_t = \tau_t \cdot 10^{-9}\) and Lean macro-substep count \(\mathrm{nSub}_t\), exactly \(M_t(N) = \mathrm{nSub}_t \lfloor (\tau_t \lfloor\sqrt{N}\rfloor)/(10^9\,\mathrm{nSub}_t)\rfloor\) discrete walk steps are executed (\texttt{altStepCount}; Appendix~\ref{app:schedules}), so that the finite-\(N\) orbital propagator \(U_N^{M_t(N)}\) converges to \(W_t = \exp(s_t G_{\mathrm{walk}})\) as \(N \to \infty\).
+
+\paragraph{Sign-only refinement (\texttt{Track2Grover.FindAll}).}
+Through a re-optimized \(24\)-segment schedule (Appendix~\ref{app:schedules}) certified in Lean via \(432\) degree-\(28\) Taylor substeps across \(122\) kernel-checked checkpoints (using \(17\) semantic engine modules adapted from DeepMind's \texttt{discoveries} branch with original Google LLC headers retained), the rational upper bound
+\[
+  r_{\mathrm{sign}} = \frac{27{,}014{,}193{,}664}{10^{12}} = \frac{52{,}762{,}097}{1{,}953{,}125{,}000}
+\]
+is proved, whereby the pinned discovery's bound \(r_{\mathrm{ref}} = 6{,}756{,}116{,}497\allowbreak/250{,}000{,}000{,}000 = 27{,}024{,}465{,}988\allowbreak/10^{12}\) is lowered by \(0.038011\%\).
+
+\paragraph{Extension with coherent full-occupancy Kraus filters (\texttt{Track2Weak.FindAllWeak}).}
+To avoid spending late walk segments on amplitude that has already reached full occupancy \(j = 512\), the sign-only walk is augmented with an ancilla flag and \(14\) active weak-measurement filters across the \(24\) stages (developed from weak-measurement search primitives \cite{mizel2009,andres2022}). The archived weak-filter attenuation parameter stored for segment~\(t\) is denoted by \(\widetilde{a}_t \in [0, 1]\) (tabulated in Appendix~\ref{app:schedules}: \(\widetilde{a}_t = 1\) for \(t \le 9\) and \(t = 24\), with \(14\) nontrivial filters \(\widetilde{a}_t \in (0,1)\) at \(t = 10\text{--}23\)). When the separate terminal strong readout after segment~\(24\) is incorporated into a unified recurrence, the effective stage attenuation parameter is defined by
+\[
+  a_t =
+  \begin{cases}
+    \widetilde{a}_t, & 1 \le t \le 23, \\
+    0, & t = 24,
+  \end{cases}
+  \qquad
+  K_{0,t} = \operatorname{diag}(1,\dots,1,a_t), \qquad
+  K_{1,t} = \sqrt{1 - a_t^2}\,|512\rangle\langle 512|,
+\]
+satisfying \(K_{0,t}^\dagger K_{0,t} + K_{1,t}^\dagger K_{1,t} = I\) for all \(t = 1, \dots, 24\). Physically, at each active probe, the \(1024\) marker bits are computed by one parallel oracle call, the flag is rotated by an \(S\)-independent unitary conditioned on the number of \emph{distinct} marked addresses equaling \(512\) while the diagonal sign mask \(D_t\) is applied, the flag is measured, and the marker bits are uncomputed by a second oracle call. Upon a click (\(K_{1,t}\)), the state is projected strictly onto \(E \supseteq S\) and immediate full readout is triggered; upon a no-click (\(K_{0,t}\)), coherence across all bins is preserved with only the \(|512\rangle\) amplitude attenuated.
+
+In the actual finite-\(N\) circuit, the uniform superposition of \(m\)-element subsets is represented in the orbital basis by \(u_N\) (\texttt{u0OrbVecGen (2\^{}n) 1024 512}) with entries \(u_{N,j} = \sqrt{\binom{k}{j}\binom{N-k}{m-j}/\binom{N}{m}}\), obeying \(\|u_N - e_0\|_2 \le 5 \times 10^{-16} \le 10^{-15}\) for all \(n \ge 80{,}000\) (\texttt{vecNorm\_u0OrbVecGen\_sub\_e0\_le}, \texttt{initialError}). The unnormalized continuing-branch orbital state in the finite-\(N\) circuit is propagated according to
+\[
+  x_0^{(N)} = u_N, \qquad
+  x_t^{(N)} = K_{0,t} D_t U_N^{M_t(N)} x_{t-1}^{(N)}, \qquad
+  p_t^{(N)} = (1 - a_t^2)\bigl|\langle 512 \mid D_t U_N^{M_t(N)} x_{t-1}^{(N)}\rangle\bigr|^2,
+\]
+whereas in the \(N \to \infty\) limiting model, \(u_N\) and \(U_N^{M_t(N)}\) are replaced by \(x_0 = e_0\) and \(W_t = \exp(s_t G_{\mathrm{walk}})\). In both models, segment~\(t\)'s walk cost is weighted by the surviving branch mass \(\|x_{t-1}^{(N)}\|^2\), and total single-attempt success probability is given by the sum of all click probabilities \(p^{(N)} = \sum_{t=1}^{24} p_t^{(N)}\) (including the terminal strong read \(p_{24}^{(N)}\) at \(a_{24} = 0\)). Crucially, because the collective Johnson-walk orbit is permutation-symmetric in the hidden set \(S\), the same finite-\(N\) orbital vector recurrence and uniform per-set bounds \((p_*, w_*\sqrt{N} + 24{,}673)\) are satisfied identically for every \(S \in \mathcal{S}\) (\texttt{BatchBound.perSet}); thus no invalid interchange of ratio and expectation is introduced when \(\Theta_S / p_S\) is averaged over \(S \in \mathcal{S}\).
+
+In \texttt{Weak\allowbreak Assembly}, the first attempt is executed unconditionally and independent full restarts upon an incomplete terminal read are controlled by a measured \texttt{qWhile} loop, whereby total expected cost \(\le \Theta_S / p_S\) (\texttt{restart\_cost}) is proved from per-attempt expected cost \(\Theta_S\) and success probability \(p_S > 0\). Within each attempt, survival-weighted branch costs are accounted for in \texttt{Weak\allowbreak Assembly\allowbreak Cost}, \texttt{Weak\allowbreak Assembly\allowbreak Stages}, and \texttt{Weak\allowbreak Assembly\allowbreak TrialCost}, with fixed per-attempt probe and readout overhead bounded by \(24 \cdot 1028 + 1 = 24{,}673\) oracle rounds. In Lean, the deviation \(\|u_N - e_0\|_2\), the finite-\(N\) operator discretization error between \(U_N^{M_t(N)}\) and \(W_t\), and the degree-\(28\) Taylor truncation and rounding errors are all bounded cumulatively across \(163\) macro-substeps at scale \(10^{15}\) (\texttt{WeakCertFlow.lean}, \texttt{WeakCertRun.lean}, distinct from the \(432\) degree-\(28\) substeps of the sign-only certificate and from the independent \(915\)-substep order-\(24\) limiting propagation in \texttt{enclose.py}). The exact Lean numerical certificate and external limiting enclosures are collected in Table~\ref{tab:weak-cert}, certifying via \texttt{Track2Weak.\allowbreak FindAllWeak} that
+\[
+  r_{\mathrm{weak}} = \frac{26{,}768{,}771{,}052}{10^{12}} = \frac{6{,}692{,}192{,}763}{250{,}000{,}000{,}000},
+\]
+by which the pinned discovery's certified upper bound is reduced by \(0.946\%\) (and \(r_{\mathrm{sign}}\) by \(0.908\%\)).
+
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}>{\RA}p{4.8cm}>{\RA}p{6.4cm}c@{}}
+\toprule
+Certified quantity & Exact value / interval & Source \\
+\midrule
+Uniform single-attempt success \(p_S\) & \(p_S \ge p_* = 999{,}995{,}956{,}520 / 10^{12}\) & \texttt{Cert.success12} (A) \\
+Uniform attempt walk cost \(\Theta_{\mathrm{walk}}\) & \(\Theta_{\mathrm{walk}} \le w_*\sqrt{N}\), \(w_* = 28{,}787{,}568{,}698{,}601{,}335{,}334 / 10^{21}\) & \texttt{Cert.weightedCost21} (A) \\
+Fixed per-attempt probe/read overhead & \(\le 24 \cdot 1028 + 1 = 24{,}673\) oracle rounds & \texttt{WeakAssemblyStages} (A) \\
+Final \(L^2\) orbital error pad (seg.~24) & \(\le 35{,}144{,}918 / 10^{15} \approx 3.5145 \times 10^{-8}\) & \texttt{row23.walkPad} (A) \\
+Restart ratio bound \(C_*\sqrt{N}\) (\(n \ge 80{,}000\)) & \(C_* = 28{,}787{,}685{,}101{,}031 / 10^{15}\) & \texttt{Cert.retryUpper15} (A) \\
+Restart gap and \(\sqrt{N}\)-scale slack & \(C_* - w_*/p_* \approx 7.12 \times 10^{-16}\); \(r_{\mathrm{weak}} A - C_* \approx 3.37 \times 10^{-13}\) & \texttt{FiniteFromCutoff} (A) \\
+\midrule
+Limiting retry cost (\texttt{enclose.py}, ord.~24) & \([0.02878768025617972696,\) \(0.02878768025617972697]\sqrt{N}\) & \(915\) substeps (C) \\
+Limiting archived-cont.\ cost (\texttt{enclose.py}) & \([0.02878765476018333366,\) \(0.02878765476018333369]\sqrt{N}\) & \(915\) substeps (C) \\
+\bottomrule
+\end{tabular}
+\caption{Exact numerical certificate for \texttt{Track2Weak.FindAllWeak} at \((1024,512)\), where \(A = V_{\mathrm{all}}(n,1024,512)/\sqrt{N} = (\pi/128)\sum_{\ell=1}^{512} \ell^{-1/2} \approx 1.0754205\). All Tier~(A) bounds hold uniformly across every \(S \in \mathcal{S}\) by orbit symmetry and are certified in Lean via \(163\) degree-\(28\) Taylor substeps (\texttt{WeakCertRun.lean}, \texttt{WeakCertBudget.lean}). Tier~(C) intervals are produced by independent order-\(24\) rational propagation at scale \(10^{26}\) (\texttt{enclose.py}, \texttt{refine\_placement0\_enclosure.json}; full \(42\)-digit endpoints archived).}
+\label{tab:weak-cert}
+\end{table}
+
+\paragraph{Finite cutoff and asymptotic regime (\(n \ge 80{,}000\) inherited engine threshold).}
+The \(n \ge 80{,}000\) activation threshold (\texttt{altN0 := 80000}) is inherited directly from the finite-\(N\) Johnson-walk error lemmas of the upstream-derived engine (\texttt{FindAllJohnsonAltStep.lean} and \texttt{Rk128kEngine.lean}), so \(n < 80{,}000\) is routed to the exact \texttt{Stage1} fallback across all three walks (the pinned discovery, the sign-only walk, and \texttt{weakChosenBatch}). Although the public existential theorem \texttt{groverFindAll\_rel\_cost} in \texttt{FindAllWeak.lean} invokes the crude proof witness \(n_0 = \max(\lceil (10^{16}\cdot 24{,}673)^2\rceil, 80{,}000)\) constructed in \texttt{WeakAssemblyCell.lean} (\texttt{normalized\_batch\_cost} and \texttt{routedBatch\_rel\_cost}), absorbing the fixed overhead \(24{,}673\) inside the \(7.12 \times 10^{-16}\) restart rounding margin requires only \((10^{16}\cdot 24{,}673)^2 \le 2^{140} \le 2^n\), for which \(n \ge 140\) suffices (\texttt{FiniteFromCutoff.finite\_normalized}). Consequently, the claimed ratio is established uniformly for every \(n \ge 80{,}000\) by the companion theorem:
+
+\begin{proposition}[Uniform weak-filter bound for all \(n \ge 80{,}000\); Tier~A]
+\label{prop:findall-80000}
+By the companion theorem \texttt{Quantum\allowbreak Computation.\allowbreak Specs.\allowbreak grover\allowbreak FindAll\_\allowbreak cost\_\allowbreak from\_\allowbreak 80000} (\texttt{Finite\allowbreak FromCutoff.lean}, verified inside the \(111\)-module \texttt{leanchecker} replay), for every \(n \in \mathbb{N}\) satisfying \(80{,}000 \le n\),
+\[
+  \operatorname{AvgOracleCostBound}\Bigl(512,\, S \mapsto \mathcal{C}_S,\, S \mapsto P^{\mathrm{weak}}_{n,S},\, r_{\mathrm{weak}}\,V_{\mathrm{all}}(n, 1024, 512)\Bigr)
+\]
+is proved, where \(P^{\mathrm{weak}}_{n,S}\) denotes \texttt{grover\allowbreak FindAll\allowbreak Program}~\(n\,1024\,512\) applied to \texttt{grover\allowbreak Parallel\allowbreak Marking\allowbreak Oracle}~\(1024\,S\) and \(r_{\mathrm{weak}} = 26{,}768{,}771{,}052 / 10^{12}\).
+\end{proposition}
+
+Because \(n = 80{,}000\) corresponds to a search space of \(N = 2^{80{,}000} \approx 2.5 \times 10^{24{,}082}\) items and \(1024(80{,}000 + 1) = 81{,}921{,}024\) logical qubits are already required for the oracle slots alone before additional workspace, these Johnson-walk protocols are asymptotically motivated constructions with finite guarantees above an astronomically large cutoff, by which no practical speedup at realistic problem sizes is yielded.
+
+\subsection{External \textrm{GR0} comparison and unformalized limiting candidate}
+
+Three logically distinct claims must be kept separate: (i) probability-one correctness for all admissible \(n \ge 1\) via the exact \texttt{Stage1} fallback below \(80{,}000\); (ii) the uniform finite-\(n\) relative-cost theorem relative to \(V_{\mathrm{all}}(n,1024,512)\) for every \(n \ge 80{,}000\) (Proposition~\ref{prop:findall-80000}); and (iii) asymptotic coefficient comparison against the external \textrm{GR0} baseline. While the primary machine-checked comparison is directly between the exact rationals \(r_{\mathrm{ref}}\), \(r_{\mathrm{sign}}\), and \(r_{\mathrm{weak}}\), in an external \(256\)-bit Arb evaluation of the \textrm{GR0} cap model its asymptotic relative coefficient \(g_{\mathrm{GR0}}\) is enclosed in \([0.06957627832198676185,\, 0.06957627832198676734]\) (Tier~C; the reference schedule was not independently re-derived from \cite{shirobokov2026}, Appendix~E). When the lower endpoint \(g_{\mathrm{GR0},-}\) is divided by the positive Lean upper bounds, conservative \emph{asymptotic} coefficient ratios of at least \(2.57554525548\times\) (sign-only) and \(2.599158481606\times\) (weak filters, \(+0.955\%\) over the reference \(2.574566\times\) via \(r_{\mathrm{ref}}/r_{\mathrm{weak}}-1\)) are obtained; no finite-\(n\) lower bound on the actual cost of \textrm{GR0} is claimed. Outward-rounded upper bounds on \(10^{12}r\) from two unformalized limiting numerical enclosures (\texttt{refine\_placement0\_enclosure.json}) are also recorded in Table~\ref{tab:findall}; in the archived-continuation policy, partial terminal reads are retained without a finite-circuit Lean proof.
+
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}>{\RA}p{7.8cm}rl@{}}
+\toprule
+Construction and evidence & \(10^{12}r\) & Asymptotic ext.\ \textrm{GR0} factor \\
+\midrule
+Pinned discovery \cite{shirobokov2026}, Lean upper bound (\(n \ge 80{,}000\)) & \(27{,}024{,}465{,}988\) & \(\ge 2.574566\times\) \\
+Sign-only walk, Lean upper bound (\(n \ge 80{,}000\)) & \(27{,}014{,}193{,}664\) & \(\ge 2.57554525548\times\) \\
+Weak filters + restart, Lean upper bound (all \(n \ge 80{,}000\)) & \(26{,}768{,}771{,}052\) & \(\ge 2.599158481606\times\) \\
+\midrule
+Weak filters + restart, \texttt{enclose.py} upper bound (Tier~C)\textsuperscript{\ddag} & \(26{,}768{,}766{,}547\) & \(2.599158919027\times\) \\
+Weak filters + archived cont., \texttt{enclose.py} upper bound (Tier~C)\textsuperscript{\ddag} & \(26{,}768{,}742{,}839\) & \(2.599161\times\) \\
+\bottomrule
+\end{tabular}
+\caption{Single-cell \((1024,512)\) relative-cost upper bounds and externally derived asymptotic \textrm{GR0} coefficient ratios (\(g_{\mathrm{GR0},-} / r\)). Finite-circuit Lean~4.35.0 proofs are carried only by the rows above the rule (all three share the \(n \ge 80{,}000\) engine cutoff). \textsuperscript{\ddag}Outward-rounded upper bounds on \(10^{12}r\) (\texttt{retry\_ratio\_rational\_n12}, \texttt{incumbent\_ratio\_rational\_n12}) derived from the limiting cost intervals of Table~\ref{tab:weak-cert}; not finite-circuit Lean proofs.}
+\label{tab:findall}
+\end{table}
+
+\FloatBarrier
+\section{Verification architecture, reproducibility, and pure-AI provenance}
+\label{sec:ai-provenance}
+
+\subsection{Verification inventory, claim map, and file-count reconciliation}
+
+All Lean proofs were compiled and replayed with the pinned isolated toolchain:
+\begin{center}\footnotesize\texttt{Lean (version 4.35.0, x86\_64-w64-windows-gnu, commit eb6cafb7290e, Release)}\end{center}
+with binary SHA-256 prefixes \texttt{ec7a472d\allowbreak 1c12a09b} (\texttt{lean.exe}) and \texttt{9ef6baeb\allowbreak 28d5e288} (\texttt{lean\allowbreak checker.exe}). Both upstream reference checkouts (\texttt{main} at \texttt{489edc70\allowbreak 39aa4cdd\allowbreak ed53724b\allowbreak 39ea90e3\allowbreak 3d2c88b4} and \texttt{discoveries} at \texttt{a88de8ff\allowbreak 65d78af5\allowbreak 64b23730\allowbreak 88ca369d\allowbreak c95f6547}) remained unmodified throughout, as verified by recursive byte comparison across all \(57\) core \texttt{Quantum\allowbreak Computation} source files and all \(15\) \texttt{Quantum\allowbreak Computation\allowbreak Specs} files (\(7\) \texttt{.lean} sources, \(7\) challenge JSONs, and \texttt{ChallengeJsons/README.md}).
+
+The final verification state across all five project-module suites (counting verified project modules, excluding Mathlib and Core dependencies) is summarized in Table~\ref{tab:verification}, and the direct mapping from headline paper claims to exact fully qualified Lean declarations, entry files, and archived receipts is presented in Table~\ref{tab:claim-map}. Across all five suites, exactly \(288\) Lean~4.35.0 project modules were replayed by \texttt{leanchecker.exe} (\(31 + 20 + 117 + 111 + 9 = 288\); in \texttt{Track2Weak}, the \(111\) replayed project modules comprise the \(109\) modules in the transitive project closure of \texttt{FindAllWeak} plus the \(2\) companion modules \texttt{FiniteFromCutoff} and \texttt{WeakAssemblyControl}, listed individually in \texttt{track2weak\_clean\_all\_leanchecker.json}). Exactly \(279\) \texttt{.lean} files are staged in the companion archive because in Track~3 (\(20\) replayed project modules: \(16\) arcsine modules plus \texttt{Track3Audit}, \texttt{ExactCount}, \texttt{ExactPublic}, and \texttt{DisjointWitness}), the \(11\) unmodified byte-identical upstream arcsine modules are omitted rather than duplicated while \(2\) standalone helper scripts (\texttt{CompareFrozen.lean} and \texttt{ReplacementTables.lean}, separate from the \(20\) replayed proof modules) are included (\(20 - 11 + 2 = 11\), giving \(31 + 11 + 117 + 111 + 9 = 279\)).
+
+Zero occurrences of forbidden escape hatches (\texttt{sorry}, \texttt{admit}, \texttt{native\_decide}, \texttt{axiom}, \texttt{unsafe}, \texttt{implemented\_by}, \texttt{extern}, \texttt{ofReduceBool}, \texttt{trustCompiler}; kernel-checked \texttt{decide +kernel} occurs in \(144\) files) are confirmed by comment-stripped static token scans across all \(279\) staged \texttt{.lean} files, and zero occurrences of \texttt{sorryAx} appear in any archived receipt. Interface fidelity was verified via in-house comparison scripts (\texttt{CompareFrozen.lean}: \(25/25\) frozen arcsine declarations matched; \texttt{interface.py}: \(16/16\) checks on \texttt{FindAny} (\(9\) public types + \(7\) fixed bodies), and \(18/18\) literal public \texttt{FindAll} declaration types with \(11/11\) normalized / \(10/11\) raw model bodies matched, differing only in one compiler-generated hygiene instance name in \texttt{AvgOracleCostBound}; four harmless \texttt{unusedVariables} warnings are emitted in \texttt{FindAllWeak.lean}). The upstream \texttt{lake comparator} driver \cite{comparator2026} over \texttt{ChallengeJsons} was not executed locally because it relies on Linux sandboxing (\texttt{bwrap}/\texttt{landrun}), which is unavailable on this Windows workstation (WSL is disabled; instructions for running it on Linux against the release patch are provided in the archive \texttt{README.md}). Independent of Lean's C++ kernel, all five flagship theorems of \texttt{FindAnyLowerBound} (\texttt{finite}, \texttt{actual\_\allowbreak expected\_\allowbreak rounds}, \texttt{asymptotic\_\allowbreak real}, \texttt{no\_\allowbreak smaller\_\allowbreak rational}, \texttt{exact\_\allowbreak infimum}) and the four public theorems of \texttt{TighterFindAny} were exported via \texttt{leanexport} (format~3.1.0) and accepted with zero errors by two independent third-party kernels: \texttt{nanoda} 0.4.19 (Rust; \(49{,}235\) and \(46{,}246\) declarations checked, strictly enforcing \(\{\texttt{propext},\allowbreak\,\texttt{Classical.choice},\allowbreak\,\texttt{Quot.sound}\}\)) and \texttt{con-ron --verified} (\(47{,}256\) and \(44{,}302\) declarations accepted; archived in \texttt{receipts/\allowbreak external\_\allowbreak checkers/}).
+
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}>{\RA}p{4.6cm}rr>{\RA}p{4.9cm}@{}}
+\toprule
+Project-module suite & Modules & \texttt{leanchecker} & Interface, staged files \& notes \\
+\midrule
+Track~2B/C: \texttt{FindAny\allowbreak LowerBound} + \texttt{Tighter\allowbreak FindAny} & \(31\) & \(31/31\) exit~\(0\) & Direct import of frozen spec + \(16/16\) match (9 types, 7 bodies); \(31\) staged \\
+Track~3: \texttt{Arcsin} (\(16\)) + audit + exact + witness & \(20\) & \(20/20\) exit~\(0\) & \(25/25\) frozen decls matched; \(11/16\) upstream identical; \(9\) proof + \(2\) helper scripts staged \\
+Track~2A: \texttt{FindAll} (sign-only) & \(117\) & \(117/117\) exit~\(0\) & \(18/18\) interface match; \(117\) staged \\
+Track~2W: \texttt{Track2Weak} (weak filters) & \(111\) & \(111/111\) exit~\(0\) & \(18/18\) literal types, \(11/11\) norm.\ bodies; \(109\) closure + \(2\) companion modules; \(111\) staged \\
+Track~1: \texttt{Track1THC} (App.~\ref{app:thc}, partial) & \(9\) & \(9/9\) exit~\(0\) & \(0/7\) def.\ holes + \(0/2\) thms; no separate agent audit; \(9\) staged \\
+\midrule
+\textbf{Total} & \textbf{\(288\)} & \textbf{\(288/288\) exit~\(0\)} & \(279\) staged \texttt{.lean}; std.\ axioms only \\
+\bottomrule
+\end{tabular}
+\caption{Final verification inventory across all five Lean~4.35.0 project-module suites (excluding Mathlib/Core). Standard axioms denote subsets of \(\{\texttt{propext},\allowbreak\,\texttt{Classical.choice},\allowbreak\,\texttt{Quot.sound}\}\). Track~2A records \(117/117\) exit-\(0\) replays across \texttt{findall\_replay\_manifest.json} (\(17\) engine modules, \(96\) trajectory modules, and \(4\) entry/data logs); Track~3 (\(16\)-module replay plus \(4\) standalone replays) and Track~2W (\(111\)-module namespace replay in \texttt{track2weak\_clean\_all\_leanchecker.json}) record aggregate \texttt{leanchecker} exit~\(0\); Track~2B/C (\texttt{findany\_replay\_manifest.json}) and Track~1 record per-module receipts.}
+\label{tab:verification}
+\end{table}
+
+\begin{table}[htbp]
+\centering\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}>{\RA}p{2.9cm}>{\RA}p{5.2cm}>{\RA}p{3.1cm}>{\RA}p{3.9cm}@{}}
+\toprule
+Paper claim & Declaration (with namespace prefix)\textsuperscript{\dag} & Entry file & Archived receipt (\texttt{receipts/}) \\
+\midrule
+Thm.~\ref{thm:findany-finite} (finite \& actual rounds) & \texttt{FA.finite}, \texttt{FA.actual\_\allowbreak expected\_\allowbreak rounds} & \texttt{FindAny\allowbreak LowerBound.lean} & \texttt{track2\_grover/\allowbreak findany\_\allowbreak replay\_\allowbreak manifest.json} \\
+Thm.~\ref{thm:findany-asymp} (infimum \(1/2+1/\pi\)) & \texttt{FA.asymptotic\_\allowbreak real}, \texttt{FA.no\_\allowbreak smaller\_\allowbreak rational}, \texttt{FA.exact\_\allowbreak infimum} & \texttt{FindAny\allowbreak LowerBound.lean} & \texttt{track2\_grover/\allowbreak Track2Grover.\allowbreak FindAny\allowbreak LowerBound\_\allowbreak checker.log} \\
+Thm.~\ref{thm:arcsin}(1)--(2) (correctness, \(366{,}200\)) & \texttt{QCS.arcsin\_\allowbreak correctness}, \texttt{QCS.arcsin\_\allowbreak k25\_\allowbreak const\_\allowbreak cost} & \texttt{Primitives/\allowbreak Arcsin.lean} & \texttt{track3\_arcsin/\allowbreak track3\_\allowbreak leanchecker\_\allowbreak final.json} \\
+Thm.~\ref{thm:arcsin}(3)--(4) (exact count, witness) & \texttt{QCS.ArcsinImpl.\allowbreak ExactAudit.\allowbreak exactPublicK25}, \texttt{exactPublicK25\_\allowbreak nonvacuous} & \texttt{ExactPublic.lean}, \texttt{Disjoint\allowbreak Witness.lean} & \texttt{track3\_arcsin/\allowbreak track3\_\allowbreak exact\_\allowbreak public\_\allowbreak leanchecker.json}, \texttt{track3\_\allowbreak disjoint\_\allowbreak witness\_\allowbreak leanchecker.json} \\
+\S\ref{sec:findall} sign-only (\(27{,}014{,}193{,}664\allowbreak/10^{12}\)) & \texttt{QCS.groverFindAll\_\allowbreak rel\_\allowbreak cost} (\texttt{Track2Grover} pkg.) & \texttt{Track2Grover/\allowbreak FindAll.lean} & \texttt{track2\_grover/\allowbreak findall\_\allowbreak replay\_\allowbreak manifest.json} \\
+\S\ref{sec:findall} \& Prop.~\ref{prop:findall-80000} (weak, \(n \ge 80{,}000\)) & \texttt{QCS.groverFindAll\_\allowbreak rel\_\allowbreak cost}, \texttt{QCS.grover\allowbreak FindAll\_\allowbreak cost\_\allowbreak from\_\allowbreak 80000} (\texttt{Track2Weak} pkg.) & \texttt{FindAll\allowbreak Weak.lean}, \texttt{Finite\allowbreak FromCutoff.lean} & \texttt{track2\_weak/\allowbreak track2weak\_\allowbreak clean\_\allowbreak all\_\allowbreak leanchecker.json} \\
+\bottomrule
+\end{tabular}
+\caption{Claim-to-declaration map linking headline Tier~(A) results to fully qualified Lean~4.35.0 declarations, entry files, and exact archived \texttt{leanchecker} receipts in the companion release. \textsuperscript{\dag}Namespace prefixes: \texttt{FA} \(=\) \texttt{Track2Grover.FindAnyLowerBound}, \texttt{QCS} \(=\) \texttt{QuantumComputation.Specs}. Note that \texttt{QCS.groverFindAll\_rel\_cost} is declared independently in the two separate packages \texttt{Track2Grover} and \texttt{Track2Weak}.}
+\label{tab:claim-map}
+\end{table}
+
+\FloatBarrier
+\subsection{Pure-AI provenance and role separation}
+
+In this manuscript, \textbf{purely AI-generated research} directed, scoped, and curated by the human author (Robert Kadlec, Masaryk University, Brno) is reported; this paper is part of a broader research project in which the respective competencies of humans and large language models are investigated. All new contributions introduced here are covered by this provenance---as distinct from the unmodified upstream \texttt{Quantum\allowbreak Computation} and \texttt{Quantum\allowbreak Computation\allowbreak Specs} libraries and the \(32\) upstream-derived Google LLC files retaining verbatim Apache-2.0 headers plus one partial module (\texttt{Track1THC/LCU.lean}) attributing upstream lemmas in its docstring (\(33\) staged files referencing Google LLC in total, documented in \texttt{NOTICE}). No new mathematical proof, circuit table, Lean module, verification script, or paragraph of prose was manually written by the human author, by whom full scholarly responsibility for the integrity, accuracy, and publication of all reported results is assumed. All technical execution and adversarial refereeing were delegated to AI agents operating under strict role separation and read-only upstream boundaries:
+\begin{itemize}
+\item \emph{Coordinator and exploratory analyst (Antigravity / Gemini):} environment isolation, initial bit-parallel \texttt{Op102} simulation, symplectic \texttt{hGadget} decomposition, ancilla liveness profiling, HJB optimality analysis for \texttt{GroverFindAny}, dedicated same-kernel \texttt{leanchecker} replays, \texttt{DisjointWitness.lean}, surgical patch generation, manuscript assembly, and release packaging.
+\item \emph{Synthesis and formalization agent (OpenAI Codex CLI v0.171.0, \texttt{gpt-6.2-astra}):} GF(2) polar-matrix gadget synthesis, rank-one square compression, \texttt{ExactPublic}, the complete formal optimality proof \texttt{FindAny\allowbreak LowerBound}, both \texttt{GroverFindAll} Lean implementations (sign-only and coherent weak-measurement Kraus filters), Arb enclosures, and local lower-bound computations.
+\item \emph{Independent read-only adversarial refereeing and Appendix~\ref{app:thc} authorship (Anthropic Claude Code CLI v2.1.331--332; OpenAI ChatGPT Web \texttt{6 Pro}):} initial read-only audits of Tracks~2 and~3, \texttt{Track2Weak}, and the release bundle (never auditing code authored by itself), independent exact-fraction and \(70\)-digit numerical recomputations, and formalization of the \(9\) partial \texttt{Track1THC} modules (which therefore received no separate agent audit) under Claude Code's \texttt{sonnet} alias (November~25, 2026), followed by multi-round read-only manuscript-vs-Lean cross-audits under \texttt{claude-fable-5-2} at \texttt{xhigh} effort and independent PDF mathematical refereeing via ChatGPT Web \texttt{6 Pro} (November~26, 2026).
+\end{itemize}
+
+For Tier~(A) and Tier~(B) claims, no unchecked LLM output is accepted as a formal proof: every formal statement is backed by the machine-checked Lean~4.35.0 proofs and archived \texttt{lean\allowbreak checker} receipts. Tier~(C) claims are supported independently by the explicitly identified external Arb and rational Taylor enclosures, finite Boolean M\"obius, Pfaffian, and MILP computations, and restricted-model paper arguments. Human peer review has not yet been performed on this preprint. Full disclosure, excluded-file inventories (\texttt{EXCLUDED.md}), and detailed audit trails are provided in the supplementary file \texttt{AI\_DISCLOSURE\_AND\_PROVENANCE.md}.
+
+\subsection{Artifact availability, reproduction, and open problems}
+
+All \(279\) staged \texttt{.lean} files, the surgical \(5\)-file \texttt{arcsin\_\allowbreak 366200.patch} (verified via \texttt{git apply --check} against \texttt{discoveries} \texttt{a88de8ff}), final \texttt{leanchecker} logs, interface JSONs, archived Arb/Python audit-trail scripts and witnesses (including \texttt{partitions.py}, \texttt{lib.py}, \texttt{rank\_\allowbreak updates.py}, \texttt{followup.py}, \texttt{pfaffian\_\allowbreak witness.\allowbreak json}, and \texttt{recon\_\allowbreak input.py}; see \texttt{lean/\allowbreak track3\_\allowbreak arcsin/\allowbreak scripts/\allowbreak README.md} for remaining workspace path dependencies), \texttt{.gitattributes} (\texttt{* -text} for cross-platform byte-exact checksum preservation), and a complete \texttt{SHA256SUMS.txt} manifest are packaged in the companion release (version \texttt{1.0.0}, reserved on Zenodo at \url{https://doi.org/10.5281/zenodo.24545553} with all-versions DOI \url{https://doi.org/10.5281/zenodo.24545552}, activated upon public release of the Zenodo record; Apache-2.0 for all Lean sources, patches, and scripts, retaining original Google LLC copyright attributions across all \(33\) upstream-referencing files as itemized in \texttt{NOTICE}; CC~BY~4.0 for manuscript and documentation).
+
+Independent reproduction of \texttt{Arcsin\allowbreak K25\allowbreak ConstCost} is carried out by checking out \texttt{google-\allowbreak deepmind/\allowbreak formal-\allowbreak quantum-\allowbreak computation} at \texttt{discoveries} (\texttt{a88de8ff}), applying \texttt{patches/\allowbreak arcsin\_\allowbreak 366200.patch}, and running \texttt{lake build}, \texttt{lake env lean\allowbreak checker}, the interface script \texttt{Compare\allowbreak Frozen.\allowbreak lean} (or upstream \texttt{lake \allowbreak comparator}), and the standalone checks for \texttt{Exact\allowbreak Count}, \texttt{Exact\allowbreak Public}, and \texttt{Disjoint\allowbreak Witness}. Three open problems remain directly accessible from this artifact: (i) lowering \texttt{Arcsin\allowbreak K25} below \(100\) logical qubits via cross-stage rescheduling of the eight \(50\)-ancilla peaks; (ii) extending weak-measurement filters across the remaining \(120\) \texttt{Grover\allowbreak FindAll} grid cells, lowering the \(n \ge 80{,}000\) engine cutoff, and proving an information-theoretic lower bound for \texttt{Grover\allowbreak FindAll}; and (iii) completing the circuit half of \texttt{THC\allowbreak Factorization} on top of Appendix~\ref{app:thc}.
+
+\appendix
+
+\section{Exact parameters of the 24-segment \texttt{GroverFindAll} schedules}
+\label{app:schedules}
+
+In both single-cell \((1024,512)\) schedules of Section~\ref{sec:findall}, \(24\) width-one (\(\ell_s = 1\), \(|E| = 1024\)) segments are executed on the collective Johnson walk. The dimensionless normalized walk time \(s_t = \tau_t \cdot 10^{-9}\)---corresponding to the \(\sqrt{N}\)-scaled continuous walk duration \(s_t\sqrt{N} = \tau_t \cdot 10^{-9}\sqrt{N}\)---is specified by each integer entry \(\tau_t\) (\(t = 1,\dots,24\)). In the finite-\(N\) Lean circuits, each segment~\(t\) with macro-substep count \(\mathrm{nSub}_t\) is converted into an exact integer number of discrete walk iterations by the floor rule \texttt{altStepCount} (\texttt{FindAllJohnsonAltStep.lean}):
+\[
+  M_t(N) \;=\; \mathrm{nSub}_t \left\lfloor \frac{\tau_t \lfloor\sqrt{N}\rfloor}{10^9\,\mathrm{nSub}_t} \right\rfloor.
+\]
+Across the \(24\) segments, \(\sum_{t=1}^{24} \mathrm{nSub}_t = 432\) macro-substeps are used in the Lean degree-\(28\) Taylor certificate for the sign-only proof (\texttt{Track2Grover.FindAll}), and \(\sum_{t=1}^{24} \mathrm{nSub}_t = 163\) macro-substeps are used in the weak-filter proof (\texttt{WeakCertRun.lean}, with \(\mathrm{nSub}_1,\dots,\mathrm{nSub}_{24} = 62, 67, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 5\)).
+
+After each segment, a \(513\)-bit weight sign mask is applied: in the companion JSON files (\texttt{masks\_le\_hex}), each mask is stored as a \(65\)-byte (\(130\)-hex-character) little-endian integer (\texttt{int.from\_bytes(bytes.fromhex(h), "little")}), where occupancy bin~\(\beta \in \{0,\dots,512\}\) (byte \(\lfloor \beta/8\rfloor\), bit \(\beta \bmod 8\)) is negated when bit~\(\beta\) is set, and the upper seven padding bits \(513\text{--}519\) of byte~\(64\) are unused and zero (in both archived schedules, byte~\(64\) is \texttt{0x00}, so bit~\(512\) is also unset throughout). In the weak-filter schedule, each sign mask is followed by a full-occupancy Kraus check whose archived no-click amplitude parameter is \(\widetilde{a}_t = \text{num}_t / 10^9 \in [0, 1]\) (identity when \(\text{num}_t = 10^9\), i.e.\ segments \(1\text{--}9\) and \(24\); \(14\) active nontrivial filters at segments \(10\text{--}23\)). Following the final identity weak filter (\(\widetilde{a}_{24} = 1\)) at segment~\(24\), a separate terminal strong readout is executed, which is represented in the unified recurrence of Section~\ref{sec:findall} and in \texttt{WeakCertRun.lean} (\texttt{row23.atten = 0}) by the effective parameter \(a_{24} = 0\).
+
+Schedules were discovered by iterative segment splitting and backward-adjoint retiming of the orbital walk objective, followed by greedy binary sign updates and gradient optimization of the survival-weighted measured cost-to-go. Independently of floating-point search, the limiting continuous-time walk quantities were enclosed via outward-rounded exact integer Taylor propagation (\texttt{enclose.py}, Taylor order~\(24\), \(915\) substeps, scale \(10^{26}\), Tier~C) before formalization of the finite-\(N\) degree-\(28\) Lean~4.35.0 proofs (Tier~A). All \(24\) durations and all \(24\) archived attenuation numerators \(10^9 \widetilde{a}_t\) are listed in Table~\ref{tab:schedules}; the full \(65\)-byte hex sign masks are archived verbatim in \texttt{kicks24.json} (SHA-256 \texttt{ad0f3a1a\allowbreak dba5eff9\allowbreak c5aefea6\allowbreak fef7f90c\allowbreak fd6b857a\allowbreak b46279e0\allowbreak f3224730\allowbreak 7e664f7e}) and \texttt{refine\_placement0.json} (SHA-256 \texttt{8c99446f\allowbreak 731408d6\allowbreak 67818747\allowbreak c6319f4a\allowbreak ac2c2d2c\allowbreak bddffc2d\allowbreak 8df2adaf\allowbreak 8feaaf58}).
+
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}rrrr@{\qquad}rrrr@{}}
+\toprule
+Seg. & Sign-only \(\tau_t\) & Weak \(\tau_t\) & Weak \(10^9 \widetilde{a}_t\) &
+Seg. & Sign-only \(\tau_t\) & Weak \(\tau_t\) & Weak \(10^9 \widetilde{a}_t\) \\
+\midrule
+1  & 12{,}821{,}058 & 12{,}720{,}755 & 1{,}000{,}000{,}000 & 13 &    65{,}182 &   127{,}379 &   764{,}201{,}123 \\
+2  & 13{,}747{,}829 & 13{,}875{,}167 & 1{,}000{,}000{,}000 & 14 &    40{,}397 &   129{,}011 &   834{,}019{,}056 \\
+3  &     92{,}406 &    373{,}513 & 1{,}000{,}000{,}000 & 15 &   137{,}815 &    46{,}142 &   916{,}974{,}644 \\
+4  &     65{,}722 &    170{,}424 & 1{,}000{,}000{,}000 & 16 &        100 &    56{,}478 &   903{,}538{,}624 \\
+5  &    129{,}303 &    137{,}205 & 1{,}000{,}000{,}000 & 17 &    30{,}741 &    56{,}630 &   915{,}327{,}669 \\
+6  &    122{,}231 &    188{,}284 & 1{,}000{,}000{,}000 & 18 &   228{,}337 &    37{,}059 &   911{,}809{,}418 \\
+7  &     14{,}548 &    169{,}485 & 1{,}000{,}000{,}000 & 19 &        472 &    55{,}214 &   824{,}068{,}230 \\
+8  &    129{,}661 &    207{,}325 & 1{,}000{,}000{,}000 & 20 &   209{,}872 &   123{,}114 &   608{,}644{,}063 \\
+9  &     16{,}328 &    242{,}404 & 1{,}000{,}000{,}000 & 21 &   291{,}357 &   371{,}610 &   464{,}745{,}164 \\
+10 &    114{,}245 &    205{,}999 &   881{,}826{,}710 & 22 &        100 &   417{,}762 &   368{,}423{,}142 \\
+11 &     31{,}763 &     76{,}765 &   842{,}867{,}478 & 23 &   369{,}114 &   633{,}308 &   331{,}827{,}239 \\
+12 &     78{,}933 &    134{,}879 &   786{,}860{,}383 & 24 &   300{,}014 &   897{,}029 & 1{,}000{,}000{,}000\textsuperscript{*} \\
+\bottomrule
+\end{tabular}
+\caption{Exact integer time numerators \(\tau_t\) (defining dimensionless normalized times \(s_t = \tau_t \cdot 10^{-9}\) and \(\sqrt{N}\)-scaled durations \(s_t\sqrt{N}\), width \(\ell_s = 1\) throughout) and archived weak-filter no-click amplitude numerators \(10^9 \widetilde{a}_t\) for the \(24\)-segment sign-only (\texttt{kicks24.json}) and weak-filter (\texttt{refine\_placement0.json}) schedules at \((1024,512)\). At segments \(10\text{--}23\), the \(14\) nontrivial Kraus attenuations \(a_t = \widetilde{a}_t \in (0, 1)\) are applied. \textsuperscript{*}At segment~\(24\), the archived weak filter is the identity (\(\widetilde{a}_{24} = 1\)), immediately followed by a separate terminal strong readout modeled by \(a_{24} = 0\) (\texttt{row23.atten = 0} in \texttt{WeakCertRun.lean}).}
+\label{tab:schedules}
+\end{table}
+
+\FloatBarrier
+\section{Partial foundations for the open \texttt{THC\allowbreak Factorization} challenge}
+\label{app:thc}
+
+The \texttt{THC\allowbreak Factorization} specification in \texttt{Quantum\allowbreak Computation\allowbreak Specs} (absent from \texttt{discoveries}) remains unsolved: \(0/7\) frozen candidate definition holes (\texttt{thcBlock\allowbreak Ancillas}, \texttt{thcScratch\allowbreak Ancillas}, \texttt{thcCatalyst\allowbreak Qubits}, \texttt{thcCandidate\allowbreak Alpha}, \texttt{thcCandidate\allowbreak Offset}, \texttt{thcCandidate\allowbreak Program}, \texttt{thcTCost}) and \(0/2\) public theorems (\texttt{thc\_\allowbreak correctness}, \texttt{thc\_\allowbreak t\_cost}) are filled, and no certified resource estimates for FeMoco are claimed.
+
+To support future formalization, nine standalone Lean~4.35.0 foundation modules (\texttt{Track1\allowbreak THC}, \(1{,}956\) lines total; Table~\ref{tab:thc}) are archived in the companion release. Per-module \texttt{lean\allowbreak checker.exe} replay is passed by all nine modules (\(9/9\) exit~\(0\), standard axioms only). Because these modules were authored by Claude Code (with Parts~1--3 and~5 of \texttt{JWAlgebra} adapted from upstream \texttt{JordanWignerOrbitalAlgebra.lean} and upstream \texttt{blockSplit*} lemmas adapted in \texttt{LCU}), no separate adversarial audit by a second agent was conducted on them.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{@{}lr>{\RA}p{9.2cm}@{}}
+\toprule
+Module (\texttt{Track1THC.*}) & Lines & Verified mathematical or circuit-algebra content \\
+\midrule
+\texttt{Alias}          & 147 & Exact integer Walker--Vose alias decomposition (\texttt{alias\_exists}). \\
+\texttt{JWAlgebra}      & 567 & Upstream-adapted orbital reflections (Parts~1--3, 5) + new Jordan--Wigner CAR \(\{a_i, a_j^\dagger\} = \delta_{ij} I\) (Part~6, absent upstream). \\
+\texttt{Centering}      & 203 & Centered THC decomposition matching frozen 1-norm \texttt{lamRep}. \\
+\texttt{LCUa}           &  33 & Existence of a unitary with prescribed real unit first column. \\
+\texttt{LCU}            & 255 & Abstract qubitized block-encoding existence (\texttt{lcu\_blockEncoding}; adapts upstream \texttt{blockSplit*} lemmas). \\
+\texttt{Select}         & 101 & Involutive \texttt{swapSelect} for non-commuting reflection products. \\
+\texttt{CleanOps}       & 397 & Clean/catalytic composition, additive \(\mathrm{TOFF}=0\)/\(T\) algebra, lifted Jones-AND. \\
+\texttt{CatalyticRot}   & 168 & Exact eigenvector kickback on frozen \texttt{phaseGradientState}. \\
+\texttt{CliffordGadgets}&  85 & Clean single-qubit gates, zero-\(T\) \texttt{CZ}, and clean Toffoli chains. \\
+\bottomrule
+\end{tabular}
+\caption{Partial Lean~4.35.0 foundation modules for \texttt{THC\allowbreak Factorization} (\(1{,}956\) lines total, \(9/9\) \texttt{leanchecker} exit~\(0\), \(0/7\) frozen definition holes and \(0/2\) public theorems filled).}
+\label{tab:thc}
+\end{table}
+
+\FloatBarrier
+\section{Fixed-interface bit-trace lower bounds and restricted checks (Tier~C)}
+\label{app:degree}
+
+Self-contained fixed-interface proofs for \texttt{s2a} and \texttt{s6c}, together with the algebraic reduction and exact certificate specifications for the archived Pfaffian obstruction and bounded MILP screen cited in Section~\ref{sec:arcsin}, are provided below. All claims in this appendix are Tier~(C) mathematical and computational bounds on fixed stage interfaces in the \texttt{Op102} table language, not formal Lean proofs or global unrestricted quantum circuit lower bounds.
+
+\paragraph{Fixed-interface \texttt{Op102} bit-trace model.}
+On the \(23\) raw magnitude bits remaining after endpoint relaying (with all stashed and external data fixed to constants), all \(2^{23} = 8{,}388{,}608\) words are partitioned by the \(440\) certified dyadic cubes. Deterministic updates on basis-state bits are induced by \texttt{Op102} instructions as follows:
+\begin{itemize}
+\item \emph{Zero-\(T\) affine/phase operations:} basis bits are updated affinely (or phase only is applied) at cost \(0\,T\) by \texttt{X}, \texttt{CX}, \texttt{Z}, and \texttt{CZ}. A target wire is reset to \(0\) in the forward direction (an affine assignment) at cost \(0\,T\) by the clean erasures \texttt{unand} and \texttt{unquad}.
+\item \emph{Paid quadratic operations (\(\ge 4\,T\)):} a quadratic Boolean update at cost \(4\,T\) is applied by both \texttt{rccx} variants and by the clean-target \texttt{and4t} gate. Into a clean target, the second-lowest bit of a signed sum of equal numbers of positive and negative affine parities---a quadratic Boolean polynomial---is written by a statically valid \texttt{hGadget}. With only one positive and one negative parity, both parities are forced to coincide by the static zero-low-bit invariant and the output vanishes identically; hence at least \(2+2\) steps (cost \(\ge 4\,T\)) are required for any nonlinear \texttt{hGadget} write.
+\end{itemize}
+
+\paragraph{Forward degree bound for \texttt{s2a} (\(\ge 68\,T\)).}
+When every wire state is expressed as a multilinear polynomial over \(\mathbb{F}_2\) in the \(23\) input bits, algebraic degree is increased by at most~\(1\) under backward substitution of a single quadratic assignment into an existing multilinear polynomial, whereas degree cannot be increased by an affine substitution \cite{schnorr1989}. Consequently, every output wire of a forward \texttt{Op102} trace containing \(\nu\) paid nonlinear operations has degree at most \(1 + \nu\). By exhaustive \(23\)-bit Boolean M\"obius transform (\texttt{degree.py}, receipt \texttt{m3\_degree\_receipt.json}), algebraic degree~\(18\) is attained on wires \(50\) and \(55\) of the frozen table \texttt{trS2a} (with coefficient~\(1\) on the degree-\(18\) monomial in bits \(5\text{--}22\)). Hence \(\nu \ge 17\) is forced, requiring at least \(17 \times 4 = 68\,T\), which is attained tightly by \texttt{s2aOps}.
+
+\paragraph{Reverse-direction affine-rank bound for \texttt{s6c} (\(\ge 20\,T\)).}
+In the cleanup stage \texttt{s6c}, the \(23\) raw input bits together with \(12\) garbage wires entering from \texttt{s6b} are uncomputed back to clean zeros (plus the \(23\) raw bits). At step~\(t\) of a valid deterministic \texttt{Op102} trace run backward on this domain, with current wire Boolean functions \(f_{t,1}, \dots, f_{t,w}\), the affine-span dimension is defined explicitly by
+\[
+  d_t \;=\; \dim_{\mathbb{F}_2}\operatorname{span}\{1, f_{t,1}, \dots, f_{t,w}\},
+\]
+where the constant~\(1\) is included so that \(d_t\) is invariant under \texttt{X} and \texttt{CX}. Each instruction's contribution to the required number of quadratic backward substitutions is bounded in terms of its rank change \(\Delta = d_t - d_{t-1}\):
+\begin{enumerate}
+\item When \texttt{unand} or \texttt{unquad} is reversed, a quadratic word is written into a clean wire. If that word already lies in the current affine span, it is represented by an affine substitution (cost \(0\) quadratic substitutions, \(\Delta = 0\)); otherwise \(1\) quadratic substitution is incurred and affine-span dimension is increased by \(\Delta = +1\).
+\item When a clean paid write (\texttt{and4t} or nonlinear \texttt{hGadget}) is reversed, a wire is erased at cost \(0\) quadratic substitutions while affine-span dimension is decreased by at most \(1\) (\(\Delta \ge -1\)). When \texttt{rccx} is reversed, one wire is replaced by itself XOR a product of two others: if \(\Delta = -1\), its new value is affine in the remaining wires (cost \(0\)), and otherwise at most \(1\) quadratic substitution is incurred with \(\Delta \ge 0\).
+\item Identically zero output bits are generated by zero- or two-\(T\) \texttt{hGadget} steps, contributing neither quadratic substitutions nor rank change; basis bit traces are unaffected by phases.
+\end{enumerate}
+Thus, at every backward step with affine-rank change \(\Delta\), the number of quadratic substitutions contributed is at most \(\Delta + \mathbf{1}_{\text{paid}\ge 4\,T}\). Summing across the entire reverse trace, the total affine-rank increase \(d_{\mathrm{final}} - d_{\mathrm{initial}}\) from the \(23\) raw bits to the \(23\) raw bits plus \(12\) garbage coordinates is at most \(12\); with \(\nu\) denoting the number of paid operations of cost \(\ge 4\,T\), every incoming garbage function therefore has algebraic degree at most \(1 + 12 + \nu\). By the same exhaustive \(23\)-bit M\"obius transform (\texttt{m3\_degree\_receipt.json}), degree~\(18\) is attained on wires \(72\) and \(81\) of \texttt{trS6cIn} (coefficient~\(1\) on bits \(5\text{--}22\)), forcing \(\nu \ge 5\) and hence at least \(5 \times 4 = 20\,T\), attained tightly by \texttt{s6cOps}.
+
+\paragraph{Pfaffian obstruction reduction for \texttt{s5\_2CoreOps} and bounded MILP screen specifications.}
+For the reverse \(9\)-bit square \texttt{s5\_2CoreOps} (\texttt{verify\_\allowbreak pfaffians.py}, \texttt{followup.py}, \texttt{pfaffian\_\allowbreak witness.json}, receipt \texttt{m2\_\allowbreak reverse\_\allowbreak obstruction\_\allowbreak receipt.json}), the \(9\) linear input bits are denoted by \(X\), the \(9\) frozen square output bits by \(Y\), and the \(21\) baseline paid product functions by \(P_0, \dots, P_{20}\). With the \(17\) products indexed by \(\{0, 2\text{--}10, 12\text{--}18\}\) held fixed, the \(35\)-dimensional fixed subspace \(\mathcal{F} = \operatorname{span}(V)\) over \(\mathbb{F}_2\) is spanned by the \(35\) linearly independent functions \(V = X \cup Y \cup \{P_i : i \notin \{1,11,19,20\}\}\), whereas the \(39\)-dimensional total allowed intermediate space \(\mathcal{U} = \operatorname{span}(V \cup R)\) and the \(4\)-dimensional quotient space \(\mathcal{Q} = \mathcal{U} / \mathcal{F} \cong \mathbb{F}_2^4\) (with canonical projection \(\pi : \mathcal{U} \to \mathcal{Q}\)) are obtained when the four rewritten products \(R = \{P_1, P_{11}, P_{19}, P_{20}\}\) are adjoined. Any valid replacement of those four AND gates by at most three new AND gates whose products lie within \(\mathcal{U}\) must generate intermediates whose images under \(\pi\) lie in a \emph{proper subspace} \(S \subsetneq \mathbb{F}_2^4\) (\(\dim S \le 3\), \(|S| \le 8\)), of which there are exactly \(1 + 15 + 35 + 15 = 66\) over \(\mathbb{F}_2\). For each proper subspace \(S\), under \emph{reverse quadratic closure} it is tested whether every function in the preimage \(\pi^{-1}(S) \subset \mathcal{U}\) can be uncomputed back to \(X\) by sequential quadratic erasures (each step eliminating a function quadratic in the remaining wires). By exhaustive enumeration of all \(66\) proper subspaces, exactly one \(3\)-dimensional hyperplane \(H_0 = \{0,3,5,6,9,10,12,15\} \subset \mathbb{F}_2^4\) (with ordered basis \(W = (P_1 \oplus P_{11}, P_1 \oplus P_{19}, P_1 \oplus P_{20})\) and \(38\)-dimensional preimage \(\pi^{-1}(H_0) = \operatorname{span}(V \cup W)\)) is retained.
+
+To enter \(\pi^{-1}(H_0)\) from \(\mathcal{F}\) via new AND gates, at least one nonzero direction in \(H_0 \setminus \{0\}\) must be realized modulo \(\mathcal{F}\) as a single rank-\(1\) product \((a^\top V)(b^\top V)\), equivalently by a skew-symmetric alternating matrix \(E = (e_{ij})_{0 \le i < j < 35}\) over \(\mathbb{F}_2\) of rank at most~\(2\). The seven nonzero directions of \(H_0\) are subsequently indexed by their \(3\)-bit coordinates \(t \in \{1,\dots,7\}\) in the ordered basis \(W\) (corresponding to the \(4\)-bit masks \(3,5,6,9,10,12,15\) respectively). For each \(t\), the set of all alternating matrices \(E\) whose evaluated quadratic form matches \(t\) modulo \(\mathcal{F}\) constitutes an affine space of dimension \(d = 190\) over \(\mathbb{F}_2\). Every rank-\(\le 2\) alternating matrix is annihilated by all \(\binom{35}{4}\) four-index Pfaffians \(\operatorname{Pf}_{ijkl}(E) = (e_{ij} e_{kl}) \oplus (e_{ik} e_{jl}) \oplus (e_{il} e_{jk})\). Because each \(\operatorname{Pf}_{ijkl}(E)\) is a Boolean polynomial of degree at most~\(2\) in the \(d = 190\) free affine parameters, an XOR sum of Pfaffians is identically equal to \(1\) across all \(2^{190}\) parameter assignments if and only if it evaluates to \(1\) on all \(1 + d + \binom{d}{2} = 18{,}146\) assignments of Hamming weight at most~\(2\). For all seven nonzero targets \(t \in \{1,\dots,7\}\), explicit subsets of four-index Pfaffians (\(5{,}796\), \(5{,}838\), \(5{,}718\), \(4{,}652\), \(4{,}617\), \(4{,}752\), and \(4{,}554\) Pfaffians respectively; archived in \texttt{pfaffian\_witness.json}, SHA-256 \texttt{194078da\allowbreak 6ceb06b1...}) are verified by \texttt{verify\_pfaffians.py} to sum identically to \(1\) on all \(18{,}146\) weight-\(\le 2\) assignments, proving that \(21\) ANDs are necessary within the restricted \(39\)-dimensional intermediate span \(\mathcal{U}\).
+
+For the late-adder carry recurrence (\texttt{burst\_\allowbreak milp.py}, receipts \texttt{track3\_\allowbreak bonus\_\allowbreak burst\_\allowbreak milp.json} and \texttt{track3\_\allowbreak bonus\_\allowbreak burst\_\allowbreak control.json}), zero-return carry-save schedules over \(28\) columns are formulated as integer linear programs and solved via \texttt{scipy.\allowbreak optimize.\allowbreak milp} (HiGHS backend, \texttt{mip\_\allowbreak rel\_\allowbreak gap = 0.0}, single-threaded, \(10\,\mathrm{s}\) time limit per instance). Across all \(18\) combinations of \(B \in \{3,4,5,6\}\) bursts and helper placement \(u \in \{0,\dots,B-1\}\) under capacity \(39\) scratch slots and ceiling \(165\) ANDs, infeasibility is reported (SciPy return status~\(2\), HiGHS backend model status~\(8\)), whereas in a \(200\)-slot positive control (\(B=1, u=0\)) optimality is reached (SciPy return status~\(0\), HiGHS model status~\(7\)) at \(133\) ANDs (independently checked against all column-sum and carry constraints). Because no independently re-verified proof log is emitted by HiGHS here, these \(18\) infeasibility results are reported strictly as solver-reported bounded screens rather than proof certificates.
+
+\begin{thebibliography}{99}\small\setlength{\itemsep}{2pt plus 1pt}
+
+\bibitem{shirobokov2026}
+S.~Shirobokov, B.~Jaderberg, K.~Hristova, G.~Tsoukalas, J.~Bausch, E.~Wieser, F.~J.~H. Heras, N.~C. Rubin, G.~H. Low, S.~Racani\`ere, N.~Toma\v{s}ev, L.~M. Zhang, J.~D. Watson, T.~Khattar, A.~Albarghouthi, S.~Jain, H.~Khan, L.~Sarra, A.~W. Senior, M.~Broughton, H.~Masoom, S.~Boixo, R.~Babbush, S.~Chaudhuri, and P.~Kohli,
+\emph{Discovering formally verified quantum programs with AI},
+arXiv:2611.09822v3 [quant-ph] (2026); repository \url{https://github.com/google-deepmind/formal-quantum-computation}.
+
+\bibitem{fang2026}
+W.~Fang and C.~Heunen,
+\emph{Weakly measured loops for quantum amplitude amplification: oracle savings and adaptive search with unknown target probability},
+arXiv:2609.39621 [quant-ph] (2026).
+
+\bibitem{grover1996}
+L.~K. Grover,
+\emph{A fast quantum mechanical algorithm for database search},
+in Proceedings of the Twenty-Eighth Annual ACM Symposium on Theory of Computing (STOC), pp.~212--219, 1996.
+
+\bibitem{bbht1998}
+M.~Boyer, G.~Brassard, P.~H{\o}yer, and A.~Tapp,
+\emph{Tight bounds on quantum searching},
+Fortschritte der Physik \textbf{46} (1998), 493--505.
+
+\bibitem{zalka1999}
+C.~Zalka,
+\emph{Grover's quantum searching algorithm is optimal},
+Physical Review A \textbf{60} (1999), 2746--2751.
+
+\bibitem{grover2004}
+L.~K. Grover and J.~Radhakrishnan,
+\emph{Quantum search for multiple items using parallel queries},
+arXiv:quant-ph/0407217 (2004).
+
+\bibitem{belovs2023}
+A.~Belovs and D.~Yolcu,
+\emph{One-way ticket to Las Vegas and the quantum adversary},
+arXiv:2301.02003 [quant-ph] (2023).
+
+\bibitem{mizel2009}
+A.~Mizel,
+\emph{Critically damped quantum search},
+Physical Review Letters \textbf{102} (2009), 150501.
+
+\bibitem{andres2022}
+P.~Andr\'es-Mart\'inez and C.~Heunen,
+\emph{Weakly measured while loops: peeking at quantum states},
+Quantum Science and Technology \textbf{7} (2022), 025007.
+
+\bibitem{schnorr1989}
+C.~P. Schnorr,
+\emph{The multiplicative complexity of Boolean functions},
+in Applied Algebra, Algebraic Algorithms and Error-Correcting Codes (AAECC-6, 1988), LNCS~357, pp.~45--58, Springer, 1989.
+
+\bibitem{mirwald1992}
+R.~Mirwald and C.~P. Schnorr,
+\emph{The multiplicative complexity of quadratic Boolean forms},
+Theoretical Computer Science \textbf{102} (1992), 307--328.
+
+\bibitem{calik2020}
+\c{C}.~\c{C}al\i k, M.~S\"onmez Turan, and R.~Peralta,
+\emph{Boolean functions with multiplicative complexity 3 and 4},
+Cryptography and Communications \textbf{12} (2020), 935--946.
+
+\bibitem{haner2018}
+T.~H\"aner, M.~Roetteler, and K.~M. Svore,
+\emph{Optimizing quantum circuits for arithmetic},
+arXiv:1805.12445 [quant-ph] (2018).
+
+\bibitem{jones2013}
+C.~Jones,
+\emph{Low-overhead constructions for the fault-tolerant Toffoli gate},
+Physical Review A \textbf{87} (2013), 022328.
+
+\bibitem{gidney2018}
+C.~Gidney,
+\emph{Halving the cost of quantum addition},
+Quantum \textbf{2} (2018), 74.
+
+\bibitem{lee2021}
+J.~Lee, D.~W. Berry, C.~Gidney, W.~J. Huggins, J.~R. McClean, N.~Wiebe, and R.~Babbush,
+\emph{Even more efficient quantum computations of chemistry through tensor hypercontraction},
+PRX Quantum \textbf{2} (2021), 030305.
+
+\bibitem{feng2021}
+Y.~Feng and M.~Ying,
+\emph{Quantum Hoare logic with classical variables},
+ACM Transactions on Quantum Computing \textbf{2} (2021), 1--43.
+
+\bibitem{demoura2021}
+L.~de~Moura and S.~Ullrich,
+\emph{The Lean~4 theorem prover and programming language},
+in Automated Deduction --- CADE~28, LNCS 12699, pp.~625--635, Springer, 2021.
+
+\bibitem{mathlib2020}
+The mathlib Community,
+\emph{The Lean mathematical library},
+in Proceedings of the 9th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP), pp.~367--381, 2020.
+
+\bibitem{physlib2024}
+The Physlib Community,
+\emph{Physlib: The Lean Physics Library},
+\url{https://github.com/leanprover-community/physlib}, 2024;
+incorporating A.~Meiburg, \emph{Quantum Information in Lean},
+\url{https://github.com/Timeroot/Lean-QuantumInfo}, 2024.
+
+\bibitem{comparator2026}
+Lean FRO,
+\emph{comparator: Lean~4 formal challenge verification tool},
+\url{https://github.com/leanprover/comparator}, 2026.
+
+\bibitem{johansson2017}
+F.~Johansson,
+\emph{Arb: efficient arbitrary-precision midpoint-radius interval arithmetic},
+IEEE Transactions on Computers \textbf{66} (2017), 1281--1292.
+
+\end{thebibliography}
+
+\end{document}

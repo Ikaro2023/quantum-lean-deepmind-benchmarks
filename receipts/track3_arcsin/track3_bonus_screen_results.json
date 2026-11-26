@@ -1,0 +1,92 @@
+{
+  "replayed": {
+    "opt_s43_s44_s51.py": {
+      "sha256": "94efdd7ddb92e13b820e44cf528abedca2d81e76f501714c406cea73c0339eaa",
+      "exit": 0,
+      "output_sha256": "923734aa4ae69106a11be6d76d3e5ed9f2aa94745a46417f047cbfbb49def0ab"
+    },
+    "opt_s53_dp.py": {
+      "sha256": "8df76d924fca2813a2a04fca181f39521fd8f2a2642d02932619bbfb63c5810d",
+      "exit": 0,
+      "output_sha256": "4d5cd2fc35a9ee435f1ded42de11157cb5957f6c4cfa2a303fff241a3b9975a9"
+    },
+    "test_q_drop.py": {
+      "sha256": "ee5d998c0486bbbba218620b1d7b735eb327036d279f07c5531898f6ef5d7208",
+      "exit": 0,
+      "output_sha256": "6defc931356da6cadc780bdc95c4da19bd088e1e0f86fae70455081ae4ef5297"
+    },
+    "codex_opt/m1/selectors.py": {
+      "sha256": "9208712daaf8f271dbe7165d747a2a7d961dbc9e6db6e79f32a839fbf1fe6657",
+      "exit": 0,
+      "output_sha256": "8e4ee8962834e872406356fd4cf6824dad626b12ca8df32f3d487eb6d45ec654"
+    }
+  },
+  "extra_screens": {
+    "s4_3": {
+      "ops": 3823,
+      "ands": 98,
+      "linear": [],
+      "caches": [],
+      "recompute_intervals": 0,
+      "saturated_states": 91,
+      "affine_cache_survivors": []
+    },
+    "s4_4": {
+      "ops": 555,
+      "ands": 50,
+      "linear": [],
+      "caches": [],
+      "recompute_intervals": 21,
+      "saturated_states": 2,
+      "affine_cache_survivors": []
+    },
+    "s5_1": {
+      "ops": 3823,
+      "ands": 90,
+      "linear": [],
+      "caches": [],
+      "recompute_intervals": 0,
+      "saturated_states": 91,
+      "affine_cache_survivors": []
+    },
+    "s5_3": {
+      "ops": 4467,
+      "ands": 166,
+      "linear": [],
+      "caches": [],
+      "recompute_intervals": 0,
+      "saturated_states": 0,
+      "affine_cache_survivors": []
+    },
+    "s3bPost": {
+      "ops": 1926,
+      "ands": 16,
+      "linear": [],
+      "final_phase": 0,
+      "bins": 440,
+      "output_equal": true
+    }
+  },
+  "submitted_candidate_peaks": {
+    "449": [
+      "s3aOps",
+      "s3bAddOps",
+      "s3bPostOps",
+      "s4_2Ops",
+      "s4_3Ops",
+      "s5_1Ops",
+      "s5_2CoreOps",
+      "s5_3Ops"
+    ],
+    "leaf_endpoints": [
+      "s3aOps",
+      "s3bAddOps",
+      "s3bPostOps",
+      "s4_2Ops",
+      "s4_3Ops",
+      "s5_1Ops",
+      "s5_2CoreOps",
+      "s5_3Ops"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+cwd=C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo
+LEAN_PATH=C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\physlib\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\work_repo
+cmd=C:\Users\OFFICE3\.gemini\antigravity\scratch\quantum_lean_breakthrough_20261125\.elan\toolchains\leanprover--lean4---v4.35.0\bin\lean.exe -o Track2Grover\FindAll.olean Track2Grover\FindAll.lean
+Track2Grover\FindAll.lean:56:5: warning: Ambiguous namespace `Grover`: it is interpreted as `_root_.QuantumComputation.Specs.Grover` because this `open` occurs inside `namespace QuantumComputation.Specs`, while `_root_.Grover` is silently not opened. Specify the namespace unambiguously, e.g. `_root_.QuantumComputation.Specs.Grover`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.
+
+Note: This linter can be disabled with `set_option linter.ambiguousOpen false`
+Track2Grover\FindAll.lean:218:26: warning: Variable name `m` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _m
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Track2Grover\FindAll.lean:218:28: warning: Variable name `k` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _k
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'QuantumComputation.Specs.groverFindAllCells_nonempty' does not depend on any axioms
+'QuantumComputation.Specs.groverFindAllCells_mem_grid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuantumComputation.Specs.groverFindAll_correctness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuantumComputation.Specs.groverFindAll_rel_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuantumComputation.Specs.groverFindAllRelCost_improves' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0

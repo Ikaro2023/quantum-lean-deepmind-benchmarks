@@ -1,0 +1,1373 @@
+{
+  "format": 1,
+  "entry_points": [
+    "Track2Grover.TighterFindAny",
+    "Track2Grover.FindAnyLowerBound"
+  ],
+  "module_count": 31,
+  "complete": true,
+  "local_modules_with_missing_or_older_receipts": [],
+  "receipt_association": "Each selected log names the pinned binary and module and ends with exit=0. Existing logs do not contain object hashes. current_by_timestamps associates the present source and object with the build time, and the object with checker start time. Hashes identify the files read when this manifest was written.",
+  "binaries": [
+    {
+      "path": ".elan/toolchains/leanprover--lean4---v4.35.0/bin/lean.exe",
+      "sha256": "ec7a472d1c12a09b0c0c718f7427c2be527b3f5f07810fdbe076c2507c7a91ea"
+    },
+    {
+      "path": ".elan/toolchains/leanprover--lean4---v4.35.0/bin/leanchecker.exe",
+      "sha256": "9ef6baeb28d5e28897d5ed6dddd60ff81e511d97374013ece435dff38e9e0137"
+    },
+    {
+      "path": ".elan/toolchains/leanprover--lean4---v4.35.0/bin/lake.exe",
+      "sha256": "023feb24d3e7244fe671dba79f1cd1affc6c7a7cacfe497bf3675febb506578c"
+    }
+  ],
+  "replay_inputs": [
+    {
+      "path": "track2_grover/replay_findany.py",
+      "sha256": "0f7919c2296f0f8685dd0bdbe3dd3b294622ad1651952f0e8af43bbabe62a1e0"
+    },
+    {
+      "path": "track2_grover/check_module.py",
+      "sha256": "6548f6d5ffa8836294819e312df5a54dbb0e1b60a8fa02d3c85e85b01b26f58d"
+    },
+    {
+      "path": "track2_grover/lower_bound/replay.py",
+      "sha256": "6d3f3ade6a67aafe02fbe8dee61c4be8f7fe573996364ef89d18d495bd4ac987"
+    },
+    {
+      "path": "work_repo/lean-toolchain",
+      "sha256": "27e73059e3a4d568450f74e39c2f79676c4f8d41373fff15170690f124e3bacd"
+    },
+    {
+      "path": "work_repo/lake-manifest.json",
+      "sha256": "82f3e819c007591d026b1828dc57f105332f7442c5fb2e1b6a6b40fd3939387d"
+    }
+  ],
+  "reference_sources": [
+    {
+      "path": "discoveries_ref/QuantumComputationDiscoveries/Algorithms/GroverFindAny.lean",
+      "sha256": "9feb407d309950b8cea72eef33b9748d5288c89876965b2abe1a8e9fa53ab20e"
+    },
+    {
+      "path": "discoveries_ref/QuantumComputationDiscoveries/Algorithms/Grover/Solution/Defs.lean",
+      "sha256": "a0c47b52f8eb14af0423131889e3b36a15a7494dbb06f6503ce894d5d5c21e29"
+    },
+    {
+      "path": "discoveries_ref/QuantumComputationDiscoveries/Algorithms/Grover/Solution/OddParityBridge.lean",
+      "sha256": "65fc2bc21485374cd9eaa53001481a03f0a39f9bfff077b34741b8e7966b4ff6"
+    },
+    {
+      "path": "discoveries_ref/QuantumComputationDiscoveries/Algorithms/Grover/Solution/FindAny.lean",
+      "sha256": "967700582b4074676c346c87db6167190ed65a50c1d34cf4c14aaab4a23290fd"
+    }
+  ],
+  "frozen_sources": {
+    "QuantumComputation.Algorithms.Grover.Amplitude": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Algorithms/Grover/Amplitude.lean",
+        "sha256": "b8604ea6cf17bed36aeac4c544cd739c28fd474566db0d566a8f955f47e38ab0"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Algorithms/Grover/Amplitude.lean",
+        "sha256": "b8604ea6cf17bed36aeac4c544cd739c28fd474566db0d566a8f955f47e38ab0"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Algorithms.Grover.Operators": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Algorithms/Grover/Operators.lean",
+        "sha256": "493b5d0590e649a840e508091cbe53feaa9143eb58a0eff550381451355536bf"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Algorithms/Grover/Operators.lean",
+        "sha256": "493b5d0590e649a840e508091cbe53feaa9143eb58a0eff550381451355536bf"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Circuits.Basic": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Circuits/Basic.lean",
+        "sha256": "7eecea4836242ac5781d33944a1a56ca3b5164cb9b45302151e5167db8eed5b5"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Circuits/Basic.lean",
+        "sha256": "7eecea4836242ac5781d33944a1a56ca3b5164cb9b45302151e5167db8eed5b5"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Circuits.Combinators": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Circuits/Combinators.lean",
+        "sha256": "c304cb1f224b3f1405dfae1c1bc1e9299b7704db55799bb85c865c4efff6593d"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Circuits/Combinators.lean",
+        "sha256": "c304cb1f224b3f1405dfae1c1bc1e9299b7704db55799bb85c865c4efff6593d"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Circuits.DynamicCircuit": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Circuits/DynamicCircuit.lean",
+        "sha256": "9010d7785597adb217bbf8beb1e2fc483b319092dbfcd20e89850643bff0f723"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Circuits/DynamicCircuit.lean",
+        "sha256": "9010d7785597adb217bbf8beb1e2fc483b319092dbfcd20e89850643bff0f723"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Circuits.Gates": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Circuits/Gates.lean",
+        "sha256": "be386e32959b7fc1743ab9cad2bdbc6f43645c4b761295155f87219280eb00e9"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Circuits/Gates.lean",
+        "sha256": "be386e32959b7fc1743ab9cad2bdbc6f43645c4b761295155f87219280eb00e9"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Maths.Basis": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Maths/Basis.lean",
+        "sha256": "dbafa0dd538b6257521056ba531cce43aaeb21ec9bc57c86bfc987e0eeef1d71"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Maths/Basis.lean",
+        "sha256": "dbafa0dd538b6257521056ba531cce43aaeb21ec9bc57c86bfc987e0eeef1d71"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Maths.LinearAlgebra": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Maths/LinearAlgebra.lean",
+        "sha256": "909bebe66595680f4411bbfa2e701bd182d517be4d0bd39fc213517fe0857237"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Maths/LinearAlgebra.lean",
+        "sha256": "909bebe66595680f4411bbfa2e701bd182d517be4d0bd39fc213517fe0857237"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Maths.Matrix": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Maths/Matrix.lean",
+        "sha256": "2152da8b54946d963b1f66cd5a56e7bd36b0e5faa9496881597a8e64ca23fc72"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Maths/Matrix.lean",
+        "sha256": "2152da8b54946d963b1f66cd5a56e7bd36b0e5faa9496881597a8e64ca23fc72"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Maths.Observable": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Maths/Observable.lean",
+        "sha256": "244378c19f215703cc044d73609f50304427894aa1a886cfb79fa42f1881dc67"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Maths/Observable.lean",
+        "sha256": "244378c19f215703cc044d73609f50304427894aa1a886cfb79fa42f1881dc67"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Maths.OmegaCompletePartialOrder": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Maths/OmegaCompletePartialOrder.lean",
+        "sha256": "2954af5ce125431036ac41caa24e03fae8ad15d2aa47526235460f6a555c3d98"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Maths/OmegaCompletePartialOrder.lean",
+        "sha256": "2954af5ce125431036ac41caa24e03fae8ad15d2aa47526235460f6a555c3d98"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Maths.PartialDensityOperator": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Maths/PartialDensityOperator.lean",
+        "sha256": "73d1f8144cc74eee027084e37af26eccd63331f64a73b0758dfc33eeb4189408"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Maths/PartialDensityOperator.lean",
+        "sha256": "73d1f8144cc74eee027084e37af26eccd63331f64a73b0758dfc33eeb4189408"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Maths.Trigonometry": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Maths/Trigonometry.lean",
+        "sha256": "2a535bad3b8ef6fc4b8ac3b4224b8cddd335319ab23e47fb6d502a2d7c504232"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Maths/Trigonometry.lean",
+        "sha256": "2a535bad3b8ef6fc4b8ac3b4224b8cddd335319ab23e47fb6d502a2d7c504232"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Maths.Tsum": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Maths/Tsum.lean",
+        "sha256": "ef7a4a0585d55f2d29e9c6ea5eeef6f3ccca492f351e98d7667d9deafddba04d"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Maths/Tsum.lean",
+        "sha256": "ef7a4a0585d55f2d29e9c6ea5eeef6f3ccca492f351e98d7667d9deafddba04d"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Primitives.Hadamard": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Primitives/Hadamard.lean",
+        "sha256": "231c63cc36da566818f4c44021910cf2deebaf99d32283a471e22569a77bb655"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Primitives/Hadamard.lean",
+        "sha256": "231c63cc36da566818f4c44021910cf2deebaf99d32283a471e22569a77bb655"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Primitives.Measure": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Primitives/Measure.lean",
+        "sha256": "90582f67f40d2183d55f62902f2f0249bbb9cbe97cbc638276ad592b9a7894da"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Primitives/Measure.lean",
+        "sha256": "90582f67f40d2183d55f62902f2f0249bbb9cbe97cbc638276ad592b9a7894da"
+      },
+      "identical": true
+    },
+    "QuantumComputation.QuantumHoareLogic.CQAssertion": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/QuantumHoareLogic/CQAssertion.lean",
+        "sha256": "2c01bbc4dd7dcf108a1bf166c2ba0cd73cba6bdf6fb9e72e1aa7a205cbe192c0"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/QuantumHoareLogic/CQAssertion.lean",
+        "sha256": "2c01bbc4dd7dcf108a1bf166c2ba0cd73cba6bdf6fb9e72e1aa7a205cbe192c0"
+      },
+      "identical": true
+    },
+    "QuantumComputation.QuantumHoareLogic.CQState": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/QuantumHoareLogic/CQState.lean",
+        "sha256": "2c008f87f1dd0f79a0efbbe465a35748cb93d355a70536062c533eb8943bb466"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/QuantumHoareLogic/CQState.lean",
+        "sha256": "2c008f87f1dd0f79a0efbbe465a35748cb93d355a70536062c533eb8943bb466"
+      },
+      "identical": true
+    },
+    "QuantumComputation.QuantumHoareLogic.Expectation": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/QuantumHoareLogic/Expectation.lean",
+        "sha256": "192529b651fdaa924bfc085a13849ab56ffdefbde8a177a98d51f9abbf7a7992"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/QuantumHoareLogic/Expectation.lean",
+        "sha256": "192529b651fdaa924bfc085a13849ab56ffdefbde8a177a98d51f9abbf7a7992"
+      },
+      "identical": true
+    },
+    "QuantumComputation.QuantumHoareLogic.QMonad": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/QuantumHoareLogic/QMonad.lean",
+        "sha256": "88a2bae605c5662e89a708f7f5553f431a84d098c85008fd1441a6ae8cb37d08"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/QuantumHoareLogic/QMonad.lean",
+        "sha256": "88a2bae605c5662e89a708f7f5553f431a84d098c85008fd1441a6ae8cb37d08"
+      },
+      "identical": true
+    },
+    "QuantumComputation.QuantumHoareLogic.ResourceCounting": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/QuantumHoareLogic/ResourceCounting.lean",
+        "sha256": "02653958ccdaa55ce43f0302183f0eecdbff31fc4c7a2338ab83442c4cf0ce13"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/QuantumHoareLogic/ResourceCounting.lean",
+        "sha256": "02653958ccdaa55ce43f0302183f0eecdbff31fc4c7a2338ab83442c4cf0ce13"
+      },
+      "identical": true
+    },
+    "QuantumComputation.QuantumHoareLogic.ResourceCounting.CostBounds": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/QuantumHoareLogic/ResourceCounting/CostBounds.lean",
+        "sha256": "ffb8586fc0c381ac27c420305b55e9fdc25c3d7a50cebd3ad3c2b0d6dc7c6cdd"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/QuantumHoareLogic/ResourceCounting/CostBounds.lean",
+        "sha256": "ffb8586fc0c381ac27c420305b55e9fdc25c3d7a50cebd3ad3c2b0d6dc7c6cdd"
+      },
+      "identical": true
+    },
+    "QuantumComputation.QuantumHoareLogic.ResourceCounting.Loops": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/QuantumHoareLogic/ResourceCounting/Loops.lean",
+        "sha256": "13ef7fbebe9f88a7f2493778021c2f4dff86e1a2812c45d18e5aa3a46eb9fac2"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/QuantumHoareLogic/ResourceCounting/Loops.lean",
+        "sha256": "13ef7fbebe9f88a7f2493778021c2f4dff86e1a2812c45d18e5aa3a46eb9fac2"
+      },
+      "identical": true
+    },
+    "QuantumComputation.QuantumHoareLogic.ResourceCounting.Lossless": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/QuantumHoareLogic/ResourceCounting/Lossless.lean",
+        "sha256": "b966f0270f052e5c7fabb6798eafee5fabec3161ef338dab3065f1eebfadedae"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/QuantumHoareLogic/ResourceCounting/Lossless.lean",
+        "sha256": "b966f0270f052e5c7fabb6798eafee5fabec3161ef338dab3065f1eebfadedae"
+      },
+      "identical": true
+    },
+    "QuantumComputation.QuantumHoareLogic.ResourceCounting.PowerLawCost": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/QuantumHoareLogic/ResourceCounting/PowerLawCost.lean",
+        "sha256": "216c519a61def9dd1de92fe16398ce51808604f25f0b31035812e6734a4bcdfb"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/QuantumHoareLogic/ResourceCounting/PowerLawCost.lean",
+        "sha256": "216c519a61def9dd1de92fe16398ce51808604f25f0b31035812e6734a4bcdfb"
+      },
+      "identical": true
+    },
+    "QuantumComputation.QuantumHoareLogic.Semantics": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/QuantumHoareLogic/Semantics.lean",
+        "sha256": "5fd3473e7daceeee4c46e1922a768b3707dc57bb102577e7ae7551b4f8303097"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/QuantumHoareLogic/Semantics.lean",
+        "sha256": "5fd3473e7daceeee4c46e1922a768b3707dc57bb102577e7ae7551b4f8303097"
+      },
+      "identical": true
+    },
+    "QuantumComputation.QuantumHoareLogic.Store": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/QuantumHoareLogic/Store.lean",
+        "sha256": "31641ca19764f2845f4d232b85f83550994a40ed333b01a5fbefe79e4be8737f"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/QuantumHoareLogic/Store.lean",
+        "sha256": "31641ca19764f2845f4d232b85f83550994a40ed333b01a5fbefe79e4be8737f"
+      },
+      "identical": true
+    },
+    "QuantumComputation.QuantumHoareLogic.Syntax": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/QuantumHoareLogic/Syntax.lean",
+        "sha256": "3ce559b5210a0a1213a0e6bf41246289c7dd8f82c925aac49a0906a1bac63a91"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/QuantumHoareLogic/Syntax.lean",
+        "sha256": "3ce559b5210a0a1213a0e6bf41246289c7dd8f82c925aac49a0906a1bac63a91"
+      },
+      "identical": true
+    },
+    "QuantumComputation.QuantumHoareLogic.WP": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/QuantumHoareLogic/WP.lean",
+        "sha256": "bfbeaa5f132de1ee2ddb000465ac3b33def144bfbc5c3e46ba8ba1b7eb2080b8"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/QuantumHoareLogic/WP.lean",
+        "sha256": "bfbeaa5f132de1ee2ddb000465ac3b33def144bfbc5c3e46ba8ba1b7eb2080b8"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Registers.Basic": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Registers/Basic.lean",
+        "sha256": "d1df7de7b30966e96f53709b68a2e08ee1ac2cce0873888b6b13b42493f6f2b0"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Registers/Basic.lean",
+        "sha256": "d1df7de7b30966e96f53709b68a2e08ee1ac2cce0873888b6b13b42493f6f2b0"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Registers.Basis": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Registers/Basis.lean",
+        "sha256": "5356554e74821d9e81df7a1db9626286fb8f1a9b7740ba912520fa6a4f76f456"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Registers/Basis.lean",
+        "sha256": "5356554e74821d9e81df7a1db9626286fb8f1a9b7740ba912520fa6a4f76f456"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Registers.Embed": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Registers/Embed.lean",
+        "sha256": "98500b3fde8575b1c4968ab3255c7e393b301346064ff66f1f5a69947397c7f7"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Registers/Embed.lean",
+        "sha256": "98500b3fde8575b1c4968ab3255c7e393b301346064ff66f1f5a69947397c7f7"
+      },
+      "identical": true
+    },
+    "QuantumComputation.Registers.Measurement": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputation/Registers/Measurement.lean",
+        "sha256": "104189b3f31789fb41710532433c3d58e5a2ad8a09e92013d01e5ca9ca21cb51"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputation/Registers/Measurement.lean",
+        "sha256": "104189b3f31789fb41710532433c3d58e5a2ad8a09e92013d01e5ca9ca21cb51"
+      },
+      "identical": true
+    },
+    "QuantumComputationSpecs.Algorithms.Grover": {
+      "original": {
+        "path": "formal-quantum-computation/QuantumComputationSpecs/Algorithms/Grover.lean",
+        "sha256": "ded7270e1e6d82d67228acd4388e52c1a19058425dafeba93a30dcd1d4392420"
+      },
+      "build_source": {
+        "path": "work_repo/QuantumComputationSpecs/Algorithms/Grover.lean",
+        "sha256": "ded7270e1e6d82d67228acd4388e52c1a19058425dafeba93a30dcd1d4392420"
+      },
+      "identical": true
+    }
+  },
+  "modules_in_dependency_order": [
+    {
+      "module": "Track2Grover.Any.Defs",
+      "imports": [
+        "QuantumComputation.QuantumHoareLogic.ResourceCounting.CostBounds",
+        "QuantumComputation.QuantumHoareLogic.WP",
+        "QuantumComputation.QuantumHoareLogic.ResourceCounting.PowerLawCost",
+        "QuantumComputation.Circuits.DynamicCircuit",
+        "Mathlib.Data.Finset.Powerset",
+        "QuantumComputation.Maths.LinearAlgebra",
+        "QuantumComputation.Maths.Trigonometry",
+        "QuantumComputation.QuantumHoareLogic.ResourceCounting.Loops",
+        "QuantumComputation.Primitives.Hadamard",
+        "QuantumComputation.Primitives.Measure",
+        "Mathlib.Tactic.FinCases",
+        "Mathlib.Data.Fintype.EquivFin",
+        "Mathlib.Data.BitVec",
+        "Mathlib.Data.Nat.Bitwise",
+        "Mathlib.Analysis.Real.Pi.Bounds",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics",
+        "Mathlib.Analysis.Calculus.Deriv.Pow",
+        "Mathlib.Tactic.NormNum.RealSqrt",
+        "Mathlib.Tactic.NormNum.NatSqrt",
+        "Mathlib.NumberTheory.Niven"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/Any/Defs.lean",
+        "sha256": "d550cdcdd3ea6be9b07ee31494708a30464190798637db7afdb87818c36cafe4"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/Any/Defs.olean",
+        "sha256": "0419b3eaae374f5bd89cb4d38d7ae5f491a8d9f201f3378b72e8ba7f85e0caa2"
+      },
+      "object_sidecars": [
+        {
+          "path": "work_repo/Track2Grover/Any/Defs.olean.private",
+          "sha256": "c68fd62e0db0999a66715f6a49cb7b0f376725c0d5dba74e25c0e3c8cd9de5ea"
+        },
+        {
+          "path": "work_repo/Track2Grover/Any/Defs.olean.server",
+          "sha256": "d9945efafd99b6276f4a3e4d6cdb95ad233d1e5d3a4258a6be6df7e972f61dd9"
+        },
+        {
+          "path": "work_repo/Track2Grover/Any/Defs.ir",
+          "sha256": "135bab6a94b83fd36e3e5a985fa57628507b9551212f26d1991413195a035272"
+        },
+        {
+          "path": "work_repo/Track2Grover/Any/Defs.ir.sig",
+          "sha256": "03bc9221d2a4fd6e380b6697f964be50e7d1a449d40f0bbe4ecff83df248a9b4"
+        }
+      ],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.Any.Defs_lean_20261125-165809-372430.log",
+        "sha256": "a818880398f94dd52ed7c98b4b5097c6bbb84b23175698202df1e7b82c90dcd2",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.Any.Defs_checker_20261125-165922-129450.log",
+        "sha256": "fb4db8fd5787896e301224fb259c75536065710951263c4f5866d906b0c3e7b5",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.Any.OddParityBridge",
+      "imports": [
+        "Track2Grover.Any.Defs"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/Any/OddParityBridge.lean",
+        "sha256": "d4dde3f622f4f94ac384deb49c9942eab6e9ee9593749b027bbdf9bd1519d916"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/Any/OddParityBridge.olean",
+        "sha256": "0c500fea7d0deb4f7e888991cf32359a99d05bf1873e457a545ebf37ef190099"
+      },
+      "object_sidecars": [
+        {
+          "path": "work_repo/Track2Grover/Any/OddParityBridge.olean.private",
+          "sha256": "1037d102896bb9629804f3d40e30d9c022562715dda9dfd8f210d8e67582d37f"
+        },
+        {
+          "path": "work_repo/Track2Grover/Any/OddParityBridge.olean.server",
+          "sha256": "8561624827f5f3dacbe89901aecc8b8806723ea4da0cd3ae63419c1e414505a4"
+        },
+        {
+          "path": "work_repo/Track2Grover/Any/OddParityBridge.ir",
+          "sha256": "cc4f658d52abc5f595c3f75ec0de39c34a9736d0284ab12001d165461b596035"
+        },
+        {
+          "path": "work_repo/Track2Grover/Any/OddParityBridge.ir.sig",
+          "sha256": "1e350584138d6d260d92b005134e182585995dd34ca0c2cd26b93ebb896e278f"
+        }
+      ],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.Any.OddParityBridge_lean_20261125-165820-641016.log",
+        "sha256": "e3755dd9f310fed017522204799c027f7bcc7d58975b721f695f729b7e5d589e",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.Any.OddParityBridge_checker_20261125-170426-066204.log",
+        "sha256": "7198120005c553c6d84413385bff22b0ba54741e36f0908a273691becd82b4c6",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.Any.FindAny",
+      "imports": [
+        "Track2Grover.Any.Defs",
+        "Track2Grover.Any.OddParityBridge",
+        "QuantumComputation.Maths.Trigonometry",
+        "QuantumComputation.Primitives.Hadamard",
+        "QuantumComputation.Algorithms.Grover.Operators",
+        "QuantumComputation.Algorithms.Grover.Amplitude",
+        "QuantumComputation.QuantumHoareLogic.ResourceCounting.Loops"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/Any/FindAny.lean",
+        "sha256": "d5bad5682c9f597e58a8b342ff53ebcef4be6b9920372088f1fec089f6bf9068"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/Any/FindAny.olean",
+        "sha256": "a4522a17ef276cc3405aea357bd61526f50357d1595c59d1b9040ac07a423413"
+      },
+      "object_sidecars": [
+        {
+          "path": "work_repo/Track2Grover/Any/FindAny.olean.private",
+          "sha256": "a22f8c69646294097f2db53cde85ce1e1cca9247323a2e4a218c51be32c3ff40"
+        },
+        {
+          "path": "work_repo/Track2Grover/Any/FindAny.olean.server",
+          "sha256": "0410bd036821d17afbccae49472e9fb5101fb898e74c48423106ea8fb1bfa187"
+        },
+        {
+          "path": "work_repo/Track2Grover/Any/FindAny.ir",
+          "sha256": "757867a1e84c176d777e7450d3f007622a050d1bb481a412b7ffa7cbd3df90a3"
+        },
+        {
+          "path": "work_repo/Track2Grover/Any/FindAny.ir.sig",
+          "sha256": "f8e0cc035a22bd0763941548ac348403cf222554aebf70392183dd4bf9efd9f4"
+        }
+      ],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.Any.FindAny_lean_20261125-172627-435880.log",
+        "sha256": "68e124856af16ed84f54b2be08d3079ae7962ae9895c53aa097af32519db76cf",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.Any.FindAny_checker_20261125-173321-992287.log",
+        "sha256": "cd015280d2154c13ea6a0b550859fd6edb8a81528087235042933a0ad2260bf5",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.TighterFindAny",
+      "imports": [
+        "QuantumComputation.QuantumHoareLogic.ResourceCounting.CostBounds",
+        "QuantumComputation.Circuits.DynamicCircuit",
+        "Mathlib.Data.Finset.Powerset",
+        "QuantumComputation.QuantumHoareLogic.WP",
+        "Track2Grover.Any.FindAny"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/TighterFindAny.lean",
+        "sha256": "45c3e075a624d21f27ca7940513acd539e5da208001b22347ff98c326cc119e3"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/TighterFindAny.olean",
+        "sha256": "64639d7c7aacdd0d1e0559fe710d57dcebb7a7297513ac8ed32969019a5e8567"
+      },
+      "object_sidecars": [
+        {
+          "path": "work_repo/Track2Grover/TighterFindAny.olean.private",
+          "sha256": "6d88d50ad49f2724378e9ed4c83c9f87729fe8dba094ba3a357cedb2a2cf540c"
+        },
+        {
+          "path": "work_repo/Track2Grover/TighterFindAny.olean.server",
+          "sha256": "700079cdf72d5a1937c60c7e14a2030f6e95a88aaec8fd622388ff80a46057ba"
+        },
+        {
+          "path": "work_repo/Track2Grover/TighterFindAny.ir",
+          "sha256": "6153d5fcb4ab17ab4bc037b24a878cd004ec1b09667d4184d397fd424c7b6e6d"
+        },
+        {
+          "path": "work_repo/Track2Grover/TighterFindAny.ir.sig",
+          "sha256": "52f7cbc3680a10fd37303b80761a1cd2f8fb4e69658a78135625998510ce1fe4"
+        }
+      ],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.TighterFindAny_lean_20261125-172730-284274.log",
+        "sha256": "0b879c212f6830d633ed3f80b5fcce6c3a8f24ba9953563829eb96d6ac21152b",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.TighterFindAny_checker_20261125-173213-761224.log",
+        "sha256": "5592b858674b1cc6b8c2829eeadd948565b7b57488c8d7175c17d9cfab2b6b26",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.StopMass",
+      "imports": [
+        "Mathlib.Data.Finset.Powerset",
+        "Mathlib.Algebra.Order.Chebyshev",
+        "Mathlib.Tactic",
+        "Mathlib.Analysis.Normed.Group.Basic",
+        "Mathlib.Data.Fintype.Fin"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/StopMass.lean",
+        "sha256": "d20d8f43bc8e8f2a3445956df513290533960f9f17c8e01ce25f24bc661baedb"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/StopMass.olean",
+        "sha256": "9f8fce53d4b83f60a8358feefac27e555aa481790d845be80b741770892c8f96"
+      },
+      "object_sidecars": [
+        {
+          "path": "work_repo/Track2Grover/StopMass.olean.private",
+          "sha256": "2034abede0a660fea4861af14d95484731d7c83636e02b9b6aaf9673e6858e8a"
+        },
+        {
+          "path": "work_repo/Track2Grover/StopMass.olean.server",
+          "sha256": "ca36e7d4bf357d1d3d32a56626af526c8b1c35054d91dab248758a7b3a47b8d5"
+        },
+        {
+          "path": "work_repo/Track2Grover/StopMass.ir",
+          "sha256": "fa39fdebec28eaf152c71f13308dee2dfe466da95294d5b769da273730482e4a"
+        },
+        {
+          "path": "work_repo/Track2Grover/StopMass.ir.sig",
+          "sha256": "2e4c77c9b4db8875d9b05b79e2bb9f463d6e5366f019463d66148151735242c2"
+        }
+      ],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.StopMass_lean_20261125-170005-420754.log",
+        "sha256": "75e8b656ede3964661186d18af7b878b2f9bed5e0993687a9034302ff013c3d2",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.StopMass_checker_20261125-170511-693309.log",
+        "sha256": "1b36ae3a4c58ca210f24600604a858cc98441bd018d15ed437d2228c42d3e917",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.OracleCompression",
+      "imports": [
+        "QuantumComputationSpecs.Algorithms.Grover",
+        "Track2Grover.Any.OddParityBridge",
+        "Track2Grover.StopMass"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/OracleCompression.lean",
+        "sha256": "e2b1c14b160143e913e84ead888b27dade305e9565375222f586deda31b3a0b8"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/OracleCompression.olean",
+        "sha256": "84a7aed2836b689510f00e6c7243750197a69784aa5f5c955273d6001fa290ea"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.OracleCompression_lean_20261125-170354-125291.log",
+        "sha256": "2d46eda87d8b60ad4c2a14df8fde001e1086ca5a34d014de54a574af9e76ffb0",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.OracleCompression_checker_20261125-170405-484795.log",
+        "sha256": "ed2547df97ecdb07346a000655de6851a4ce46d57c7ea78452b1031dca50f18e",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.PhysicalMatrix",
+      "imports": [
+        "Track2Grover.OracleCompression"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/PhysicalMatrix.lean",
+        "sha256": "983100056a8bee9f92cf8e7beec836cab4d400ff3cc36025e16cd30259044f11"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/PhysicalMatrix.olean",
+        "sha256": "3700c6f00ea73173d9cd91dc620cefcc6f10f910da6b9ce8ba3a5ee5a1ab3252"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.PhysicalMatrix_lean_20261125-172039-961530.log",
+        "sha256": "7e9b56e8cd49574d31410e509def341e6442ee271613b42d3aac4414f4255492",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.PhysicalMatrix_checker_20261125-172148-338308.log",
+        "sha256": "4cd2b85a99bb5c70fb73277eeb188769c7d92195644c131e12e98bd69959e604",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.QueryAngle",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.Projection.Basic",
+        "Mathlib.Geometry.Euclidean.Angle.Unoriented.TriangleInequality",
+        "Mathlib.Tactic"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/QueryAngle.lean",
+        "sha256": "16f751241b60b3da61bcf19bdbf845e628fea29e26113c21ab83b6b95078df82"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/QueryAngle.olean",
+        "sha256": "0d38f1e3590c127bc5027090b14476c3478168f0243ad0a01f6b907c6943e080"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.QueryAngle_lean_20261125-165747-501364.log",
+        "sha256": "6e00f8b107e03e0d0b9c60b6d08f1787308b9aa02ed6645bf5be7d2963802be9",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.QueryAngle_checker_20261125-170449-136144.log",
+        "sha256": "68cf41cdc3551626aafe93da3c2c5d700c42d05ed12928647b9cf2b8f10d5adc",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.LowerAnalysis",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.InverseDeriv",
+        "Mathlib.Analysis.SpecificLimits.Basic",
+        "Mathlib.Tactic"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/LowerAnalysis.lean",
+        "sha256": "ea7922a63cf714d2f4b7b3ee8a669693a532d0389d64bb17cecb188e5440af74"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/LowerAnalysis.olean",
+        "sha256": "8e5b103ecbd111463853d29511a9f7148e715e442702ca41f9fceceb3467d5d5"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/lower_bound/LowerAnalysis_lean.log",
+        "sha256": "b24ebd3b99bbf6021a9516ee66595cd92ede7d825d6502aee40b3e0bd15dbf30",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/lower_bound/LowerAnalysis_leanchecker.log",
+        "sha256": "6a6c273135a447339d7366679d95d91b669bd227edbebcc84dad44af0b75f217",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.LowerPotential",
+      "imports": [
+        "Track2Grover.LowerAnalysis",
+        "Mathlib.Analysis.Convex.SpecificFunctions.Deriv",
+        "Mathlib.Analysis.Convex.Deriv",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/LowerPotential.lean",
+        "sha256": "9676b8cc7eaf6ea22fa3065303a081efc070dc040b370ee5f7afa692d97e30d2"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/LowerPotential.olean",
+        "sha256": "0bf34cec3674b62e7f00099a3a6d17a6a830ef8adbc64d055daa390a34c22e6b"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/lower_bound/LowerPotential_lean.log",
+        "sha256": "93f38dd278aa232da0d0d981e69d20738ea5b41ff166b67489dba1f4a6b518ff",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/lower_bound/LowerPotential_leanchecker.log",
+        "sha256": "1554ddff9314977169ffb1ec1d80891a6d1fee9e6003e33870868960c4263a25",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.CoupledHistory",
+      "imports": [
+        "Track2Grover.QueryAngle",
+        "Track2Grover.LowerPotential",
+        "Mathlib.Tactic"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/CoupledHistory.lean",
+        "sha256": "ab7eac69a2361ab5b8fac5d08d5fa28b1ecfee91574525d3b27e73c63cf05078"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/CoupledHistory.olean",
+        "sha256": "a4f69a22232509b25bc764b23e24bd0e452cebec96b373603a48f31d3ca414b0"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.CoupledHistory_lean_20261125-171446-310269.log",
+        "sha256": "5eea06b5f77a8f4748dc35b22bce6ce80488d2e223984bd600d21e5e161e8060",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.CoupledHistory_checker_20261125-171704-164843.log",
+        "sha256": "2a242c953934a894669ad56976b5830578edc86dd5495d901433951df02c905b",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.CoupledLabels",
+      "imports": [
+        "Track2Grover.CoupledHistory",
+        "Track2Grover.StopMass",
+        "QuantumComputation.Registers.Measurement",
+        "Mathlib.Analysis.InnerProductSpace.PiL2"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/CoupledLabels.lean",
+        "sha256": "026ea15e58af8d625472bf45ed4dffd727b00a0ceac170e1ececa36cd8b6830c"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/CoupledLabels.olean",
+        "sha256": "749fea692b26b0922f2b3bf8a8d0f9d44bedea79b4dce1c66f4fc27b875a9105"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.CoupledLabels_lean_20261125-171629-268997.log",
+        "sha256": "75e6bea9a427cb4a28ae01b846014df2b033a19e48ad5046db1625df57b03e35",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.CoupledLabels_checker_20261125-171726-541781.log",
+        "sha256": "26925a27b5d3b48a4d4e404ade9a05a6ea13542924f9bf0eab504c4b0d1d94fd",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.LowerOutputAverage",
+      "imports": [
+        "QuantumComputationSpecs.Algorithms.Grover",
+        "Track2Grover.StopMass",
+        "Mathlib.Tactic"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/LowerOutputAverage.lean",
+        "sha256": "c3ad5553c957b6e646793d06cf3645cea820ea6e353b56f4117f9232beaeddb9"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/LowerOutputAverage.olean",
+        "sha256": "3342dd7fb51a45542ab4de6986d9af9e11dfaa61a9355dc84cf6d72f5dc05b6b"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/lower_bound/LowerOutputAverage_lean.log",
+        "sha256": "a7cfc31e7d6260b9ce31133eb2f464add0e88d7d641848b89f111a89eb09f307",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/lower_bound/LowerOutputAverage_leanchecker.log",
+        "sha256": "af73c7bae381e975053c25fc04e44546473cd52c80a3d8a60629603f5ae73066",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.CoupledActions",
+      "imports": [
+        "Track2Grover.CoupledLabels",
+        "Track2Grover.LowerOutputAverage",
+        "QuantumComputation.Maths.LinearAlgebra"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/CoupledActions.lean",
+        "sha256": "fbf1010ab288e6cd57200a416491efc75c8772afced7e04dce09ee102f5c99e3"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/CoupledActions.olean",
+        "sha256": "1eff82ca0c63802bc2dcef33bc784b06ab6fd2a40c06d99ff0269c3c9f9f2b0c"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.CoupledActions_lean_20261125-172051-462649.log",
+        "sha256": "e6732ea55c0d9b4a63e19d4ef9323e98bf2419b528165e8ebaa1942650738b59",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.CoupledActions_checker_20261125-172346-191458.log",
+        "sha256": "8f540f043d4bcf993bde516f5430b143f01a3f84f17002755ec796653072a844",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.CoupledOracle",
+      "imports": [
+        "Track2Grover.PhysicalMatrix",
+        "Track2Grover.CoupledActions"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/CoupledOracle.lean",
+        "sha256": "9916c543704dc1fb4dc4818356a6be2e72d6f1ad2e8e263b948d9cf1b941ce81"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/CoupledOracle.olean",
+        "sha256": "6e2b61e294d69336df97a5823fda40c34fc635afc2805ee382ec1201bba400ae"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.CoupledOracle_lean_20261125-172351-442977.log",
+        "sha256": "ab5b53cb086f387c61685e7fff2802567143bbe9721733472b72c169b3b2fb36",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.CoupledOracle_checker_20261125-172403-558464.log",
+        "sha256": "56003617983a49bb67d4f8c42323042b645c529db52f113afe49c2e3dda27dc7",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.FirstQuery",
+      "imports": [
+        "QuantumComputationSpecs.Algorithms.Grover"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/FirstQuery.lean",
+        "sha256": "acd48bb2ed04324d6df3fdc86ec0ccd2e696bdb14922c7b4654574378fec4c08"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/FirstQuery.olean",
+        "sha256": "06fc583b8e7d388d6a5b6bce0fecb600ab7b808168e6165af11d1c7031b2550d"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.FirstQuery_lean_20261125-171407-743963.log",
+        "sha256": "ee0d0310fc751b409929f011a011a27ab2fa31355e3dc846d51475902a74e91b",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.FirstQuery_checker_20261125-171435-265052.log",
+        "sha256": "56ff1faac6ce23f1a8e7350a5224378a40226743b6e37f53090ec4a4edb26586",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.FiniteReduction",
+      "imports": [
+        "Track2Grover.FirstQuery"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/FiniteReduction.lean",
+        "sha256": "441dc54f97e451452b2f9a76efcbdb41c22837cbf940b3317d5b6936cb13faa2"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/FiniteReduction.olean",
+        "sha256": "861819b206a5854a3a5ab7ee9f124c0a477ce2aa76a966bc704d0bc3e396c0cc"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.FiniteReduction_lean_20261125-171826-519638.log",
+        "sha256": "5300e8e00dbbbe3dbf42ca6f2912504babdb82e7a28f7e184a4cfa6ef8b63b1f",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.FiniteReduction_checker_20261125-171835-155235.log",
+        "sha256": "dff51c083cdcacaf5a294851f3e11c4a30f8fd58e81db17685217165fc15b30d",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.LowerPath",
+      "imports": [
+        "Track2Grover.FiniteReduction"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/LowerPath.lean",
+        "sha256": "e86054398a4e41847ad928231aee2bda49e3d7d160f67b5ff9e909c166ffda16"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/LowerPath.olean",
+        "sha256": "a24b1b185641b12e3fe2874ecaf79d11ac5d4f1e664a3f1d7db9b16fba255fbd"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/lower_bound/LowerPath_lean.log",
+        "sha256": "67a58aabdb957fc4dbde8e5d0da76dc460441baebc4d66dc058d404ee603144a",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/lower_bound/LowerPath_leanchecker.log",
+        "sha256": "3fcf0c85518169d084b49159152edc3236712e2455f533264b9cd63df34efcde",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.CoupledPathBridge",
+      "imports": [
+        "Track2Grover.CoupledActions",
+        "Track2Grover.LowerPath"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/CoupledPathBridge.lean",
+        "sha256": "38b1085cee847ee8b9638897bf86cb45ce21e1063c76f232e923008c0cf6cb62"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/CoupledPathBridge.olean",
+        "sha256": "77ad1b3d80a2222b2caa3014d2f9ad53596bd9fd28a7d47aa1e62b48e6c98cc5"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.CoupledPathBridge_lean_20261125-172259-383280.log",
+        "sha256": "762b505a8cfa91302eca7ba4d9b07bc7298dbd7a4d607795595e5f45edb09d03",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.CoupledPathBridge_checker_20261125-172411-103533.log",
+        "sha256": "d045368f2260b65f85dd06b7676080846e6fdcb6fd0c1ee6594e28789a5cdfd0",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.LowerQueryCost",
+      "imports": [
+        "QuantumComputationSpecs.Algorithms.Grover"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/LowerQueryCost.lean",
+        "sha256": "2379ecd6f5fabd28bc96580ea5853c345f5d97565e0e8f931a97e25098a5c666"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/LowerQueryCost.olean",
+        "sha256": "c5deb02d3d6e169ba0994bd222671965eb1ba2c417b93200d34f7cce7d67f406"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/lower_bound/LowerQueryCost_lean.log",
+        "sha256": "b7fc64a4922cec8a32fc15e9bc3700936e0bf63ab1122736d9d140a8b718783f",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/lower_bound/LowerQueryCost_leanchecker.log",
+        "sha256": "f45111dfb98cc4b556d2f32e8d204d3d1ee7a7e444d6b94b70fcb41f38c204db",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.LowerAccounts",
+      "imports": [
+        "QuantumComputationSpecs.Algorithms.Grover",
+        "Track2Grover.LowerPotential",
+        "Track2Grover.LowerQueryCost"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/LowerAccounts.lean",
+        "sha256": "1597ccbce50d96d146ba7660c2186328d5bf0cb894bcb3bea2a69feb7ceff0a8"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/LowerAccounts.olean",
+        "sha256": "9c536eca6105ded99c3aba7a159e44b64057e1d784ed4a693a03cda6be7b1ea6"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.LowerAccounts_lean_20261125-172901-302387.log",
+        "sha256": "73412573e79eb331831a2b1b7a1ae6f63a5d064f29d4466f0e2edd81954e0948",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.LowerAccounts_checker_20261125-172955-016362.log",
+        "sha256": "30eb18255d1e642a905273ec7688ab5e57852c8b5176a052941f85408b63d490",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.LowerSeed",
+      "imports": [
+        "Track2Grover.LowerPath"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/LowerSeed.lean",
+        "sha256": "9702aee5f923d2169ffead849945ea42ace5d6f6cde5355f92a592f04703858b"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/LowerSeed.olean",
+        "sha256": "2711364b1a463815c24345f684984721049a63ec407e9b8b9775ae0d82b2fdad"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/lower_bound/LowerSeed_lean.log",
+        "sha256": "ff62e82978895e3ee5bd2b4a95f600b9cc7efc1ffa41d8253e3d2d9017ceb941",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/lower_bound/LowerSeed_leanchecker.log",
+        "sha256": "17da344f23be2fc1997ce2efaf267b6178dbb1351ef4c0150fd2d5cc67e03d3f",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.CoupledLimit",
+      "imports": [
+        "Track2Grover.CoupledPathBridge",
+        "Track2Grover.LowerAccounts",
+        "Track2Grover.LowerSeed"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/CoupledLimit.lean",
+        "sha256": "5901580df1cbfef34f848cdd50a68b49874538278e1c18a12990dc898f41155f"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/CoupledLimit.olean",
+        "sha256": "7b9e3b25146cc8bdec913fa57ed08b0810cab74dbcdb3374faa669e08345aacc"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/lower_bound/CoupledLimit_lean.log",
+        "sha256": "8ecd727bcc58949513f1420ee3b6afc488baba69a4354fd9825c60a335cd828d",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/lower_bound/CoupledLimit_leanchecker.log",
+        "sha256": "42a01234dc34ba49202a53ac508a945a879b110a19c76173416eddcca45f9a5b",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.DenseFindAny",
+      "imports": [
+        "Track2Grover.FirstQuery",
+        "Track2Grover.LowerAccounts",
+        "Track2Grover.LowerOutputAverage"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/DenseFindAny.lean",
+        "sha256": "9ecee0b3edb8f19128c7760c1cdeaaf21bc26ca13a164f63b2601c3d3a45cb52"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/DenseFindAny.olean",
+        "sha256": "90f9a015aad4cd5793dab6f3857f68270477d2b30a35c354fa45839ba1ba4921"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.DenseFindAny_lean_20261125-172315-301025.log",
+        "sha256": "ece38dbfbaf7353257cb0411a097fe97e6becac6a4877b90f5558911eefa7212",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.DenseFindAny_checker_20261125-172359-931522.log",
+        "sha256": "d5f7732ff1255c22104cb2158214f10328dd92fbc255e1cfad5e628b79769f2a",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.LowerPathEffects",
+      "imports": [
+        "Track2Grover.LowerPath"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/LowerPathEffects.lean",
+        "sha256": "1f4d977eb1533e486994fdd9c0612cb86d8ed1ceb70bed3574eac3e2059b51d9"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/LowerPathEffects.olean",
+        "sha256": "a968451ac139eaff9d9bb13223d59a2540503f05f123c9ac5f3098e121595f12"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/lower_bound/LowerPathEffects_lean.log",
+        "sha256": "4c7f7d62eeed23535330b66b949f29d9d91f22cae44e3bac2d8ac0c12b4aaf77",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/lower_bound/LowerPathEffects_leanchecker.log",
+        "sha256": "1c77a45541ecfe131cb883e9849ef7b46f40cad55b528071f0a51f91505a2c4a",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.LowerBorn",
+      "imports": [
+        "Track2Grover.LowerPathEffects"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/LowerBorn.lean",
+        "sha256": "1b0db666953157f1eebf1494d20634b7a2f79c188f9dcd0607c729e0b82cbd3f"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/LowerBorn.olean",
+        "sha256": "9a5b2b391744fb9aef7cd8b98b0b5e3eeee6431b50ef06d36e240841c46937e8"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/lower_bound/LowerBorn_lean.log",
+        "sha256": "7b2088f46456eaf7ef006a6a35a70130f03198d0db258333dadcb6b2a2c89441",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/lower_bound/LowerBorn_leanchecker.log",
+        "sha256": "0f0fd40e340b78bbd0efa21c19cf79f004d39f50ed5a62e48859932f69d4549a",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.LowerScoreBridge",
+      "imports": [
+        "Track2Grover.LowerBorn",
+        "Track2Grover.LowerSeed"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/LowerScoreBridge.lean",
+        "sha256": "0fca9912f366854293ed7105e5112b3d3e9c890aecd8edbcebe0263724847c1b"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/LowerScoreBridge.olean",
+        "sha256": "d85de58a8c9f4a1ea47e88e742dd9dfd34ca56b225617163c558c9fe4ac9a5c9"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/lower_bound/LowerScoreBridge_lean.log",
+        "sha256": "f1329a24150cbe3aaec136386a4b16d954ec62e9d6e5f03ebc5c99676bdc9e6d",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/lower_bound/LowerScoreBridge_leanchecker.log",
+        "sha256": "1bf15d94242f10d072a81e74770251fe44625a5e1aebf3665cc88d2c16c3712e",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.UniversalFindAny",
+      "imports": [
+        "Track2Grover.CoupledOracle",
+        "Track2Grover.CoupledLimit",
+        "Track2Grover.DenseFindAny",
+        "Track2Grover.LowerScoreBridge"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/UniversalFindAny.lean",
+        "sha256": "8cb8d07a4e67af74f04396281750545929b98996f9f950449454cd696a7225f9"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/UniversalFindAny.olean",
+        "sha256": "4a5d49961f34c47de68758eb3768feb0f552a9c94f109f584defdc7e9cb09226"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/lower_bound/UniversalFindAny_lean.log",
+        "sha256": "119d7639b32cc7411a530dca14c9eb3abe5c41eca1701a976f5027ed8c9f8b67",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/lower_bound/UniversalFindAny_leanchecker.log",
+        "sha256": "159f62b177ba14779d4de3b979dd2458b165c45f4ec1ab98662e8ad20fffb3df",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.LowerActual",
+      "imports": [
+        "Track2Grover.CoupledOracle",
+        "Track2Grover.CoupledLimit",
+        "Track2Grover.LowerScoreBridge"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/LowerActual.lean",
+        "sha256": "c40b7e146d22986d47bfd4f11f2a95594bf2d541590f257f8d323abe0efd2e79"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/LowerActual.olean",
+        "sha256": "19cedf9ce2be2279cb7c140e6f3110afd39dd7ba97141bba6d6be2968e1d1c4d"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/lower_bound/LowerActual_lean.log",
+        "sha256": "d347f59a15bd031f4a73e462d93bcdb9910671f0579a232dc8e3328986b7d2d1",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/lower_bound/LowerActual_leanchecker.log",
+        "sha256": "03802c6dd1f8f4feca69ec024708f570e69194edd51469c33b31de4ceaeef739",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.SharpUpper",
+      "imports": [
+        "QuantumComputationSpecs.Algorithms.Grover",
+        "Track2Grover.Any.FindAny",
+        "Track2Grover.LowerAccounts"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/SharpUpper.lean",
+        "sha256": "56e34b1dfccbbb732224e7d25d591bee3d671ccad6b55df64cfa6ab01360fcdb"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/SharpUpper.olean",
+        "sha256": "24fc8e497ddbb62528175f6b9d7d00f2bf8df5a1a52cf0959b0f097dd343de34"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.SharpUpper_lean_20261125-172934-549455.log",
+        "sha256": "1154ee9236e58fdc87cf986028f6ef79d9fabb15ced2337ebc53d0f72898da98",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.SharpUpper_checker_20261125-173022-902625.log",
+        "sha256": "41eec501b544be0587d47b75eeb15b841d91eec6a1899cfb9799dc809e12e776",
+        "current_by_timestamps": true
+      }
+    },
+    {
+      "module": "Track2Grover.FindAnyLowerBound",
+      "imports": [
+        "Track2Grover.UniversalFindAny",
+        "Track2Grover.LowerActual",
+        "Track2Grover.SharpUpper"
+      ],
+      "source": {
+        "path": "work_repo/Track2Grover/FindAnyLowerBound.lean",
+        "sha256": "91e33b4db04de417b488cc61b463468ec6289e0aa898f7abb652203291414d0d"
+      },
+      "object": {
+        "path": "work_repo/Track2Grover/FindAnyLowerBound.olean",
+        "sha256": "03d71ce2c5543ba6b9f4cb079cb600e07fe8f83e91b3e43046933458692d5a3c"
+      },
+      "object_sidecars": [],
+      "lean_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.FindAnyLowerBound_lean_20261125-173343-378135.log",
+        "sha256": "da340fa8e755ad58499a8f04666ba542341a1f3c3353c361c5ab87c139d278dc",
+        "current_by_timestamps": true
+      },
+      "leanchecker_receipt": {
+        "path": "track2_grover/receipts/Track2Grover.FindAnyLowerBound_checker_20261125-173628-914199.log",
+        "sha256": "1f6ee0906ca34db56f082c1098d8240cd3ec38685019d4d9c3e384567d668dfb",
+        "current_by_timestamps": true
+      }
+    }
+  ]
+}

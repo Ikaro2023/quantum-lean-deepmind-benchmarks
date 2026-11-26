@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\leanchecker.exe",
+    "--verbose",
+    "Track2Weak.FindAllWeak"
+  ],
+  "cwd": "C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\track2_grover_weak_lean\\lean",
+  "lean_path": "C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\track2_grover_weak_lean\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\physlib\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo",
+  "utc_start": "20261125T184119.569310Z",
+  "seconds": 33.262,
+  "exit": 0,
+  "output": "20261125T184119.569310Z_Track2Weak.FindAllWeak_checker.log",
+  "output_sha256": "bd3ac03b0179726bcf5b3ada9c3051e2d5f23d03fb8503082d4f526f9008803b"
+}

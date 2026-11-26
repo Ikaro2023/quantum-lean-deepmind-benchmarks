@@ -1,0 +1,8 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 Robert Kadlec
+
+The manuscript (paper/main.tex), documentation, and figures in this repository are licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
+Full legal text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Note: All Lean 4 formalization files (.lean) and Python verification/synthesis scripts (.py) are licensed under the Apache License, Version 2.0 (see LICENSE), matching upstream google-deepmind/formal-quantum-computation.

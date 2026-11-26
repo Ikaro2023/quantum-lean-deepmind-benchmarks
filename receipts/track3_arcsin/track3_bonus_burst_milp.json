@@ -1,0 +1,146 @@
+[
+  {
+    "bursts": 3,
+    "helpers_at": 0,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  {
+    "bursts": 3,
+    "helpers_at": 1,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  {
+    "bursts": 3,
+    "helpers_at": 2,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  {
+    "bursts": 4,
+    "helpers_at": 0,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  {
+    "bursts": 4,
+    "helpers_at": 1,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  {
+    "bursts": 4,
+    "helpers_at": 2,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  {
+    "bursts": 4,
+    "helpers_at": 3,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  {
+    "bursts": 5,
+    "helpers_at": 0,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  {
+    "bursts": 5,
+    "helpers_at": 1,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  {
+    "bursts": 5,
+    "helpers_at": 2,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  {
+    "bursts": 5,
+    "helpers_at": 3,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  {
+    "bursts": 5,
+    "helpers_at": 4,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  {
+    "bursts": 6,
+    "helpers_at": 0,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  {
+    "bursts": 6,
+    "helpers_at": 1,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  {
+    "bursts": 6,
+    "helpers_at": 2,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  {
+    "bursts": 6,
+    "helpers_at": 3,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  {
+    "bursts": 6,
+    "helpers_at": 4,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  },
+  {
+    "bursts": 6,
+    "helpers_at": 5,
+    "slots": 39,
+    "ceiling": 165,
+    "status": 2,
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+  }
+]

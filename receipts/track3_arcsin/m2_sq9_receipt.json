@@ -1,0 +1,136 @@
+{
+  "inputs_per_u15": 512,
+  "tested_u15": [
+    false,
+    true
+  ],
+  "sq9_words_count": 9,
+  "sq9_table_sha256": "9daa7139c8b185b9030fbf7d64622cfb5e76833ac610e9a62c50474eff09a584",
+  "candidate_sha256": "5f48503e464e655c3532f61c711384d571c05ced0164204fe5bf5a4b5be20b3d",
+  "lean_snippet_sha256": "389e6777e2995ecc9a78dcaba7e2b39014cfbdafbd85ff06b14b6773f9073477",
+  "samples": 1024,
+  "all_100_wires_checked_at_each_stage_boundary": true,
+  "ops_allowlist": [
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    85,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99
+  ],
+  "global_live_ancillas_outside_sq9_region_at_entry": 25,
+  "baseline": {
+    "s4_2Ops": {
+      "T": 172,
+      "ops": 371,
+      "AND": 43,
+      "local_live_ancillas": {
+        "False": {
+          "initial": 0,
+          "peak": 25,
+          "end": 9
+        },
+        "True": {
+          "initial": 0,
+          "peak": 25,
+          "end": 9
+        }
+      },
+      "quadratic_erasures": 2,
+      "max_quadratic_pairs": 66,
+      "phase": 0
+    },
+    "s5_2CoreOps": {
+      "T": 84,
+      "ops": 257,
+      "AND": 21,
+      "local_live_ancillas": {
+        "False": {
+          "initial": 9,
+          "peak": 25,
+          "end": 0
+        },
+        "True": {
+          "initial": 9,
+          "peak": 25,
+          "end": 0
+        }
+      },
+      "quadratic_erasures": 30,
+      "max_quadratic_pairs": 189,
+      "phase": 0
+    }
+  },
+  "candidate": {
+    "s4_2Ops": {
+      "T": 160,
+      "ops": 347,
+      "AND": 40,
+      "local_live_ancillas": {
+        "False": {
+          "initial": 0,
+          "peak": 25,
+          "end": 9
+        },
+        "True": {
+          "initial": 0,
+          "peak": 25,
+          "end": 9
+        }
+      },
+      "quadratic_erasures": 31,
+      "max_quadratic_pairs": 177,
+      "phase": 0
+    },
+    "s5_2CoreOps": {
+      "T": 84,
+      "ops": 257,
+      "AND": 21,
+      "local_live_ancillas": {
+        "False": {
+          "initial": 9,
+          "peak": 25,
+          "end": 0
+        },
+        "True": {
+          "initial": 9,
+          "peak": 25,
+          "end": 0
+        }
+      },
+      "quadratic_erasures": 30,
+      "max_quadratic_pairs": 189,
+      "phase": 0
+    }
+  },
+  "outside_ancilla_count_provenance": "Global op102 simulator stage boundaries for the frozen circuit; count unchanged by these strict replacements."
+}

@@ -1,0 +1,47 @@
+{
+  "name": "findany_tighter",
+  "utc_start": "2026-11-26T11:24:04Z",
+  "modules": [
+    "Track2Grover.TighterFindAny"
+  ],
+  "declarations": [
+    "QuantumComputation.Specs.groverFindAnyCells_nonempty",
+    "QuantumComputation.Specs.groverFindAnyCells_mem_grid",
+    "QuantumComputation.Specs.groverFindAny_correctness",
+    "QuantumComputation.Specs.groverFindAny_rel_cost"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "tools_sha256": {
+    "leanexport": "bda24bb3fafaf299ba472f944942d6293294b76559fafc9f166badd7c0f981b3",
+    "nanoda_bin": "de57d9dd7f647eb57398bc3dab4dcaa1d64f961f3f49964d5455fbddc73b35a8",
+    "con-ron": "4e351dd1d556da22efb44c17be30e3ff3900780730ce642ee007d1416d332d40"
+  },
+  "export": {
+    "exit": 0,
+    "seconds": 12.48,
+    "bytes": 299912131,
+    "sha256": "b68f75f0c29070058867c9d90d3806969d771baf106b2611f2bf38737c61db4a"
+  },
+  "nanoda": {
+    "version": "0.4.19",
+    "exit": 0,
+    "seconds": 21.79,
+    "checked_declarations": 46246,
+    "axioms_printed": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "con_ron": {
+    "mode": "--verified",
+    "exit": 0,
+    "seconds": 6.69,
+    "accepted_declarations": 44302
+  },
+  "ok": true
+}

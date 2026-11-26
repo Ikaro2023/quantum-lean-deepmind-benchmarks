@@ -1,0 +1,110 @@
+{
+  "trS2a": {
+    "domain": 8388608,
+    "nonzero_ancillas": 12,
+    "wire_degrees": {
+      "50": {
+        "degree": 18,
+        "first_highest_degree_monomial_hex": "0x7fffe0"
+      },
+      "51": {
+        "degree": 17,
+        "first_highest_degree_monomial_hex": "0x7fffc0"
+      },
+      "52": {
+        "degree": 15,
+        "first_highest_degree_monomial_hex": "0x7fff00"
+      },
+      "53": {
+        "degree": 10,
+        "first_highest_degree_monomial_hex": "0x7fe000"
+      },
+      "54": {
+        "degree": 15,
+        "first_highest_degree_monomial_hex": "0x7fff00"
+      },
+      "55": {
+        "degree": 18,
+        "first_highest_degree_monomial_hex": "0x7fffe0"
+      },
+      "56": {
+        "degree": 17,
+        "first_highest_degree_monomial_hex": "0x7fffc0"
+      },
+      "57": {
+        "degree": 12,
+        "first_highest_degree_monomial_hex": "0x7ff800"
+      },
+      "58": {
+        "degree": 8,
+        "first_highest_degree_monomial_hex": "0x7f8000"
+      },
+      "59": {
+        "degree": 6,
+        "first_highest_degree_monomial_hex": "0x7e0000"
+      },
+      "60": {
+        "degree": 6,
+        "first_highest_degree_monomial_hex": "0x7e0000"
+      },
+      "61": {
+        "degree": 8,
+        "first_highest_degree_monomial_hex": "0x7f8000"
+      }
+    }
+  },
+  "trS6cIn": {
+    "domain": 8388608,
+    "nonzero_ancillas": 12,
+    "wire_degrees": {
+      "52": {
+        "degree": 17,
+        "first_highest_degree_monomial_hex": "0x7fffc0"
+      },
+      "56": {
+        "degree": 6,
+        "first_highest_degree_monomial_hex": "0x7e0000"
+      },
+      "58": {
+        "degree": 8,
+        "first_highest_degree_monomial_hex": "0x7f8000"
+      },
+      "69": {
+        "degree": 17,
+        "first_highest_degree_monomial_hex": "0x7fffc0"
+      },
+      "70": {
+        "degree": 15,
+        "first_highest_degree_monomial_hex": "0x7fff00"
+      },
+      "71": {
+        "degree": 10,
+        "first_highest_degree_monomial_hex": "0x7fe000"
+      },
+      "72": {
+        "degree": 18,
+        "first_highest_degree_monomial_hex": "0x7fffe0"
+      },
+      "80": {
+        "degree": 6,
+        "first_highest_degree_monomial_hex": "0x7e0000"
+      },
+      "81": {
+        "degree": 18,
+        "first_highest_degree_monomial_hex": "0x7fffe0"
+      },
+      "82": {
+        "degree": 15,
+        "first_highest_degree_monomial_hex": "0x7fff00"
+      },
+      "83": {
+        "degree": 12,
+        "first_highest_degree_monomial_hex": "0x7ff800"
+      },
+      "85": {
+        "degree": 8,
+        "first_highest_degree_monomial_hex": "0x7f8000"
+      }
+    }
+  }
+}

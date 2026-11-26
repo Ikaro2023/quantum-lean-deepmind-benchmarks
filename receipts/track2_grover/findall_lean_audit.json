@@ -1,0 +1,33 @@
+{
+  "topology": {
+    "ported_semantic_modules": 17,
+    "trajectory_modules": 96,
+    "entry_and_aggregates": 4
+  },
+  "verified_source_sha256_count": 117,
+  "verified_olean_sha256_count": 117,
+  "verified_upstream_source_sha256_count": 17,
+  "verified_ported_source_sha256_count": 17,
+  "checked_frozen_spec": true,
+  "checked_lean_checker_executable_hashes": true,
+  "representative_run": {
+    "cmd": [
+      "C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\leanchecker.exe",
+      "--verbose",
+      "Track2Grover.FindAll"
+    ],
+    "cwd": "C:\\Users\\OFFICE3\\.gemini\\antigravity\\scratch\\quantum_lean_breakthrough_20261125\\work_repo",
+    "started": "2026-11-25T17:25:47.340439+01:00",
+    "elapsed_seconds": 39.88820449999184,
+    "lean_num_threads": 1,
+    "stdout": "replaying Track2Grover.FindAll",
+    "returncode": 0,
+    "samples": 397,
+    "poll_seconds": 0.1,
+    "windows_peak_working_set_bytes": 1461534720,
+    "sampled_peak_working_set_bytes": 1461534720,
+    "sampled_peak_private_bytes": 4343812096,
+    "windows_peak_pagefile_usage_bytes": 4343812096,
+    "scope": "Single final-interface LeanChecker process importing compiled dependencies. Other processes excluded."
+  }
+}

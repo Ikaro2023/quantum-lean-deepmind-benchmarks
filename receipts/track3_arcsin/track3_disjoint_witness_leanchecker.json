@@ -1,0 +1,15 @@
+{
+  "utc_start": "20261125T224225Z",
+  "module": "DisjointWitness",
+  "source_file": "lean/track3_arcsin/m1/DisjointWitness.lean",
+  "source_sha256": "ba75e245903f168ce3d2eee4f714f8fb3c58f6f4e2919ee6cad2754b579b5be0",
+  "lean_exit_code": 0,
+  "lean_seconds": 64.62,
+  "leanchecker_exit_code": 0,
+  "leanchecker_seconds": 52.11,
+  "lean_sha256": "ec7a472d1c12a09b0c0c718f7427c2be527b3f5f07810fdbe076c2507c7a91ea",
+  "leanchecker_sha256": "9ef6baeb28d5e28897d5ed6dddd60ff81e511d97374013ece435dff38e9e0137",
+  "lean_log": "track3_disjoint_witness_lean.log",
+  "leanchecker_log": "track3_disjoint_witness_leanchecker.log",
+  "leanchecker_log_sha256": "5e216c7d3fe989b3f3159943feab30b22b68378fd57c9cc5aa1a8545e1e21cd5"
+}

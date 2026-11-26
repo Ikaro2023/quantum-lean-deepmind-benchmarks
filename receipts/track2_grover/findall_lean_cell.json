@@ -1,0 +1,14 @@
+{
+  "trajectory": "kicks24",
+  "active_rungs": [
+    512
+  ],
+  "cold_two": true,
+  "eigen_rungs": "1,3..511",
+  "drift_numerator": 29051617608463800303969155,
+  "drift_denominator": 1000000000000000000000000000,
+  "v_top": 29051617608464,
+  "claim_numerator": 27014193664,
+  "claim_denominator": 1000000000000,
+  "gr0_over_claim": 2.575545255481987
+}

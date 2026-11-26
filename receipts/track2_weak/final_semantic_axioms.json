@@ -1,0 +1,1465 @@
+{
+  "target": "Track2Weak.FindAllWeak",
+  "request": "semantic_axioms.stdin.txt",
+  "request_sha256": "0f9b141b708a1ac88899ccac79698e9d5a3a83c6994a708d130a9e5b6fcc8102",
+  "receipt": "receipts\\20261125T190206.032174Z_final_semantic_axioms.json",
+  "raw_log": "receipts\\20261125T190206.032174Z_final_semantic_axioms.log",
+  "raw_log_sha256": "0de93b459bc93cc87dfb59c945a061d0debb22aea5bacf4864995e036911c8ca",
+  "receipt_sha256": "acd8b31d3d3805b8d10ff8b36975adce9c5c00668caff89c2ea76bbe015db69b",
+  "permitted_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "unexpected_transitive_axioms": [],
+  "local_direct_axioms": [],
+  "local_modules_on_disk": 111,
+  "local_modules_in_actual_target_environment": 109,
+  "total_full_private_declarations_in_all_local_objects": 2405,
+  "transitive_axioms_checked_for_visible_owned_declarations": 2383,
+  "per_module_private_inventories": [
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 18,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.FindAllWeak",
+      "visible_declarations": 18,
+      "source_sha256": "d210ff500051da8fac11966daed9536d8e67e24c9fea81a27c1541e3072ac929",
+      "private_object_sha256": "0f2ace2b5524376b5f2db6848430280fb8f5fffebd47e0dcd1640617dd5b2315"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 5,
+      "in_target_environment": false,
+      "kind": "object",
+      "module": "Track2Weak.FiniteFromCutoff",
+      "visible_declarations": 0,
+      "source_sha256": "667aae2c5eab974d21abefb28fe3316aecabbcecc875b9eda8d507842d8c0711",
+      "private_object_sha256": "ff03d4774e4477305854704640527eb3e2aca63799afe955a3e6a425a2151143"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 33,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.FlagRotation",
+      "visible_declarations": 33,
+      "source_sha256": "5d9f815aaaf542b0a4894b65dd0e8c94dc6d3c5d5816cbbe7052d4a38c1f861d",
+      "private_object_sha256": "9001edcd6bd0eb6eee1fd3c46695c6f113b0d5d2f38820e2beb51c0166ea95e5"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 10,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.Initialize",
+      "visible_declarations": 10,
+      "source_sha256": "870944b8e84c6259536ca7061a96dcff5d7af031430379798c4cb763d389a989",
+      "private_object_sha256": "970dc04e32bd8b5186b424849bc07ba97870c82a6b81f640100f9453b4b3a900"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 4,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.TerminalEffects",
+      "visible_declarations": 4,
+      "source_sha256": "dc14f4adfec235c7c72ef94976382a82a924b1ff43b41d17d7a979a3efa4fe63",
+      "private_object_sha256": "6c36e12930bf0d904030df51cd44bd8c2777f0aa47eb2e6dd40bf316e3930072"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 17,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.TerminalRead",
+      "visible_declarations": 17,
+      "source_sha256": "4ac0fa317800d30863f68e2c2f32d17f7ef5d06552c961d0be139b418e88db30",
+      "private_object_sha256": "f4e6d287dacfa3173ca7982905747a30ce7454acc28262c38c3f4bbd36fc34d3"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 17,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakAssembly",
+      "visible_declarations": 17,
+      "source_sha256": "43c2ac67b72a802135833ad24761f35fe2e3c9e718e23116876c319783cb647d",
+      "private_object_sha256": "19bffb51747dad75e62ca0d4c4c333df6aa62538a297d1e39fba42b626e693ed"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 21,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakAssemblyCell",
+      "visible_declarations": 20,
+      "source_sha256": "fa3d52e7d277f8cbb1868ce40ede925ab04e22f7937025afbf1eba052812f9fb",
+      "private_object_sha256": "a4cd33bde838fe6678af958cbe8eae3bf52374905efe0fc6969c9ebd298e73ca"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 9,
+      "in_target_environment": false,
+      "kind": "object",
+      "module": "Track2Weak.WeakAssemblyControl",
+      "visible_declarations": 0,
+      "source_sha256": "9bb262d705752fd8186c94ecb9ad6ddb4944834362547a1e0906d6f9eebf483e",
+      "private_object_sha256": "20e586b2f2ad5211feaa647f0d21441733d4a61824e9f32e57c6ccc1918e1996"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 36,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakAssemblyCost",
+      "visible_declarations": 36,
+      "source_sha256": "15e8df5cb5dc3a305f97ef8c0f29a86e49fcf98608a3913dfe402b42736420d5",
+      "private_object_sha256": "d6c9376b189e03c61feca48265359749b23032a8e49b2a58f2aede212d6faf1a"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 42,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakAssemblyStages",
+      "visible_declarations": 36,
+      "source_sha256": "555242c98b9b7758bd98c26ee132e1c71659b64623af564a9c5e885762f8a42b",
+      "private_object_sha256": "574928d9c2ce496214323680d08876fb64dc681262263b384a3c5a49a73f19f9"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 18,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakAssemblyTrialCost",
+      "visible_declarations": 18,
+      "source_sha256": "ca4226cb4b05345b7e9010f44c95a505e7977430f9e84bb014cc40f5281252f2",
+      "private_object_sha256": "3b5f1a18d4fbd530ffdb74f0d23aa951fc127cf5fe61a3c8b45ec12e17764347"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 29,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakAttempt",
+      "visible_declarations": 29,
+      "source_sha256": "887abc6dda638c9f3d2194f44a77cf61384d75e1ec57231d06cc84db9f25e518",
+      "private_object_sha256": "c318628f25c7ef73c83c252ee57d95ee22da7231547344f96e8a88c4b66ed7e2"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 1,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakBatch",
+      "visible_declarations": 1,
+      "source_sha256": "f59309223e491cd88df631ffe091f56d276e20701bd0de498b2ca1bb6ae3a179",
+      "private_object_sha256": "24f20d66059a7101ed35111422a3ca4fd3dee5becc28d32a0d2788ed121849cb"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 6,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks0_0",
+      "visible_declarations": 6,
+      "source_sha256": "111ec7e80dc5840e9e9733809df1b7205551fbc3c66d2cd8997f2e1359bddc53",
+      "private_object_sha256": "c03af436ba8a6e84c507d676299d6827fc9acfadbad396a6a907c26af4a65b01"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 6,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks0_1",
+      "visible_declarations": 6,
+      "source_sha256": "217d1449a162a42847d575cb571d54cc1c846782ae706170ff90c8c8ea1fa68f",
+      "private_object_sha256": "c16dac264e6bb191022d57dcbcf237aa643384311f5db8785560b0dfae825141"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 6,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks0_2",
+      "visible_declarations": 6,
+      "source_sha256": "5541f440ead60a0cd8f1130a0021805afb9018a4ac5cc5354d0cc738d24780f9",
+      "private_object_sha256": "b9c77b8e57f3ad76f9ef764de5c4ad8bc5a6131825a3a5d0a4585536545ccab7"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 6,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks0_3",
+      "visible_declarations": 6,
+      "source_sha256": "157b24f439c3222b7ccbf54dfd1f10cd6526cd9045831ec0005c1a761e3a96b4",
+      "private_object_sha256": "72f653d2d601a4ea385521907238ad1ac77d047e9e37c5319a57430ad522111b"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 6,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks0_4",
+      "visible_declarations": 6,
+      "source_sha256": "886f3323d5f63930d20ae86287c958dbb9a9bc5d9f0d437d3ba23bae9f3cdd3a",
+      "private_object_sha256": "ef0961c93ab13a67cf8f7f33ea9d7cc6a164c190fdd12916d94105001c428d7a"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 6,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks0_5",
+      "visible_declarations": 6,
+      "source_sha256": "e11f3f87b534278db07fdb561ddf518e66a1fad182e55e8f14817c9b76766810",
+      "private_object_sha256": "53b424fe048928dc978894f4a1e49a99d1d0950b192adfce9121c6616ec6a961"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 6,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks0_6",
+      "visible_declarations": 6,
+      "source_sha256": "b1040a7c79f2e7171ea9e797d6779cab6e5c3a8af1cd6aa636b76c7bdf719884",
+      "private_object_sha256": "d3807b91f19bd5009997919bb0ab4f6dbd1f80b5a96e24ea42006a619bd7fffd"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks10_0",
+      "visible_declarations": 2,
+      "source_sha256": "e80af3ad7de8f6dce3f0ef3c0b58f885560ad8c47b18000027d56ac60152a9e4",
+      "private_object_sha256": "f03fb542a9178b4f60121b0b1f13493efd59fe06c25a441720933297132670be"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks11_0",
+      "visible_declarations": 2,
+      "source_sha256": "b29616ff36334d8eb6e31be2b956c1bfefee8c1f7c13b99dae8da6675b9aa60f",
+      "private_object_sha256": "9696193ea58bffc661ad5de6080449ef9081de3c8790bf44a56fc238433a2dfa"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks12_0",
+      "visible_declarations": 2,
+      "source_sha256": "fc0357d49947d678c3869b91ecbc98bff1123fad3fc909fd0a4831718efd1245",
+      "private_object_sha256": "74cf2f31cd1c1ba9298586255e85765f483fbe76335fd53bd146d3ef26d6715a"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks13_0",
+      "visible_declarations": 2,
+      "source_sha256": "02bb33d986dc2dbf80382178e536381eec3587aeabbb24df205decd745c679dd",
+      "private_object_sha256": "099b972ebb4e01b9a8244ef5d8eeb7f2c53fc6dcbcae24f527447ed828a1ec9d"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks14_0",
+      "visible_declarations": 2,
+      "source_sha256": "8492494249b449095bff99c618e8abc5acdf1a1ea05e2537ca2ea2cc5bc3c50c",
+      "private_object_sha256": "cb5fb661e5d58bfa6bfb6f87d487f32a89ee2d13f760e96b4ea4f85f4db3e18e"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks15_0",
+      "visible_declarations": 2,
+      "source_sha256": "51085a1c6f4dc2a4fd12f3ad23132f93481080ae8a847c7287c1b4775410148f",
+      "private_object_sha256": "d8d8d21cede5db6233d68bf2f64466b957a85952e3d25c095e464041b9e35876"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks16_0",
+      "visible_declarations": 2,
+      "source_sha256": "084c1ea97fcd2f883cc6a8f2759eaa8a1194539aa88f043553f40234e087e9d2",
+      "private_object_sha256": "c50405f85b9fb90d8e13550d0b5da640a225e963ef0db40f9c45f80d1c396dd5"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks17_0",
+      "visible_declarations": 2,
+      "source_sha256": "7eeabb46189ea887220d16000b18f79f510c2226c1ff694f984529e194bbd2f1",
+      "private_object_sha256": "c6dbf7513555cc4dac3ee1e7d233b5374957c0887f53b87f91511ee77653a756"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks18_0",
+      "visible_declarations": 2,
+      "source_sha256": "5a079272d9011dd5a559c93f3c5854414558e39357fc8f9d294d5e2caaf8b850",
+      "private_object_sha256": "9698c87999bec69c14452f8de4a9a72cf665c8f0b6e8212b955ef35e1a1bc275"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks19_0",
+      "visible_declarations": 2,
+      "source_sha256": "5a97578615d34e6d2c9b03d859fc51467280b12530687f90f6080c0eb7946d56",
+      "private_object_sha256": "eb3465434646f411f17a79cb8df3019321bc627703a45beab7bc691d05e7bb13"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 6,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks1_0",
+      "visible_declarations": 6,
+      "source_sha256": "1ac3d70285bdca7178a4571320dc159163795204dcbff357cf62d145cccc1a93",
+      "private_object_sha256": "c8f4cc22e79fd71c17182f2d2d000fced89d80f8381c21608e5ac7490682f029"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 6,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks1_1",
+      "visible_declarations": 6,
+      "source_sha256": "ef4d8ae6f5d29bbc6b516a17abae874fb1afb7904a73d0980b3ed3107a3419c2",
+      "private_object_sha256": "c4e7402d6c31289d8082bd8bc121f0b0fb925a34e6014cd3c88cf104212c511f"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 6,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks1_2",
+      "visible_declarations": 6,
+      "source_sha256": "41ed34ff2f3f42cb4bd575a98792f6acb8794c12c0444561f251e1f3771d81da",
+      "private_object_sha256": "4359f8527728541da69553769a19f95731a2018ffdc82581998ce6b6cc02a664"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 6,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks1_3",
+      "visible_declarations": 6,
+      "source_sha256": "f423acf2ec38800861d9fe2dff5d660e21999c210b527beb10bb8abe94f24980",
+      "private_object_sha256": "c083d9ad0891d04b90440f7919dfc5ef86a4e11f073347ec7550327b4e1c4a74"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 6,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks1_4",
+      "visible_declarations": 6,
+      "source_sha256": "ed14dd57266d15e8aa32d4eb5034bd915efc025b0a956cf593469a39bbd6e8a3",
+      "private_object_sha256": "071ff0cfa28b945f07622fd8b9eaf84f71aaba4b51a87544b7fac9ebb3f7ebd1"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 6,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks1_5",
+      "visible_declarations": 6,
+      "source_sha256": "fc2d212095f77f785f3c4829617ae67099bd0025ccefea1b2122cb443a4dffbc",
+      "private_object_sha256": "2ab8794c1d0226406a343c131ab5670218c44860984f69ff8bbdb7108dccb2a4"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 6,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks1_6",
+      "visible_declarations": 6,
+      "source_sha256": "5cb185667bb006350a6a4fcadd3221fa11ed15aca2be879f4e15fc4c7d51b7f8",
+      "private_object_sha256": "04dc6e51462bc0ba9b6c78b5491950b7952957284dd28216f79cb46c25d9739d"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 4,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks1_7",
+      "visible_declarations": 4,
+      "source_sha256": "7bbfad8c831dfbee8d9f62c41c00ff6d9baaf145921f5b7b4a727b2050df5097",
+      "private_object_sha256": "37ef7795f133945134e08a96a9332c20ceeb58263d7439c1a48e87124999e036"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks20_0",
+      "visible_declarations": 2,
+      "source_sha256": "aff35216259cc23a2011c7e9e8794856124a60fa5e0c7697cb75f3f21e9a6f10",
+      "private_object_sha256": "fd5a49e8ef55ad4ff099ff1abe02d643df5eda934ffdf564d6e059ee9483b5c0"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks21_0",
+      "visible_declarations": 2,
+      "source_sha256": "02c0c04501af2668ff478ca9810f3e97aeebeec7098308d2f971e1298bb2cf1f",
+      "private_object_sha256": "d238b10cc9c04e448489e883ec96da2da6c06aef4eb2640e30bb97487f31c8a0"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 4,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks22_0",
+      "visible_declarations": 4,
+      "source_sha256": "88245f82db3d0092d830fbe42ad57517375c53c5433542e92b1993e85b5cfec7",
+      "private_object_sha256": "e9e2cf84695c373e1316b45571525166bd88853a95ca672db998560b6da1d980"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 4,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks23_0",
+      "visible_declarations": 4,
+      "source_sha256": "4183aab2a8a83f4085c02eab34520cc41a08ad2b74d6ae2ab4bc1b44df354f84",
+      "private_object_sha256": "4c3813fef31264f4f3390d2c9d8a64bda394ad148d7eccf32b9c0c7c097a7475"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks2_0",
+      "visible_declarations": 2,
+      "source_sha256": "de45c7280f84b53f3bc254c2233f44da69588ff3f3a6b05bd21fe72da9d2a1ba",
+      "private_object_sha256": "99becfc17749168833d8c63e086c8a83830d25ae3f360e248c431efe17396403"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks3_0",
+      "visible_declarations": 2,
+      "source_sha256": "a1ad3c658fe45adaf57bd5d0de83a20f7a52c2c4452603221ba4f35a40e2b8f9",
+      "private_object_sha256": "496ff5a2714ed0779d8b4bd36c2b24035c09a28721d22c54947ae3a21517ebd6"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks4_0",
+      "visible_declarations": 2,
+      "source_sha256": "4412e6500aa2b5eef390ace370f216b335ae6daaa97f128fbef05bb71cc86493",
+      "private_object_sha256": "36677b974e3263d2a0f6e37275769085e52463aef760dad4c547a7bcad6c6f7b"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks5_0",
+      "visible_declarations": 2,
+      "source_sha256": "f4a9af2e7abbf28c0bafc5967fe7a98a5cceceb2fe829c11e9103492421512ea",
+      "private_object_sha256": "01c9815c95a1f5196334b536446109b88f8bf60c7fc64d2e243f08bac8fe43d7"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks6_0",
+      "visible_declarations": 2,
+      "source_sha256": "9ddff51365ccb4c093821a7f5b97abf33302c267e069bedd8126e6383aebabd6",
+      "private_object_sha256": "89b4eb1083a9222793445eb75e40cc1f4944fb8071b1727a819249767608da94"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks7_0",
+      "visible_declarations": 2,
+      "source_sha256": "44824804201164d4239c2ea3101a4c1befd2d32a61dbb23aa9412cf6f7156728",
+      "private_object_sha256": "dc3befb382716e441456748e064efe3d53d48210a0c4675c1049b0b0289c68ea"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks8_0",
+      "visible_declarations": 2,
+      "source_sha256": "c09aabd8841653bb083c1a5717ba8217693c1dffecf66e5019435072fc27c9f2",
+      "private_object_sha256": "5ed558604c24ea85434cb308dc3a9037555475aefac13d66539fcfa4e2a1a02b"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 2,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBlocks9_0",
+      "visible_declarations": 2,
+      "source_sha256": "23068b0d31f222f6048f2a1ae87eca49eac2a803cdd1dcbcfb0c209aa5def885",
+      "private_object_sha256": "fa30c0c2b1903e3c483c9963ddf1bc671fee3f907a9b4044ad8872f14fd525b1"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 10,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertBudget",
+      "visible_declarations": 10,
+      "source_sha256": "8b83b7f438c315570b78852fad5ff14e9768788322457cfd3ab6a67139a2d6be",
+      "private_object_sha256": "c13af0744db8dd92658374756bd5615384eb9c570a3850ce637ae00f8d1b3c92"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 33,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertFlow",
+      "visible_declarations": 33,
+      "source_sha256": "3c1f695fd04fd2b6be6e3079cb66801f989a93d0e4d75e220b3fa574d1cb83e7",
+      "private_object_sha256": "e6950947c7c7a5eca2eed756c541d2b9cddc16b9526eace969170d054378f16a"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 20,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertGlue",
+      "visible_declarations": 19,
+      "source_sha256": "fb9752d8789e8f68cdb6004177d34e3d29f4ad716ee6317cfc8b230e2735437c",
+      "private_object_sha256": "879818e54af8dfb6ba75e979b3a471e93f6a42eb6008114a222cec9120258b1c"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 171,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertRun",
+      "visible_declarations": 171,
+      "source_sha256": "b869d70b1b0a10022a25182090acb08972ecb1e08b0e84a43fe107818c4ecbfb",
+      "private_object_sha256": "81f3bcab4a74e5c78ecb91937dbd2324509cd3e9ae85783d3db8435c61d9e1de"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment0",
+      "visible_declarations": 7,
+      "source_sha256": "8ff5b7cefdd19f6006cada86c9d8307ac10014990c538dd61663ee13edf5204a",
+      "private_object_sha256": "d93afb48f1087de763cd626efe77f9bda122e0fa388ab08b627c8e8c909180ba"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment1",
+      "visible_declarations": 7,
+      "source_sha256": "dd7946151c364f5a26c10d2343eb86d63f2a6f66ee33c44e05ff6e3689e5965e",
+      "private_object_sha256": "5d69a4c7c3067aee6b4192a68522d8c01c1ca4594b2dff2f3c0740bff9cd424c"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment10",
+      "visible_declarations": 7,
+      "source_sha256": "fd8eafc815c7e8684a91c66d041e746fcb9d2753bf266a10d356b4196824140b",
+      "private_object_sha256": "659ad2ca3dd39ba59442f5c71b8f89ab44fa1caa6c90d557fc404ebaf2bd269c"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment11",
+      "visible_declarations": 7,
+      "source_sha256": "a7d572dc66b5f5b53d7b72889107ca7388139f8ccf60624d02b0b9f1060ccf06",
+      "private_object_sha256": "784dfb8ea723ba514250f591a2172e8eee947a154aa593fa916d6ffa2f0ba7db"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment12",
+      "visible_declarations": 7,
+      "source_sha256": "72d3179ed311ea168595c1be799e8dcecbd124141ebaf22f36278667ffb749c2",
+      "private_object_sha256": "76c46ec7d005004be89911e15e8f1e6cc7ba958f68348b0ca761bc6f2f271316"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment13",
+      "visible_declarations": 7,
+      "source_sha256": "776f09a4fea8963940df4832e5c4f7fc804c31464c7661b0222d124637d05481",
+      "private_object_sha256": "ef49a1f7935eb9632d86af99ac422dafc4ebee0b388510078951425907d9b6cf"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment14",
+      "visible_declarations": 7,
+      "source_sha256": "0fd7711b40545361b410ec477567c0de5eebdb21a95f4d8274d937060f78e81e",
+      "private_object_sha256": "a11cb5fcde5f2df2fc61891ce3ea8bec1570372d73b03d08ca0822068b922372"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment15",
+      "visible_declarations": 7,
+      "source_sha256": "4863292f4b5b9b49cef57ad4cdb562256d2481226934c9b34888ac9d32c281ea",
+      "private_object_sha256": "6567891ee5a7e0ecb24e3cd1cb411727fe1deab26eccecd54c14f962caf01005"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment16",
+      "visible_declarations": 7,
+      "source_sha256": "250357aef188042bde2f3ae2718c044ff86e9bcc739b7be0a8ada2a0b527d75a",
+      "private_object_sha256": "f93b47a763e46ef24baf1ce3419f966e5e832447ce4da553cf32eb9b94505ac1"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment17",
+      "visible_declarations": 7,
+      "source_sha256": "ed0e4f92d5d28f6816ca72410025c0d65f9b03f1fc55e03eb88b2ca2816508e0",
+      "private_object_sha256": "8ca4b601e9959eb376f89f8d5b45b5bd557ee047dc3ab6a8b9f460a56a69b15c"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment18",
+      "visible_declarations": 7,
+      "source_sha256": "94d0750f795957ce7319c70b665310bec1b0abd94f2386d8e1b63b8b8a28ffff",
+      "private_object_sha256": "88bac76ec0ec8ce44df0284868827fa8a103262f0303f0074056ee6962c56f03"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment19",
+      "visible_declarations": 7,
+      "source_sha256": "560ee5959b76d91c91152d904b3e13ed4ef207c228bf9adcc5823eaee139652c",
+      "private_object_sha256": "d7afebfad3ceff289660fbdc19a1b512825389f98342d59fc964036e66730f09"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment2",
+      "visible_declarations": 7,
+      "source_sha256": "29550aad87a8acd93e11328515d4b6b5d3e3c1bb3c6fc39ae77dcedcbcc7c840",
+      "private_object_sha256": "49a04587f9c886687b3ffddef80ede7ea9de7eb3012023d56dde197937cb44af"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment20",
+      "visible_declarations": 7,
+      "source_sha256": "e3ae648bcd8a94d96737120db7c501e276e125a6ba9eb797e426c0a13da025b9",
+      "private_object_sha256": "ee2df0ea3cbeb806c09f33ecbd4418194c3b40338b95923e9d0a610a8e3dcc6f"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment21",
+      "visible_declarations": 7,
+      "source_sha256": "a86d87a9174f02049fff99eee4de0404248842c8a4882ce17162b74363a657ec",
+      "private_object_sha256": "d3e443afec1498836e53d8270de58610ca3fd361851729d37a873a8adb52edae"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment22",
+      "visible_declarations": 7,
+      "source_sha256": "ce5c509cbfa77100e66ed7b77a8a1f21c61f2dd6cdafdcf0eea0327d36dfe46b",
+      "private_object_sha256": "27d1b80c690c6ce529f60221d2113316ab455887efb18fba3b2984eae1f8a66c"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment23",
+      "visible_declarations": 7,
+      "source_sha256": "236a9126ff5abe997a9c884c63fbb7fd2b6cfcf9fd36642aa7b8068a58f42e60",
+      "private_object_sha256": "ad3105ca9d4bc298062f674b943e41c7263345c712ebae9de91e77dfe42d6a42"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment3",
+      "visible_declarations": 7,
+      "source_sha256": "b5a75a464b5e1ba7550d74b841ef55583f2a85e632ebed0725c7cce9ae67e6ba",
+      "private_object_sha256": "37a560b6cc3616e8f81c6f1a2bd8f3df64eae8afc11372f4bee2fed2de69df78"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment4",
+      "visible_declarations": 7,
+      "source_sha256": "437e4ac5794f5e0e2da7c3c9251b3c9a6abdcac90add358cab1ad284fdcccad6",
+      "private_object_sha256": "5aced4afd851bf09bda8d6372edea2c48002d64cabb71f890a240935ad18a015"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment5",
+      "visible_declarations": 7,
+      "source_sha256": "b6ec15e1e711f81bdae3ab5ff08765fead6428cbf434fc081557382f0e06338f",
+      "private_object_sha256": "03b0a094904a14c39c596a64c70c85560db15d92072a8b4dda51c9d7c5da84a5"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment6",
+      "visible_declarations": 7,
+      "source_sha256": "abf7c01ada397d1f1c87fb72d3d6ca424fd0dfbb4a762910b47e1c5946298ca9",
+      "private_object_sha256": "5b6afcf6e27a86e1724db55c06f1b8d22f38710ac119c10312b1caab64828699"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment7",
+      "visible_declarations": 7,
+      "source_sha256": "f5dba785d1d3164f2ae94e9ae80ae0efeec5bdb5e16988d0de71db11574466b2",
+      "private_object_sha256": "4393e4bc8cdec0dff2593f3e790018e29e1ab1a65a6461e5175fcfd5315a45db"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment8",
+      "visible_declarations": 7,
+      "source_sha256": "a6c3ab6d6ba59cbcb589eda29f36325b8e190347cab333962d31c6cca3c7aed3",
+      "private_object_sha256": "79245d3e25564f03f0776850a0a0a3834596638e24c1f4116b3b7661060a19d9"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 7,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSegment9",
+      "visible_declarations": 7,
+      "source_sha256": "7be44428fb2b1291677f3e648d9a71ecb934c94d3aeea88a7b06b4fb945a14d8",
+      "private_object_sha256": "5fbab254075a82456733f38d6867e6460321673e4657ad58ca3af51d8c51d6df"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 64,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertSound",
+      "visible_declarations": 64,
+      "source_sha256": "cb7b5c8e049b14b7e80a002b125973d9c32a4197e00f3dd06159d33246a8222b",
+      "private_object_sha256": "1b0f54925073b4812abc2f1e8dd20f243a919509eb582e4ab759b361912958ca"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 241,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates0",
+      "visible_declarations": 241,
+      "source_sha256": "79a25ff14c3499d7845535d6b213d52f89ea55e02595d9f03fbd301ea313c38e",
+      "private_object_sha256": "8ec55842e123075b30a582a26417e41811e4b9e2983e9ca6058349eeaf84637b"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 302,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates1",
+      "visible_declarations": 302,
+      "source_sha256": "e9737d6d4d5f631dcf80836d23de31101f7e219c9ae7e4a02bbadc0eb8bf4151",
+      "private_object_sha256": "b1754ec64058ac59115b16a320a79772231ed2794e50fb9c753d540341d687b7"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates10",
+      "visible_declarations": 38,
+      "source_sha256": "02e1b8ff66865c4ddfcca955d8a31a644bffa59e18f4ea6b77567324264981a7",
+      "private_object_sha256": "834b89ce519bf49c2f8be19d50569beb12791a1be2d3f59f9776fb12abf6d69c"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates11",
+      "visible_declarations": 38,
+      "source_sha256": "42b5fea03260669c517231b1745e489f6c9ef722a73fe84c2acfc941b5529a9f",
+      "private_object_sha256": "366f7a968e40eb687943411379f3d5832d57859136f66a73beada4c844b84e36"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates12",
+      "visible_declarations": 38,
+      "source_sha256": "deb6107802745912fcfb23de7a443c8d31f98a903ea810843b5e000649f7269e",
+      "private_object_sha256": "e005e7d89bbd1e524c22679c09f22d1065a17ab2f0b3284fe18854dbee62289f"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates13",
+      "visible_declarations": 38,
+      "source_sha256": "95e5ce45df20b7140bfe3c697f280a87e0c424df9c6b1d10a49c4ce3db6a0be1",
+      "private_object_sha256": "c62ad78e4a82521cc97e3e60bd3f46edd45acdd2504eb4b66e8d94d5c8e122db"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates14",
+      "visible_declarations": 38,
+      "source_sha256": "6f9a15680343e5a07047fdc390132a958a96aff17b506e8ca849a8fcbb27dd12",
+      "private_object_sha256": "8ca9bbe8ed80eb3c1ab3aab0019afe37beff38dfd21abcdf6e3237e7c1adb404"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates15",
+      "visible_declarations": 38,
+      "source_sha256": "0261ba177f6d25c1996fc46816f3b3f97eed0c93131f18dbcf2eecc9f13a7e73",
+      "private_object_sha256": "d4a1fdda02a61d1472670df3df7d79f583fcb852c9d3992d9c1d61642a16065e"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates16",
+      "visible_declarations": 38,
+      "source_sha256": "de7c6b375330a1d69473134cc561e29ca36fbcdec36963d5ab15de6e57a17d19",
+      "private_object_sha256": "f55d917c1720f33f6829f5e1115726e22045bca21eae024b4f47b25494c4e7a7"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates17",
+      "visible_declarations": 38,
+      "source_sha256": "44520002c99ec2bcfa1e1211af540ee179c9872026f4b70ed048fb21015e44fe",
+      "private_object_sha256": "dab8e56a2e27b4989a3d3588c590258735051db4ace84b86d00aac1786f9d8be"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates18",
+      "visible_declarations": 38,
+      "source_sha256": "1ddc04aa66aed0e8bbecf89bf03923367a7f9c432b692cd30439af742ae9b33d",
+      "private_object_sha256": "a3f776e47c9356c7cd8599165705b610a7d51029e8da8a1c3f1f6cd526e27258"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates19",
+      "visible_declarations": 38,
+      "source_sha256": "ff151115a4fa46fb24a1be5e23a769274403f8ac4f7d81eb8682ce91bb37ca18",
+      "private_object_sha256": "e158c8568a13a5472819eb42eadd61bb94f723f5ab3553b62f016aa135d38bb0"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates2",
+      "visible_declarations": 38,
+      "source_sha256": "863076cc0f9db23e8b96e2d20586e60ec410121f11fcd3941735dc83d32b6789",
+      "private_object_sha256": "f5f7f98ce607a835073aaaf6618c01642840cf2041d50cb885e67a2172d2aa73"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates20",
+      "visible_declarations": 38,
+      "source_sha256": "55a87702b48ddf9072037985d0cbaf66551e8abbd42865069441032ab728b030",
+      "private_object_sha256": "4b7e4f9e7a9ae974d58c5740f2ec187a9ef349a8634c8e9f618bbd1e5a7c785c"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates21",
+      "visible_declarations": 38,
+      "source_sha256": "6a4fe859e949a9b3ff7b2db7410e97b4a6e5086c303645d0be0cc718c1a5b6df",
+      "private_object_sha256": "7da9d4d3960ba7a76b8445cfdfff17146123944ddb7c705e9720c3af1fe287a0"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 50,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates22",
+      "visible_declarations": 50,
+      "source_sha256": "b3d9d05330315d8b2012f4741c4b966d5fea6e136bdb5b1cbcb440f0c9203e51",
+      "private_object_sha256": "6acde4c6a26c5f16079c899c09f279f83ca9386ac20e449c65591f5ef75941e8"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 50,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates23",
+      "visible_declarations": 50,
+      "source_sha256": "686eaae22986fc890aa25e9b069bae2ea5e6159101ff1255db6fa912dedbdd0f",
+      "private_object_sha256": "19b6b885db07ed73741e054b676a77a3116bfa1daf8e6c1bb1b1a85f7a06d0e7"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates3",
+      "visible_declarations": 38,
+      "source_sha256": "bed567ff172e5ab6b745022b9670cdb82379d441f6c967a1be7de715ae7706c5",
+      "private_object_sha256": "e5d58d9ff28853134bb9dcc237211cf0aabf9b1be79097ea1e532d4ef77e84af"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates4",
+      "visible_declarations": 38,
+      "source_sha256": "6e7590b2e9d26bcc3f00ad88d0965f8a0614267982c1c0b8a26ac1d2f0bb98eb",
+      "private_object_sha256": "6891d4b94a57ab164efd86cf66a5701137b7540403b805d5be0e44f80a94f791"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates5",
+      "visible_declarations": 38,
+      "source_sha256": "cec6da9436ae58989f7164b16a94bb6b81f366a5594fc8397a58c540982be16e",
+      "private_object_sha256": "8872a5de072f0acb440665e3198c85ca1e4c4bf47717fe2fe351bab6ff9e4908"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates6",
+      "visible_declarations": 38,
+      "source_sha256": "1fcf3d10e031b2e58ee81c56d5bdb199e47132f7dc984b1c2e68b03621ce7558",
+      "private_object_sha256": "6cfdfa42cf0b9c119eacbfe291068bc573c5eb4b882e5dbdcb9f5801fd9cc993"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates7",
+      "visible_declarations": 38,
+      "source_sha256": "3d42cc4e2fb9f986eff0652b4f97ead3d2c06799386196313264a96d2873ee52",
+      "private_object_sha256": "791aee56035a0a8f83402504a0cae6c505763ebbd3094c2503988fe2c9f691c8"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates8",
+      "visible_declarations": 38,
+      "source_sha256": "ea2329036189f4068411e92b062239229d195db2547a3b0a3a9cc4f23cafdf12",
+      "private_object_sha256": "d0f53aa0a047e1822740a3fe5ef4f8d55052fa2d5ae88128ad0a5520ad83fb13"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 38,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakCertStates9",
+      "visible_declarations": 38,
+      "source_sha256": "215f141d8baeedc77cda8b037ed26b44d1e91f6de18bf52b25c8094a122fa2b4",
+      "private_object_sha256": "26f2f13c14cb0060febbb6c4ce3bb8575a655afab50109a8bf3d15646fb66d1c"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 8,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakProbability",
+      "visible_declarations": 8,
+      "source_sha256": "adc0e9c74cf5d243cadf3162b4571d4c31ddd6f2724c12f89d46ce16e4e3c354",
+      "private_object_sha256": "96425f9421a9e031d3be06c205dc7d1bf576704d916c62408c041f574fb4c9ba"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 17,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakWalk",
+      "visible_declarations": 17,
+      "source_sha256": "6fa6be3a0e517b8559ee50afbc323773e1c1e6851cf3e6d1c00e2f72c1840987",
+      "private_object_sha256": "52eb97131afb93b1bd489126a7e318f6af5960dc3163d286d0962991334fe8bc"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 16,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakWalkFilter",
+      "visible_declarations": 16,
+      "source_sha256": "e533fc79d862808eef7971728ed42ae971b60dae807c4063afb8a89f6980076b",
+      "private_object_sha256": "1ab18ce969f29f09320964920378380062457c781dbf9d78741c2b0521c875e8"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 22,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakWalkHistory",
+      "visible_declarations": 22,
+      "source_sha256": "09def2ef1f11fca9032298d6bc706a71f392c57ee58e7d52b2b5ba82c0ef207f",
+      "private_object_sha256": "e985fd510ffd8d2125b81bf6f38fbb73122f020eea54cbf761b4380f8cb86f87"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 33,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakWalkOutcomes",
+      "visible_declarations": 33,
+      "source_sha256": "09f9820ac55be12ff38b93702e251a3b717ce747af14078c523f6ecca86becd1",
+      "private_object_sha256": "6363deafecf3c9fee14bc8073861f9dfc212ab63472009172a3c56120fee2289"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 36,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakWalkStages",
+      "visible_declarations": 36,
+      "source_sha256": "e18354d231aa41653dcc12aa490ce2674b35818a2dcfb6f946756b625d4d4d7a",
+      "private_object_sha256": "4d31e71c8bdd8d0dd9807af3dec6e1706eed0b74586c88a6d865567ddf15e6ad"
+    },
+    {
+      "direct_axiom_names": [],
+      "full_declarations": 8,
+      "in_target_environment": true,
+      "kind": "object",
+      "module": "Track2Weak.WeakWalkTotal",
+      "visible_declarations": 8,
+      "source_sha256": "81a3f5be6dbf0e836906be68ae9348c7735d5b779df34b31b39b9173158fa6b6",
+      "private_object_sha256": "2dcfa1e6ac0d09914737cc5042f27d05bf50a57bafdb1ba6b8ec3504122b926e"
+    }
+  ],
+  "public_interface_declarations": [
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.groverFindAnyCells"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.groverFindAnyCells_nonempty"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.groverFindAnyCells_mem_grid"
+    },
+    {
+      "axioms": [],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.groverFindAnyQubits"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.groverFindAnyCircuit"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.groverFindAnyProgram"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.groverFindAny_correctness"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.groverFindAnyRelCost"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.groverFindAny_rel_cost"
+    },
+    {
+      "axioms": [],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Weak.FindAllWeak",
+      "name": "QuantumComputation.Specs.groverFindAllCells"
+    },
+    {
+      "axioms": [],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Weak.FindAllWeak",
+      "name": "QuantumComputation.Specs.groverFindAllCells_nonempty"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Weak.FindAllWeak",
+      "name": "QuantumComputation.Specs.groverFindAllCells_mem_grid"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Weak.FindAllWeak",
+      "name": "QuantumComputation.Specs.groverFindAllQubits"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Weak.FindAllWeak",
+      "name": "QuantumComputation.Specs.groverFindAllCircuit"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Weak.FindAllWeak",
+      "name": "QuantumComputation.Specs.groverFindAllProgram"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Weak.FindAllWeak",
+      "name": "QuantumComputation.Specs.groverFindAll_correctness"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Weak.FindAllWeak",
+      "name": "QuantumComputation.Specs.groverFindAllRelCost"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Weak.FindAllWeak",
+      "name": "QuantumComputation.Specs.groverFindAll_rel_cost"
+    }
+  ],
+  "target_theorem": {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "direct_axiom": false,
+    "kind": "entry",
+    "module": "Track2Weak.FindAllWeak",
+    "name": "QuantumComputation.Specs.groverFindAllRelCost_target"
+  },
+  "model_declarations": [
+    {
+      "axioms": [],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.Grover.Var"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.groverSetMarkingOracle"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.groverParallelMarkingOracle"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.groverTargetSets"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.decodeTargets"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.AvgOracleCostBound"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.groverHarmonicSqrtSum"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.vanillaFindAnyCost"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.vanillaFindAllCost"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_axiom": false,
+      "kind": "entry",
+      "module": "Track2Grover.TighterFindAny",
+      "name": "QuantumComputation.Specs.groverGrid"
+    }
+  ],
+  "frozen_stub_module_in_target_environment": false,
+  "imported_modules_under_Track2Grover": [
+    "Track2Grover.Any.Defs",
+    "Track2Grover.Any.OddParityBridge",
+    "Track2Grover.Any.FindAny",
+    "Track2Grover.TighterFindAny",
+    "Track2Grover.FindAllEvaluator",
+    "Track2Grover.Engine.SpecDefs",
+    "Track2Grover.Engine.StageLoop",
+    "Track2Grover.Engine.BaselineRouter",
+    "Track2Grover.Engine.WeakDickeBase",
+    "Track2Grover.Engine.WeakDickeCore",
+    "Track2Grover.Engine.FindAllJohnsonP01",
+    "Track2Grover.Engine.FindAllJohnsonAltStep",
+    "Track2Grover.Engine.FindAllJohnsonMuxRefocusLift",
+    "Track2Grover.Engine.JohnsonBlockMuxSparseFastT16",
+    "Track2Grover.Engine.FindAllJohnsonRampKickMuxKernelB",
+    "Track2Grover.Engine.FindAllJohnsonRampLift",
+    "Track2Grover.Engine.FindAllJohnsonRampKickMuxEval",
+    "Track2Grover.Engine.GaussianHammingZoomK2Base",
+    "Track2Grover.Engine.DeflateFunctor",
+    "Track2Grover.Engine.MultiTapStage2AGL1QHL",
+    "Track2Grover.Engine.FindAllJohnsonRampKickMuxBridge",
+    "Track2Grover.Engine.Rk128kEngine"
+  ],
+  "metadata": "Full private kernel objects count direct declarations, including unexported helpers and out-of-closure controls. Lean.collectAxioms is additionally queried on every project-owned declaration visible in the actual imported target environment. The raw log lists each per-declaration result and all imported module names; it contains the requested literal #print axioms outputs."
+}
