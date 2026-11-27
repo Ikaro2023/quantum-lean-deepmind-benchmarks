@@ -1,0 +1,5 @@
+'QuantumComputation.Specs.groverFindAll_correctness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuantumComputation.Specs.groverFindAllCells_nonempty' does not depend on any axioms
+'QuantumComputation.Specs.groverFindAllCells_mem_grid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuantumComputation.Specs.groverFindAll_rel_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuantumComputation.Specs.groverFindAll_cost_from_80000' depends on axioms: [propext, Classical.choice, Quot.sound]

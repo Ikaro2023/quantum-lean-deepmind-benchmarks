@@ -1,0 +1,10 @@
+Resolving dependencies
+Building QuantumComputationSpecs.Primitives.Arcsin
+Build completed successfully (2883 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, QuantumComputation.Specs.arcsin_correctness, QuantumComputation.Specs.arcsin_k25_const_cost, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam, QuantumComputation.Specs.arcsinAncillas, QuantumComputation.Specs.arcsinProgram, QuantumComputation.Specs.arcsinK25ConstCost] from QuantumComputationSpecs.Primitives.Arcsin
+Building QuantumComputationDiscoveries.Primitives.Arcsin
+Build completed successfully (2943 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, QuantumComputation.Specs.arcsin_correctness, QuantumComputation.Specs.arcsin_k25_const_cost, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam, QuantumComputation.Specs.arcsinAncillas, QuantumComputation.Specs.arcsinProgram, QuantumComputation.Specs.arcsinK25ConstCost] from QuantumComputationDiscoveries.Primitives.Arcsin
+Running Lean default kernel on solution
+Lean default kernel accepts the solution
+Your solution is okay!

@@ -1,0 +1,6 @@
+step	exit_code	seconds	log	max_rss_kb	cgroup_peak_bytes	oom_kills	start_utc	end_utc
+fix15_findall_weak_lake_build	0	106	fix15_findall_weak_lake_build.log	1531744	1699840000	0	2026-11-26T22:29:39Z	2026-11-26T22:31:25Z
+fix15b_reducibility_hints	0	51	fix15b_reducibility_hints.log	3340040	3121778688	0	2026-11-26T22:31:25Z	2026-11-26T22:32:16Z
+fix16_findall_weak_OFFICIAL_lake_comparator	0	2007	fix16_findall_weak_OFFICIAL_lake_comparator.log	924592	7058329600	0	2026-11-26T22:32:16Z	2026-11-26T23:05:43Z
+fix17_findall_weak_leanchecker	0	109	fix17_findall_weak_leanchecker.log	2950260	3862433792	0	2026-11-26T23:05:43Z	2026-11-26T23:07:32Z
+fix17b_findall_weak_print_axioms	0	20	fix17b_findall_weak_print_axioms.log	3353004	4060381184	0	2026-11-26T23:07:32Z	2026-11-26T23:07:51Z

@@ -1,0 +1,4 @@
+QuantumComputation.Specs.weakChosenBatch: abbrev
+QuantumComputation.Specs.groverFindAllQubits: regular(1)
+QuantumComputation.Specs.groverFindAllCircuit: regular(7)
+QuantumComputation.Specs.groverFindAllProgram: regular(37)

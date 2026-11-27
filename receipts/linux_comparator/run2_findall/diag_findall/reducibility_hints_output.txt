@@ -1,0 +1,16 @@
+# Read-only diagnostic (NOT one of steps 15-20; no build, no sandbox change). Lean 4.35.0, LEAN_NUM_THREADS=1.
+# Prints ReducibilityHints and expression hashes of the challenge definitions as seen by each module.
+
+## import QuantumComputationSpecs.Algorithms.Grover
+QuantumComputation.Specs.groverFindAllProgram: hints=regular(37) safety=Lean.DefinitionSafety.safe lvls=[] typeHash=289833878 valueHash=4143947326
+QuantumComputation.Specs.groverFindAllCircuit: hints=regular(7) safety=Lean.DefinitionSafety.safe lvls=[] typeHash=1282438413 valueHash=1080177784
+QuantumComputation.Specs.groverFindAllQubits: hints=regular(2) safety=Lean.DefinitionSafety.safe lvls=[] typeHash=3512939730 valueHash=1277566669
+QuantumComputation.Specs.groverFindAllCells: hints=regular(2) safety=Lean.DefinitionSafety.safe lvls=[] typeHash=454481631 valueHash=76605226
+QuantumComputation.Specs.groverFindAllRelCost: hints=regular(17) safety=Lean.DefinitionSafety.safe lvls=[] typeHash=1990117729 valueHash=4218329440
+
+## import Track2Weak.FindAllWeak
+QuantumComputation.Specs.groverFindAllProgram: hints=regular(46) safety=Lean.DefinitionSafety.safe lvls=[] typeHash=289833878 valueHash=4143947326
+QuantumComputation.Specs.groverFindAllCircuit: hints=regular(45) safety=Lean.DefinitionSafety.safe lvls=[] typeHash=1282438413 valueHash=4085136392
+QuantumComputation.Specs.groverFindAllQubits: hints=regular(44) safety=Lean.DefinitionSafety.safe lvls=[] typeHash=3512939730 valueHash=205117861
+QuantumComputation.Specs.groverFindAllCells: hints=regular(4) safety=Lean.DefinitionSafety.safe lvls=[] typeHash=454481631 valueHash=3815856713
+QuantumComputation.Specs.groverFindAllRelCost: hints=regular(17) safety=Lean.DefinitionSafety.safe lvls=[] typeHash=1990117729 valueHash=1139000534

@@ -1,0 +1,118 @@
+{
+  "paper": "Paper #1 (v1.0.0)",
+  "zenodo_doi": "10.5281/zenodo.24545553",
+  "hexagon_id": "hexagon:2611.01127",
+  "upstream_commit": "a88de8ff65d78af564b2373088ca369dc95f6547",
+  "timestamp_utc": "2026-11-26T19:08:55Z",
+  "mode": "fast",
+  "cpus": 8,
+  "ram_gb": 62,
+  "all_passed": true,
+  "steps": [
+    {
+      "step": "00_release_sha256_verify",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0,
+      "log": "00_release_sha256_verify.log"
+    },
+    {
+      "step": "01_lean_version_and_comparator_help",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 181,
+      "log": "01_lean_version_and_comparator_help.log"
+    },
+    {
+      "step": "02_arcsin_git_apply_patch",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0,
+      "log": "02_arcsin_git_apply_patch.log"
+    },
+    {
+      "step": "03_lake_cache_get",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 625,
+      "log": "03_lake_cache_get.log"
+    },
+    {
+      "step": "04_arcsin_lake_build",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 1244,
+      "log": "04_arcsin_lake_build.log"
+    },
+    {
+      "step": "05_arcsin_OFFICIAL_lake_comparator",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 1426,
+      "log": "05_arcsin_OFFICIAL_lake_comparator.log"
+    },
+    {
+      "step": "06_arcsin_leanchecker",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 779,
+      "log": "06_arcsin_leanchecker.log"
+    },
+    {
+      "step": "07_arcsin_compare_frozen",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 56,
+      "log": "07_arcsin_compare_frozen.log"
+    },
+    {
+      "step": "08_arcsin_exact_and_nonvacuity",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 180,
+      "log": "08_arcsin_exact_and_nonvacuity.log"
+    },
+    {
+      "step": "09_upstream_lake_test",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 312,
+      "log": "09_upstream_lake_test.log"
+    },
+    {
+      "step": "10_findany_lake_build",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 158,
+      "log": "10_findany_lake_build.log"
+    },
+    {
+      "step": "11_findany_OFFICIAL_lake_comparator_TighterFindAny",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 330,
+      "log": "11_findany_OFFICIAL_lake_comparator_TighterFindAny.log"
+    },
+    {
+      "step": "12_findany_leanchecker_LowerBound",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 62,
+      "log": "12_findany_leanchecker_LowerBound.log"
+    },
+    {
+      "step": "13_findany_leanchecker_TighterFindAny",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 58,
+      "log": "13_findany_leanchecker_TighterFindAny.log"
+    },
+    {
+      "step": "14_findany_print_axioms",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 19,
+      "log": "14_findany_print_axioms.log"
+    }
+  ]
+}

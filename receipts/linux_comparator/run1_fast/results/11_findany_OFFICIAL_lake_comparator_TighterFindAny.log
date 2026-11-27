@@ -1,0 +1,16 @@
+Resolving dependencies
+Building QuantumComputationSpecs.Algorithms.Grover
+Build completed successfully (2881 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, QuantumComputation.Specs.groverFindAny_correctness, QuantumComputation.Specs.groverFindAnyCells_nonempty, QuantumComputation.Specs.groverFindAnyCells_mem_grid, QuantumComputation.Specs.groverFindAny_rel_cost, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam, QuantumComputation.Specs.groverFindAnyCells, QuantumComputation.Specs.groverFindAnyQubits, QuantumComputation.Specs.groverFindAnyCircuit, QuantumComputation.Specs.groverFindAnyRelCost] from QuantumComputationSpecs.Algorithms.Grover
+Building Track2Grover.TighterFindAny
+ℹ [2951/2951] Replayed Track2Grover.TighterFindAny
+info: Track2Grover/TighterFindAny.lean:188:0: 'QuantumComputation.Specs.groverFindAnyCells_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Track2Grover/TighterFindAny.lean:189:0: 'QuantumComputation.Specs.groverFindAnyCells_mem_grid' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Track2Grover/TighterFindAny.lean:190:0: 'QuantumComputation.Specs.groverFindAny_correctness' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Track2Grover/TighterFindAny.lean:191:0: 'QuantumComputation.Specs.groverFindAny_rel_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Track2Grover/TighterFindAny.lean:192:0: 'QuantumComputation.Specs.track2FindAny_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (2951 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, QuantumComputation.Specs.groverFindAny_correctness, QuantumComputation.Specs.groverFindAnyCells_nonempty, QuantumComputation.Specs.groverFindAnyCells_mem_grid, QuantumComputation.Specs.groverFindAny_rel_cost, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam, QuantumComputation.Specs.groverFindAnyCells, QuantumComputation.Specs.groverFindAnyQubits, QuantumComputation.Specs.groverFindAnyCircuit, QuantumComputation.Specs.groverFindAnyRelCost] from Track2Grover.TighterFindAny
+Running Lean default kernel on solution
+Lean default kernel accepts the solution
+Your solution is okay!

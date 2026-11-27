@@ -1,0 +1,72 @@
+lean=Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+lake=Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+elan=elan 4.4.0 (3cc76985a 2026-11-18)
+bubblewrap=bubblewrap 0.11.1
+git=git version 2.53.0
+os=Ubuntu 26.04.1 LTS
+kernel=Linux 7.0.0-38-generic x86_64
+
+# lake-manifest.json packages (name rev inputRev)
+physlib af04d60bcd7618af849ff511e0a19d77f709937e v4.35.0
+mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679 v4.35.0
+plausible dfa4f38190d07c37e315953e08b90fe2d95b3c24 main
+LeanSearchClient d6b4c7be5be75ec4917c873ac50c756dc1436372 main
+importGraph a41f0e9a4dea23188ea9cc1c41ac9f8bbafe0b93 main
+proofwidgets df72b022e558978a1c50264cfc4d7fec86fa8e04 main
+aesop 4a174c490d8707121c4a9290800489f105d85e07 master
+Qq dce0ad79c486cb1fb504af04f953c3466b0c6db8 master
+batteries 66e469188fe07963e5cf666c7d4433f45b8131c5 main
+Cli c24fe6078c630e89b489bffe59b3e20ac30d12c8 v4.35.0
+
+# Upstream official challenge config used verbatim in step 05
+{
+  "challenge_module": "QuantumComputationSpecs.Primitives.Arcsin",
+  "solution_module": "QuantumComputationDiscoveries.Primitives.Arcsin",
+  "theorem_names": [
+    "QuantumComputation.Specs.arcsin_correctness",
+    "QuantumComputation.Specs.arcsin_k25_const_cost"
+  ],
+  "definition_names": [
+    "QuantumComputation.Specs.arcsinAncillas",
+    "QuantumComputation.Specs.arcsinProgram",
+    "QuantumComputation.Specs.arcsinK25ConstCost"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "allow_disproofs": false
+}
+
+# Upstream official GroverFindAny config (step 11 used identical keys except solution_module = Track2Grover.TighterFindAny)
+{
+  "challenge_module": "QuantumComputationSpecs.Algorithms.Grover",
+  "solution_module": "QuantumComputationDiscoveries.Algorithms.GroverFindAny",
+  "theorem_names": [
+    "QuantumComputation.Specs.groverFindAny_correctness",
+    "QuantumComputation.Specs.groverFindAnyCells_nonempty",
+    "QuantumComputation.Specs.groverFindAnyCells_mem_grid",
+    "QuantumComputation.Specs.groverFindAny_rel_cost"
+  ],
+  "definition_names": [
+    "QuantumComputation.Specs.groverFindAnyCells",
+    "QuantumComputation.Specs.groverFindAnyQubits",
+    "QuantumComputation.Specs.groverFindAnyCircuit",
+    "QuantumComputation.Specs.groverFindAnyRelCost"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "allow_disproofs": false
+}
+
+# PR commit (tree identical to applying release/patches/arcsin_366200.patch on a88de8ff)
+commit=d6595dfd788eb4f719c41bb81a5a9e7296fff3c3
+parent=a88de8ff65d78af564b2373088ca369dc95f6547
+tree=9c8bee49878f9543984a94198e79017ba9325768
+author=Robert Kadlec <kadlecr@mail.muni.cz>
+date=2026-11-26T17:41:22Z
+subject=Reduce ArcsinK25ConstCost from 369,800 to 366,200 on 100 qubits

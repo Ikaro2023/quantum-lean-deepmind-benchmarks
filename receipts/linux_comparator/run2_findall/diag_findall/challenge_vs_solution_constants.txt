@@ -1,0 +1,128 @@
+# Read-only diagnostic. All public QuantumComputation.Specs.* constants of the challenge module
+# QuantumComputationSpecs.Algorithms.Grover vs the same names as seen after `import Track2Weak.FindAllWeak` (ORIGINAL, before the abbrev fix).
+# Columns: kind/ReducibilityHints, v=hash(value), t=hash(type). Lean 4.35.0.
+challenge constants: 41; differing in solution: 11
+
+SAME    QuantumComputation.Specs.AvgOracleCostBound
+        challenge: def regular(45) v=912032923 t=3493092631
+        solution : def regular(45) v=912032923 t=3493092631
+SAME    QuantumComputation.Specs.Grover.Var
+        challenge: induct t=3931117990
+        solution : induct t=3931117990
+SAME    QuantumComputation.Specs.Grover.Var.casesOn
+        challenge: def abbrev v=1954925457 t=2727762628
+        solution : def abbrev v=1954925457 t=2727762628
+SAME    QuantumComputation.Specs.Grover.Var.ctorIdx
+        challenge: def regular(1) v=4111157055 t=2570719953
+        solution : def regular(1) v=4111157055 t=2570719953
+DIFFERS QuantumComputation.Specs.Grover.Var.noConfusion
+        challenge: def abbrev v=2468550630 t=82838157
+        solution : def abbrev v=1856026419 t=2332007267
+DIFFERS QuantumComputation.Specs.Grover.Var.noConfusionType
+        challenge: def abbrev v=3854253878 t=3981394736
+        solution : def abbrev v=1160843814 t=2744474682
+SAME    QuantumComputation.Specs.Grover.Var.ofNat
+        challenge: def abbrev v=1026667778 t=3712258699
+        solution : def abbrev v=1026667778 t=3712258699
+SAME    QuantumComputation.Specs.Grover.Var.ofNat_ctorIdx
+        challenge: thm t=3834146677
+        solution : thm t=3834146677
+SAME    QuantumComputation.Specs.Grover.Var.rec
+        challenge: rec t=897970689
+        solution : rec t=897970689
+SAME    QuantumComputation.Specs.Grover.Var.recOn
+        challenge: def abbrev v=1954925457 t=2727762628
+        solution : def abbrev v=1954925457 t=2727762628
+SAME    QuantumComputation.Specs.Grover.Var.res
+        challenge: ctor t=4275733200
+        solution : ctor t=4275733200
+SAME    QuantumComputation.Specs.Grover.Var.res.sizeOf_spec
+        challenge: thm t=2379244121
+        solution : thm t=2379244121
+SAME    QuantumComputation.Specs.Grover.instDecidableEqVar
+        challenge: def regular(4) v=695490469 t=1388350460
+        solution : def regular(4) v=695490469 t=1388350460
+SAME    QuantumComputation.Specs.Grover.instInhabitedVar
+        challenge: def regular(2) v=1691058255 t=352210372
+        solution : def regular(2) v=1691058255 t=352210372
+SAME    QuantumComputation.Specs.Grover.instInhabitedVar.default
+        challenge: def regular(1) v=907404685 t=4275733200
+        solution : def regular(1) v=907404685 t=4275733200
+SAME    QuantumComputation.Specs.decodeTargets
+        challenge: def regular(9) v=1744889410 t=2136809114
+        solution : def regular(9) v=1744889410 t=2136809114
+DIFFERS QuantumComputation.Specs.groverFindAllCells
+        challenge: def regular(2) v=76605226 t=454481631
+        solution : def regular(4) v=3815856713 t=454481631
+SAME    QuantumComputation.Specs.groverFindAllCells_mem_grid
+        challenge: thm t=1413723595
+        solution : thm t=1413723595
+SAME    QuantumComputation.Specs.groverFindAllCells_nonempty
+        challenge: thm t=855831055
+        solution : thm t=855831055
+DIFFERS QuantumComputation.Specs.groverFindAllCircuit
+        challenge: def regular(7) v=1080177784 t=1282438413
+        solution : def regular(45) v=4085136392 t=1282438413
+DIFFERS QuantumComputation.Specs.groverFindAllProgram
+        challenge: def regular(37) v=4143947326 t=289833878
+        solution : def regular(46) v=4143947326 t=289833878
+DIFFERS QuantumComputation.Specs.groverFindAllQubits
+        challenge: def regular(2) v=1277566669 t=3512939730
+        solution : def regular(44) v=205117861 t=3512939730
+DIFFERS QuantumComputation.Specs.groverFindAllRelCost
+        challenge: def regular(17) v=4218329440 t=1990117729
+        solution : def regular(17) v=1139000534 t=1990117729
+SAME    QuantumComputation.Specs.groverFindAll_correctness
+        challenge: thm t=778905369
+        solution : thm t=778905369
+SAME    QuantumComputation.Specs.groverFindAll_rel_cost
+        challenge: thm t=2959313320
+        solution : thm t=2959313320
+DIFFERS QuantumComputation.Specs.groverFindAnyCells
+        challenge: def regular(2) v=188890031 t=454481631
+        solution : def regular(12) v=2128817616 t=454481631
+SAME    QuantumComputation.Specs.groverFindAnyCells_mem_grid
+        challenge: thm t=411215731
+        solution : thm t=411215731
+SAME    QuantumComputation.Specs.groverFindAnyCells_nonempty
+        challenge: thm t=1972727032
+        solution : thm t=1972727032
+DIFFERS QuantumComputation.Specs.groverFindAnyCircuit
+        challenge: def regular(7) v=2806774452 t=1844265776
+        solution : def regular(5) v=3482734529 t=1844265776
+SAME    QuantumComputation.Specs.groverFindAnyProgram
+        challenge: def regular(37) v=403151412 t=1177021398
+        solution : def regular(37) v=403151412 t=1177021398
+DIFFERS QuantumComputation.Specs.groverFindAnyQubits
+        challenge: def regular(2) v=3036607521 t=3512939730
+        solution : def regular(5) v=1680885823 t=3512939730
+DIFFERS QuantumComputation.Specs.groverFindAnyRelCost
+        challenge: def regular(17) v=4049094367 t=1990117729
+        solution : def regular(25) v=4126669801 t=1990117729
+SAME    QuantumComputation.Specs.groverFindAny_correctness
+        challenge: thm t=3608874610
+        solution : thm t=3608874610
+SAME    QuantumComputation.Specs.groverFindAny_rel_cost
+        challenge: thm t=2041264884
+        solution : thm t=2041264884
+SAME    QuantumComputation.Specs.groverGrid
+        challenge: def regular(9) v=3311583134 t=1962363269
+        solution : def regular(9) v=3311583134 t=1962363269
+SAME    QuantumComputation.Specs.groverHarmonicSqrtSum
+        challenge: def regular(30) v=3795489533 t=2570800247
+        solution : def regular(30) v=3795489533 t=2570800247
+SAME    QuantumComputation.Specs.groverParallelMarkingOracle
+        challenge: def regular(31) v=2496379073 t=652348002
+        solution : def regular(31) v=2496379073 t=652348002
+SAME    QuantumComputation.Specs.groverSetMarkingOracle
+        challenge: def regular(30) v=332676078 t=3779149068
+        solution : def regular(30) v=332676078 t=3779149068
+SAME    QuantumComputation.Specs.groverTargetSets
+        challenge: def regular(8) v=2704236721 t=689918915
+        solution : def regular(8) v=2704236721 t=689918915
+SAME    QuantumComputation.Specs.vanillaFindAllCost
+        challenge: def regular(33) v=3261284866 t=3299353064
+        solution : def regular(33) v=3261284866 t=3299353064
+SAME    QuantumComputation.Specs.vanillaFindAnyCost
+        challenge: def regular(33) v=3398625359 t=3299353064
+        solution : def regular(33) v=3398625359 t=3299353064

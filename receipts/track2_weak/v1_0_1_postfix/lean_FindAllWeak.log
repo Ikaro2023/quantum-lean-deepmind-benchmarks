@@ -1,0 +1,29 @@
+C:\Users\OFFICE3\.gemini\antigravity\brain\67f3ef6e-6765-48ac-837f-bc91a4c6bcc5\scratch\postfix_finite_check\Track2Weak\FindAllWeak.lean:34:41: warning: Variable name `m` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _m
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+C:\Users\OFFICE3\.gemini\antigravity\brain\67f3ef6e-6765-48ac-837f-bc91a4c6bcc5\scratch\postfix_finite_check\Track2Weak\FindAllWeak.lean:34:43: warning: Variable name `k` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _k
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+C:\Users\OFFICE3\.gemini\antigravity\brain\67f3ef6e-6765-48ac-837f-bc91a4c6bcc5\scratch\postfix_finite_check\Track2Weak\FindAllWeak.lean:64:26: warning: Variable name `m` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _m
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+C:\Users\OFFICE3\.gemini\antigravity\brain\67f3ef6e-6765-48ac-837f-bc91a4c6bcc5\scratch\postfix_finite_check\Track2Weak\FindAllWeak.lean:64:28: warning: Variable name `k` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _k
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'QuantumComputation.Specs.groverFindAllCells_nonempty' does not depend on any axioms
+'QuantumComputation.Specs.groverFindAllCells_mem_grid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuantumComputation.Specs.groverFindAll_correctness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuantumComputation.Specs.groverFindAll_rel_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuantumComputation.Specs.groverFindAllRelCost_target' depends on axioms: [propext, Classical.choice, Quot.sound]

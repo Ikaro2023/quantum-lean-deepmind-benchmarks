@@ -1,0 +1,11 @@
+--- a/Track2Weak/FindAllWeak.lean
++++ b/Track2Weak/FindAllWeak.lean
+@@ -27,7 +27,7 @@
+   exact ⟨Finset.mem_image.mpr ⟨10, by decide, by decide⟩,
+     Finset.mem_image.mpr ⟨9, by decide, by decide⟩⟩
+ 
+-noncomputable def weakChosenBatch (n : ℕ) :=
++noncomputable abbrev weakChosenBatch (n : ℕ) :=
+   Track2Weak.routedBatch res Track2Weak.weakQubits 80000
+     (Track2Weak.weakTrial res Track2Weak.Cert.certRows) n
+ 

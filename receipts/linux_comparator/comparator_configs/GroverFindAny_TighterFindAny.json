@@ -1,0 +1,22 @@
+{
+  "challenge_module": "QuantumComputationSpecs.Algorithms.Grover",
+  "solution_module": "Track2Grover.TighterFindAny",
+  "theorem_names": [
+    "QuantumComputation.Specs.groverFindAny_correctness",
+    "QuantumComputation.Specs.groverFindAnyCells_nonempty",
+    "QuantumComputation.Specs.groverFindAnyCells_mem_grid",
+    "QuantumComputation.Specs.groverFindAny_rel_cost"
+  ],
+  "definition_names": [
+    "QuantumComputation.Specs.groverFindAnyCells",
+    "QuantumComputation.Specs.groverFindAnyQubits",
+    "QuantumComputation.Specs.groverFindAnyCircuit",
+    "QuantumComputation.Specs.groverFindAnyRelCost"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "allow_disproofs": false
+}

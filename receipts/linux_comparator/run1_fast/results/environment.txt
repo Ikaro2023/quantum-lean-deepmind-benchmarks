@@ -1,0 +1,9 @@
+timestamp_utc=2026-11-26T17:38:12Z
+hostname=<host>
+kernel=Linux <host> 7.0.0-38-generic #38-Ubuntu SMP PREEMPT_DYNAMIC Fri Sep  4 09:10:14 UTC 2026 x86_64 GNU/Linux
+cpus=8
+ram_gb=62
+mode=fast
+arcsin_jobs=4
+findall_jobs=2
+upstream_commit=a88de8ff65d78af564b2373088ca369dc95f6547

@@ -1,0 +1,5 @@
+'Track2Grover.FindAnyLowerBound.finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Track2Grover.FindAnyLowerBound.actual_expected_rounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Track2Grover.FindAnyLowerBound.asymptotic_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Track2Grover.FindAnyLowerBound.no_smaller_rational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Track2Grover.FindAnyLowerBound.exact_infimum' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,20 @@
+$ git branch --show-current
+track2-verification
+
+$ git rev-parse HEAD
+a88de8ff65d78af564b2373088ca369dc95f6547
+
+$ git status --short
+ M lakefile.toml
+?? .comparator_tmp/
+?? Track2Grover/
+?? Track2Weak/
+
+$ git diff --stat
+ lakefile.toml | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+$ sha256sum /home/<user>/p1cmp_20261126/fix16/formal-quantum-computation/Track2Weak/FindAllWeak.lean /home/<user>/p1cmp_20261126/paper1_linux_comparator_v1.0.0/comparator_configs/GroverFindAll_FindAllWeak.json
+8ba169948040f7c16f8ae9d7becf74c3275676321d0fcf31eac1eb5c470bdd9a  /home/<user>/p1cmp_20261126/fix16/formal-quantum-computation/Track2Weak/FindAllWeak.lean
+f3a1c304bf33e5743c97be0ddccde43c8a4ed9857e268cc39671862e045bba4d  /home/<user>/p1cmp_20261126/paper1_linux_comparator_v1.0.0/comparator_configs/GroverFindAll_FindAllWeak.json
+

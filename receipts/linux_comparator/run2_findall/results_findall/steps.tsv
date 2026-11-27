@@ -1,0 +1,13 @@
+step	exit_code	seconds	log	max_rss_kb	cgroup_peak_bytes	oom_kills	start_utc	end_utc
+pre_1_release_track2_sha256	0	1	pre_1_release_track2_sha256.log	7452	27250688	0	2026-11-26T20:31:13Z	2026-11-26T20:31:14Z
+pre_2_setup_track2_verification_branch	0	2	pre_2_setup_track2_verification_branch.log	8036	28766208	0	2026-11-26T20:31:14Z	2026-11-26T20:31:16Z
+pre_3_config_vs_upstream_GroverFindAllRelCost	0	0	pre_3_config_vs_upstream_GroverFindAllRelCost.log	11192	31662080	0	2026-11-26T20:31:16Z	2026-11-26T20:31:16Z
+15_findall_weak_lake_build	0	2916	15_findall_weak_lake_build.log	4833320	5220274176	0	2026-11-26T20:31:16Z	2026-11-26T21:19:52Z
+16_findall_weak_OFFICIAL_lake_comparator	1	142	16_findall_weak_OFFICIAL_lake_comparator.log	941368	5354770432	0	2026-11-26T21:19:52Z	2026-11-26T21:22:14Z
+17_findall_weak_leanchecker	0	44	17_findall_weak_leanchecker.log	3025920	4214784000	0	2026-11-26T21:22:14Z	2026-11-26T21:22:58Z
+17b_findall_weak_print_axioms	0	19	17b_findall_weak_print_axioms.log	3383832	4424269824	0	2026-11-26T21:22:58Z	2026-11-26T21:23:17Z
+18_findall_signonly_lake_build	0	2761	18_findall_signonly_lake_build.log	4290640	7151026176	0	2026-11-26T21:23:17Z	2026-11-26T22:09:19Z
+19_findall_signonly_OFFICIAL_lake_comparator	0	3402	19_findall_signonly_OFFICIAL_lake_comparator.log	1064324	14110093312	0	2026-11-26T22:09:19Z	2026-11-26T23:06:00Z
+20_findall_signonly_leanchecker	0	90	20_findall_signonly_leanchecker.log	2959312	2651852800	0	2026-11-26T23:06:00Z	2026-11-26T23:07:30Z
+20b_findall_signonly_print_axioms	0	20	20b_findall_signonly_print_axioms.log	3352788	2898427904	0	2026-11-26T23:07:30Z	2026-11-26T23:07:50Z
+post_restore_pr_branch	0	1	post_restore_pr_branch.log	8000	2456350720	0	2026-11-26T23:07:50Z	2026-11-26T23:07:50Z

@@ -27,7 +27,7 @@ theorem groverFindAllCells_mem_grid {m k : ℕ} (hmk : groverFindAllCells m k = 
   exact ⟨Finset.mem_image.mpr ⟨10, by decide, by decide⟩,
     Finset.mem_image.mpr ⟨9, by decide, by decide⟩⟩
 
-noncomputable def weakChosenBatch (n : ℕ) :=
+noncomputable abbrev weakChosenBatch (n : ℕ) :=
   Track2Weak.routedBatch res Track2Weak.weakQubits 80000
     (Track2Weak.weakTrial res Track2Weak.Cert.certRows) n
 

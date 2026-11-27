@@ -1,0 +1,38 @@
+upstream: QuantumComputationSpecs/ChallengeJsons/Algorithms/GroverFindAllRelCost.json
+{
+  "challenge_module": "QuantumComputationSpecs.Algorithms.Grover",
+  "solution_module": "QuantumComputationDiscoveries.Algorithms.GroverFindAll",
+  "theorem_names": [
+    "QuantumComputation.Specs.groverFindAll_correctness",
+    "QuantumComputation.Specs.groverFindAllCells_nonempty",
+    "QuantumComputation.Specs.groverFindAllCells_mem_grid",
+    "QuantumComputation.Specs.groverFindAll_rel_cost"
+  ],
+  "definition_names": [
+    "QuantumComputation.Specs.groverFindAllCells",
+    "QuantumComputation.Specs.groverFindAllQubits",
+    "QuantumComputation.Specs.groverFindAllCircuit",
+    "QuantumComputation.Specs.groverFindAllRelCost"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "allow_disproofs": false
+}
+--- GroverFindAll_FindAllWeak.json
+  allow_disproofs: IDENTICAL
+  challenge_module: IDENTICAL
+  definition_names: IDENTICAL
+  permitted_axioms: IDENTICAL
+  solution_module: DIFFERS  upstream='QuantumComputationDiscoveries.Algorithms.GroverFindAll'  used='Track2Weak.FindAllWeak'
+  theorem_names: IDENTICAL
+--- GroverFindAll_SignOnly.json
+  allow_disproofs: IDENTICAL
+  challenge_module: IDENTICAL
+  definition_names: IDENTICAL
+  permitted_axioms: IDENTICAL
+  solution_module: DIFFERS  upstream='QuantumComputationDiscoveries.Algorithms.GroverFindAll'  used='Track2Grover.FindAll'
+  theorem_names: IDENTICAL
+RESULT: only solution_module differs

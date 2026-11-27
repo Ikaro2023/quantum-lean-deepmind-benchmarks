@@ -1,0 +1,24 @@
+timestamp_utc=2026-11-26T20:31:13Z
+hostname=<host>
+kernel=Linux <host> 7.0.0-38-generic #38-Ubuntu SMP PREEMPT_DYNAMIC Fri Sep  4 09:10:14 UTC 2026 x86_64
+os=Ubuntu 26.04.1 LTS
+cpus_online=64
+cpus_affinity=64
+cgroup_cpu_max=800000 100000
+mem_total_kb=65819588
+mem_available_kb_at_start=43611376
+swap_total_kb=0
+cgroup_memory_high=42949672960
+cgroup_memory_max=49392123904
+cgroup_memory_swap_max=0
+cgroup=p1cmp-findall-20261126.service
+oom_score_adj=1000 (unit OOMScoreAdjust; job is the preferred OOM victim, OOMPolicy=continue)
+LEAN_NUM_THREADS=1
+upstream_commit=a88de8ff65d78af564b2373088ca369dc95f6547
+pr_branch=pr-arcsin-366200 (d6595dfd788eb4f719c41bb81a5a9e7296fff3c3)
+sandbox=bwrap (lake comparator default); --inadvisably-no-sandbox NOT used
+lean_version=Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+lake_version=Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+elan_version=elan 4.4.0 (3cc76985a 2026-11-18)
+bwrap_version=bubblewrap 0.11.1
+lean_toolchain=leanprover/lean4:v4.35.0

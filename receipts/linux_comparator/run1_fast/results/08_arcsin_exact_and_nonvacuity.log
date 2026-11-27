@@ -1,0 +1,21 @@
+--- Compiling & checking ExactCount ---
+/home/<user>/p1cmp_20261126/paper1_linux_comparator_v1.0.0/release/lean/track3_arcsin/m1/ExactCount.lean:16:87: warning: Unused tactic linter: `skip` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'QuantumComputation.Specs.ArcsinImpl.ExactAudit.count_T_k25DynCircuit_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+replaying ExactCount
+--- Compiling & checking ExactPublic ---
+'QuantumComputation.Specs.ArcsinImpl.ExactAudit.exactPublicK25' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+replaying ExactPublic
+--- Compiling & checking DisjointWitness ---
+'QuantumComputation.Specs.ArcsinImpl.ExactAudit.canonicalK25_disjoint' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuantumComputation.Specs.ArcsinImpl.ExactAudit.exactPublicK25_nonvacuous' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+replaying DisjointWitness

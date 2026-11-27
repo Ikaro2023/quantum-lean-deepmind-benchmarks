@@ -1,0 +1,22 @@
+{
+  "challenge_module": "QuantumComputationSpecs.Algorithms.Grover",
+  "solution_module": "Track2Weak.FindAllWeak",
+  "theorem_names": [
+    "QuantumComputation.Specs.groverFindAll_correctness",
+    "QuantumComputation.Specs.groverFindAllCells_nonempty",
+    "QuantumComputation.Specs.groverFindAllCells_mem_grid",
+    "QuantumComputation.Specs.groverFindAll_rel_cost"
+  ],
+  "definition_names": [
+    "QuantumComputation.Specs.groverFindAllCells",
+    "QuantumComputation.Specs.groverFindAllQubits",
+    "QuantumComputation.Specs.groverFindAllCircuit",
+    "QuantumComputation.Specs.groverFindAllRelCost"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "allow_disproofs": false
+}

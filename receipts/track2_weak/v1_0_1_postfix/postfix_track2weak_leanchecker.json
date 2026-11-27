@@ -1,0 +1,58 @@
+{
+  "utc_start": "2026-11-26T23:51:15Z",
+  "toolchain": "Lean 4.35.0 (eb6cafb7290e8bd5f2937522d8d804f58f02bafc)",
+  "lean_sha256": "ec7a472d1c12a09b0c0c718f7427c2be527b3f5f07810fdbe076c2507c7a91ea",
+  "leanchecker_sha256": "9ef6baeb28d5e28897d5ed6dddd60ff81e511d97374013ece435dff38e9e0137",
+  "source_sha256": {
+    "Track2Weak/FindAllWeak.lean": "8ba169948040f7c16f8ae9d7becf74c3275676321d0fcf31eac1eb5c470bdd9a",
+    "Track2Weak/FiniteFromCutoff.lean": "667aae2c5eab974d21abefb28fe3316aecabbcecc875b9eda8d507842d8c0711"
+  },
+  "steps": [
+    {
+      "name": "lean_FindAllWeak",
+      "exit": 0,
+      "seconds": 12.0,
+      "output_lines": 29,
+      "tail": [
+        "",
+        "Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:",
+        "  [apply] _k",
+        "",
+        "Note: This linter can be disabled with `set_option linter.unusedVariables false`",
+        "'QuantumComputation.Specs.groverFindAllCells_nonempty' does not depend on any axioms",
+        "'QuantumComputation.Specs.groverFindAllCells_mem_grid' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'QuantumComputation.Specs.groverFindAll_correctness' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'QuantumComputation.Specs.groverFindAll_rel_cost' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "'QuantumComputation.Specs.groverFindAllRelCost_target' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ]
+    },
+    {
+      "name": "lean_FiniteFromCutoff",
+      "exit": 0,
+      "seconds": 8.57,
+      "output_lines": 1,
+      "tail": [
+        "'QuantumComputation.Specs.groverFindAll_cost_from_80000' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ]
+    },
+    {
+      "name": "leanchecker_FindAllWeak",
+      "exit": 0,
+      "seconds": 25.85,
+      "output_lines": 1,
+      "tail": [
+        "replaying Track2Weak.FindAllWeak"
+      ]
+    },
+    {
+      "name": "leanchecker_FiniteFromCutoff",
+      "exit": 0,
+      "seconds": 19.9,
+      "output_lines": 1,
+      "tail": [
+        "replaying Track2Weak.FiniteFromCutoff"
+      ]
+    }
+  ],
+  "all_exit_zero": true
+}

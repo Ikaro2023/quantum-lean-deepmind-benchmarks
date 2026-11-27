@@ -1,0 +1,1 @@
+'QuantumComputation.Specs.groverFindAll_cost_from_80000' depends on axioms: [propext, Classical.choice, Quot.sound]
